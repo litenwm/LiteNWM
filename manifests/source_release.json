@@ -1180,13 +1180,13 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 8426,
-      "sha256": "c02d4afc8307e8874b9a4a30cf6eafe089be56cbc4b2ef0639a65a9674ebad7c"
+      "size_bytes": 8357,
+      "sha256": "96a083a1aa717fa40cfd1fb68da5825ffc003fe53fb0f3498ad25240195853bc"
     },
     {
       "path": "README.zh-CN.md",
-      "size_bytes": 6857,
-      "sha256": "d3dab5884435c0af1d21caa17b57ccc2bdc79b5757c70406411837e0ebfe4c08"
+      "size_bytes": 6814,
+      "sha256": "267e604b31520c2d08ea430996e77d3749e890cabd9603692117e0d61249a0ce"
     },
     {
       "path": "RELEASE_INFO.json",

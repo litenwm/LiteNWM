@@ -4,7 +4,7 @@
 
 [项目网站](https://litenwm.github.io/) · [论文](https://arxiv.org/abs/2610.12368) · [代码仓库](https://github.com/litenwm/LiteNWM) · [配套权重](https://github.com/litenwm/LiteNWM/releases/tag/v1.0.0)
 
-arXiv 预印本，已投稿 ICRA 2027；不表示已录用。
+arXiv 预印本。
 
 项目结项代码发布包：DINOv3 图像表征 → 冻结适配器 → LiteTokenFormer 世界模型 → H4 轨迹质量评分 → 可选 CEM 优化。
 

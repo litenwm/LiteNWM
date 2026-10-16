@@ -8,7 +8,7 @@ Linkai Liu, Yuntian Zhang, Zhenshan Bing, Chen Chen, Lingjuan Lyu, Shangguang Wa
 
 Nanjing University · Imperial College London · Sony AI · Beijing University of Posts and Telecommunications.
 
-ArXiv preprint, 2026. Submitted to ICRA 2027; this statement does not indicate acceptance.
+arXiv preprint, 2026.
 
 LiteNWM evaluates trajectories proposed by a frozen navigation policy. Shared DINOv3 encoding and a lightweight adapter feed a latent world model that jointly predicts four future horizons. A learned incumbent-relative scorer evaluates candidate consequences, with an acceptance gate and optional CEM refinement.
 
