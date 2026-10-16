@@ -15,8 +15,12 @@
     "results"
   ],
   "research_scripts": "Preserved as historical references; some require external assets.",
-  "source_version": "current working tree, including uncommitted source changes",
+  "source_version": "LiteNWM public source release v1.0.0",
   "default_model_version": "sealed_tridomain_v70_20260729",
   "robot_asset_manifest": "robot/assets_manifest.json",
-  "robot_live_validation": "not performed for modified public variant"
+  "robot_live_validation": "not performed for modified public variant",
+  "project_url": "https://litenwm.github.io/",
+  "paper_url": "https://arxiv.org/abs/2610.12368",
+  "repository_url": "https://github.com/litenwm/LiteNWM",
+  "project_license": "CC-BY-NC-4.0; third-party exceptions apply"
 }

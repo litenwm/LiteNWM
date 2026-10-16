@@ -1,4 +1,10 @@
-# DINOv3–LTWM–Scorer
+# LiteNWM
+
+**Efficient Latent World Models for Onboard Visual Navigation in the Wild**
+
+[项目网站](https://litenwm.github.io/) · [论文](https://arxiv.org/abs/2610.12368) · [代码仓库](https://github.com/litenwm/LiteNWM) · [配套权重](https://github.com/litenwm/LiteNWM/releases/tag/v1.0.0)
+
+arXiv 预印本，已投稿 ICRA 2027；不表示已录用。
 
 项目结项代码发布包：DINOv3 图像表征 → 冻结适配器 → LiteTokenFormer 世界模型 → H4 轨迹质量评分 → 可选 CEM 优化。
 
@@ -88,18 +94,11 @@ python -m pytest -q tests/recon_latents/test_ltwm_horizon.py \
 
 完整研究测试集中的部分检查需要未打包的实验资产或外部环境，不能用核心测试通过代替完整实验复现。源码包检查应在刚解压的目录运行；自行修改源码后哈希变化属于预期行为。
 
-## 上传 GitHub
+## 发布与论文对应
 
-将**本发布目录**作为仓库根目录，不要上传原实验工作区。`.gitignore` 已排除权重、缓存、本地配置和输出。
+代码仓库为 https://github.com/litenwm/LiteNWM 。模型资产放在 v1.0.0 Release，下载 `litenwm_go2_assets.tar` 与 `asset_release.json`，核对 SHA-256 后按机器狗部署说明安装。
 
-```bash
-git init
-git add .
-git commit -m "Release project source without weights"
-git branch -M main
-git remote add origin https://github.com/YOUR_ACCOUNT/YOUR_REPOSITORY.git
-git push -u origin main
-```
+论文原实机实验与当前无动作复用部署版分开记录。后者没有新的物理运动、成功率或板端时延测量；不能直接套用网站数字。完整论文表格复现仍需另备原始数据、匹配的三域 split-lock、候选池及实验配置，详见 [论文与发布对应说明](docs/PAPER_RELEASE_MAP.md)。
 
 ## License / 使用许可
 
