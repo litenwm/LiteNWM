@@ -1,0 +1,130 @@
+{
+  "schema": "ltwm_full_stream_action_observability_contract_v1",
+  "status": "frozen_before_single_full_stream_route_oof_probe",
+  "purpose": "Test whether the existing complete SCAND behavior stream supplies enough route-general motion supervision to decode a four-step future path from real adapted-DINO latents, before any further LTWM training.",
+  "hypothesis": "The failed 800-state inverse probe was sample-limited rather than representation-limited; route-excluded continuous SCAND windows will make the real t+4 latent action-observable across held routes.",
+  "lineage": {
+    "sparse_probe": {
+      "contract_path": "configs/recon/ltwm_action_observable_cycle_probe_v1.json",
+      "contract_sha256": "22ae5bd47cfeab83ff884d213a028cc39d001a1dc026808b7a5139f04e61a571",
+      "runner_path": "tools/recon/run_ltwm_action_observable_cycle_probe_v1.py",
+      "runner_sha256": "2fc1c5befeaa8ae42a4a104266111d17f036f863f6de1eb1c69d929005fdcc4e",
+      "result_path": "outputs/cem_development_v1/ltwm_action_observable_cycle_probe_v1/result.json",
+      "result_sha256": "9a31f736ec354c448b7470ce6a8fe7aaabbaf0e31179619b5dc88adbe75750ed",
+      "decision": "stop_real_future_dino_latent_not_action_observable_enough",
+      "integrated_path_relative_to_mean_action": 1.1135252389953707
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c",
+      "states": 800,
+      "route_groups": 42,
+      "candidates_per_state": 65
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "full_stream_latents": {
+      "root": "outputs/cem_development_v1/scand_full_stream_latents_v2",
+      "metadata_sha256": "0f678ded8c673e78652d74221eb094aac87d5b2b9bba3ab6df07e57b783caa29",
+      "splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+      "trajectories_sha256": "822c3911deca3198f87e7603fab8eab22eb0c7c07e8c2b12c27257e6df71b54a",
+      "ordered_shard_sha256_aggregate": "cc020c932770f1cf352666aa337f13980e4144df8f0516665ba3cba296063bd5",
+      "trajectories": 234,
+      "frames": 42401,
+      "included_splits": [
+        "train",
+        "val"
+      ],
+      "historical_remote_frame_count": 42415,
+      "local_frame_delta": -14,
+      "frame_delta_scope": "seven Jackal trajectories only; all local image/pose/yaw lengths were internally equal and the same 234 split-locked trajectory identities were retained"
+    },
+    "encoder": {
+      "path": "tools/recon/encode_dinov3_adapted_resumable.py",
+      "sha256": "d007bb8beafd6cd1464a4a5c7d3937c3c03410f5a13052037344f4f04f2558a4",
+      "dinov3_weight_sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179",
+      "adapter_checkpoint_sha256": "bc0ec2cac457556bfb362b46b20584a02d8f954d8b7c17ed36b4c8646ec4ad5a",
+      "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+    },
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    }
+  },
+  "stream_windows": {
+    "previous": "patch_latents[t-1]",
+    "current": "patch_latents[t]",
+    "future": "patch_latents[t+4]",
+    "target": "actions_continuous[t:t+4]",
+    "valid_current_t": "1 through T-5 inclusive",
+    "route_group": "lowercase sorted pair of trajectory-id location tokens 4 and 5",
+    "route_exclusion": "for each outer fold exclude every full-stream trajectory whose route_group appears in that fold, including all same-route bags and exact trajectories",
+    "expected_exact_trajectory_leakage_after_exclusion": 0,
+    "expected_route_group_leakage_after_exclusion": 0
+  },
+  "inverse_probe": {
+    "architecture": "exact ActionObservableInverse from sparse probe; 145716 parameters",
+    "target_standardization": "mean/std from eligible full-stream windows after held-route exclusion",
+    "loss": {
+      "standardized_action_smooth_l1_weight": 1.0,
+      "integrated_xy_path_smooth_l1_weight": 0.25
+    },
+    "outcome_labels_in_training": false,
+    "candidate_outcomes_in_training": false,
+    "ate_or_objective_gradient": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "route_fold_assignment": "exact deterministic assignment shared with the sparse probe",
+    "fixed_steps_per_fold": 1500,
+    "batch_size": 16,
+    "sampling": "eligible full-stream route-uniform then window-uniform with replacement",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072403,
+    "checkpoint_selection": "fixed final step; outer states and outcomes never select epoch or hyperparameters"
+  },
+  "fixed_primary_planner": {
+    "definition": "integrate inverse(real goal latent) into a four-step XY path and choose the physical/support union65 candidate with minimum mean squared XY path distance; formal-v70 remains in the set",
+    "outcome_independence": "candidate score uses only predicted path and candidate actions",
+    "true_path_ceiling": {
+      "ate_gain_m": 0.03213468994246796,
+      "objective_gain_m": 0.04201809135847725,
+      "harm_rate": 0.03723404255319149,
+      "positive_route_fraction": 1.0
+    },
+    "secondary_diagnostic": "standardized 12D action-distance planner from sparse probe"
+  },
+  "observability_gate": {
+    "standardized_action_rmse_relative_to_mean_action_max": 0.80,
+    "integrated_path_rmse_relative_to_mean_action_max": 0.80,
+    "endpoint_error_relative_to_mean_action_max": 0.80,
+    "integrated_path_improved_route_fraction_min": 0.60
+  },
+  "performance_gate": {
+    "ate_gain_m_min_exclusive": 0.002526717376050023,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "ate_oracle_gain_ratio_min": 0.20
+  },
+  "branch_rule": {
+    "if_observability_or_primary_performance_fails": "Withdraw the sample-shortage hypothesis and stop the current adapted-DINO latent motion branch; do not tune the inverse architecture or return to ordinary selectors.",
+    "if_both_pass": "Decode frozen warm-LTWM candidate futures with the same fold probes and evaluate the same path metric once.",
+    "if_warm_forward_passes": "Freeze the existing latent metric and selector without LTWM retraining.",
+    "if_warm_forward_fails": "Proceed once to frozen-probe path-cycle LTWM training without ATE/objective gradients."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

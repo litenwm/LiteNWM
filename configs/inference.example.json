@@ -1,0 +1,7 @@
+{
+  "wm_checkpoint": "../checkpoints/latest/ltwm_expansion/seed1701/best.pt",
+  "scorer_checkpoint": "../checkpoints/latest/scorer_v2/seed1701/best.pt",
+  "wm_sha256": "8970c387cd642027913c1cb01d5e2d2a2bfd6b58c94d1432e62880d3a434ac66",
+  "scorer_sha256": "e7cef7ce68e97ab74db2a07474b0e0880eff06c3d4f9e2803be3a861461930ef",
+  "inputs": "../inputs.npz"
+}

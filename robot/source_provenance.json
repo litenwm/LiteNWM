@@ -1,0 +1,274 @@
+{
+  "source": "verified deployed snapshot 2026-09-14",
+  "core_src_files_identical": 39,
+  "model_version": "sealed_tridomain_v70_20260729",
+  "copied_files": [
+    {
+      "path": "deploy/v70_go2_orin/arm_v70_live.bash",
+      "robot_source_sha256": "dc6e37dedc9340edcf9c9a55d46438107c7980c919186f2266eb843e1c624971"
+    },
+    {
+      "path": "deploy/v70_go2_orin/disarm_v70_live.bash",
+      "robot_source_sha256": "76ef0f1b610f9ff3fe95360b29e0f7c091ea8b7cf00c68ea2b555d0e5e6a83f8"
+    },
+    {
+      "path": "deploy/v70_go2_orin/gait_command_shaping.py",
+      "robot_source_sha256": "eb6e4086be2a7125858be23960b2f752efb2d112824336293a0d184644886c15"
+    },
+    {
+      "path": "deploy/v70_go2_orin/ltwm_tensorrt_runtime.py",
+      "robot_source_sha256": "2361e3fd7a302fdd2b3a3607eb9f9d28267bf944349c0387fed9bd8f54f356c8"
+    },
+    {
+      "path": "deploy/v70_go2_orin/motion_executor_v2.py",
+      "robot_source_sha256": "9e1a5640e306fb7f6a9de99661c735e103f414ffd4fedc3f58d8207e5110a4aa"
+    },
+    {
+      "path": "deploy/v70_go2_orin/nomad_live_shadow.py",
+      "robot_source_sha256": "daf927575ec44355ea22a3dfa06b36c06cee398e3d2203383b1e96d04ecdd0c5"
+    },
+    {
+      "path": "deploy/v70_go2_orin/nomad_snapshot_shadow.py",
+      "robot_source_sha256": "0d545a73ee76c8c966d1f82001a37eae8bb6935622e717a49a223ab41c8c436d"
+    },
+    {
+      "path": "deploy/v70_go2_orin/numpy_pickle_compat.py",
+      "robot_source_sha256": "f7e95851d7f07aebf4bf43f97362f78377d952572c5e5de9a0932eed2d057007"
+    },
+    {
+      "path": "deploy/v70_go2_orin/orin_env.sh",
+      "robot_source_sha256": "b8863ab9f449d8ae32504042c57c0ea8b1a20d5f277e63280cd68b591dd2ecc9"
+    },
+    {
+      "path": "deploy/v70_go2_orin/orin_env_tridomain.sh",
+      "robot_source_sha256": "d6aa400c9962bf166166f5b8f1495f92a0176903a8ee337b3bed8cc07b8a8105"
+    },
+    {
+      "path": "deploy/v70_go2_orin/orin_env_tridomain_v2.sh",
+      "robot_source_sha256": "b70c3d03c856531cafd6ffd1edc93197b1e74e9b0f34110e8d99e0d076578a12"
+    },
+    {
+      "path": "deploy/v70_go2_orin/pose_history_shadow.py",
+      "robot_source_sha256": "af9250aae1766b311f2c29c8f91b736ceed20fe3fb9efc616b642c61ad3e1b45"
+    },
+    {
+      "path": "deploy/v70_go2_orin/probe_lidar_corridor_shadow.py",
+      "robot_source_sha256": "3f2bda3f060388c65895523e10fb2e1e45d4e9e2df4b5ee4104ea2c88950752e"
+    },
+    {
+      "path": "deploy/v70_go2_orin/run_v70_closed_loop.bash",
+      "robot_source_sha256": "c84e322fa82fe8bb095564cb48c9bf13b8d7deb91cc3a5dc75f93bc1d21d37ec"
+    },
+    {
+      "path": "deploy/v70_go2_orin/run_v70_single_goal.bash",
+      "robot_source_sha256": "c101081fc6cc43d37bbb6236d037c15890fc634a250774af37bbae32be8ca781"
+    },
+    {
+      "path": "deploy/v70_go2_orin/safe_bridge_core.py",
+      "robot_source_sha256": "6f742169b427090d33109359eb73b69eb6e76dd341f3ff8e04bf902d4bab7608"
+    },
+    {
+      "path": "deploy/v70_go2_orin/safe_bridge_v2.py",
+      "robot_source_sha256": "6f709ce1801d7c35a51a5cdd19818df5005f95f78881a966b95003f03d46a182"
+    },
+    {
+      "path": "deploy/v70_go2_orin/safe_bridge_v3.py",
+      "robot_source_sha256": "4b22662edf13818665f097166f5b3445663e8bac4ed9c3cc947d5f37afdde3cd"
+    },
+    {
+      "path": "deploy/v70_go2_orin/safe_bridge_v4.py",
+      "robot_source_sha256": "5a4f76ad71597492a7ae59f6810463b7e514bd98a04826277a3d9f3bf8b9984b"
+    },
+    {
+      "path": "deploy/v70_go2_orin/safe_bridge_v5.py",
+      "robot_source_sha256": "c4d31c6ed7bd82e74530204e9e2fc9af045e01b17f00742d8392a3a896292e11"
+    },
+    {
+      "path": "deploy/v70_go2_orin/unitree_stand_once.py",
+      "robot_source_sha256": "f3b6bc5681041c392002da0291b18fb5a481beae9f70b63468c36e08f596af3f"
+    },
+    {
+      "path": "deploy/v70_go2_orin/unitree_stop_once.py",
+      "robot_source_sha256": "3ce2ebf967debb009ea941d6f145501e8366402e34bdbb6ba5f0061b5bec4a24"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_action_support_compat.py",
+      "robot_source_sha256": "354e7fe9ba5ece9a6ba988a28abf41b7047cf3b6e1b993ad2f2ed5669904f0e5"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_armd_fixed_pool_shadow.py",
+      "robot_source_sha256": "899c76605ed5e2d248c9a6c2a577cb35a1f3cae92d9c614ce7cb4d0940835226"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_armd_tridomain_shadow.py",
+      "robot_source_sha256": "105db49ec16dffb9f9595b7439d946a22ebb806d27b733d7d9b8ae92512b731a"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_armd_tridomain_v2_shadow.py",
+      "robot_source_sha256": "2c4f318355161c98681dce01ed1a7a1832a0af7fa8b6f5ec558a87b389f2fc83"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_armd_tridomain_v3_shadow.py",
+      "robot_source_sha256": "106f5e9bbded07bb08747a0c54cc9b088269e7d33ae54d4fedc8766be292a826"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_arrival_calibrate.py",
+      "robot_source_sha256": "c05abc2f57f5d749783dd30bb084e5c3adc147eef2eb57d7b390e2e9929a7b9f"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_arrival_collect.py",
+      "robot_source_sha256": "0470db8b71a5e213a00816eea52d6bb151c7b4ef91e7021add4fa81c8da744e1"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_board_latency_benchmark.py",
+      "robot_source_sha256": "e09d300079bd5f66bb0482bb7d4a97196c4152b8f8c04c72d5ebb56a0fc86676"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_archive_shadow.py",
+      "robot_source_sha256": "96cb28350b5af567800219fadf4ad1a36fb22aeb9fa4da78e5543af75f26cc57"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_shadow.py",
+      "robot_source_sha256": "a8b02558d1bcff4ce937861a9b1257a7deff7e546ea729db6278f23aa1b521d7"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_v2_shadow.py",
+      "robot_source_sha256": "aa693e5cc635358df894f1e1338d69fe8e63a144ca8f4887362a2f02b298706e"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_v4_shadow.py",
+      "robot_source_sha256": "26747921143981609b2f701a9393cb22cad088eb37716239380b0e8449c0bec5"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_v4_shadow_accel_stage.py",
+      "robot_source_sha256": "5810bfdc3773fe9c9038af41996527edd5e4b2b766d737f9f1b5689022ad4f21"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_v5_shadow.py",
+      "robot_source_sha256": "907d45598e378150f01c548c6b7fc4a37bdb2167b1f0534829ac9e8e57397140"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_cem_tridomain_v6_shadow.py",
+      "robot_source_sha256": "56aa145d44e9e25e5b323ef41f253d7c76feb5d26a52a13326d26a1fc04fec70"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_closed_loop_core.py",
+      "robot_source_sha256": "950d93f520952d31fdd6bdcd1f1e04d2be215039544f1ccd8c33e073ad8c20b9"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_dino_live_shadow.py",
+      "robot_source_sha256": "ad1594d1fded63685ad309565308910c79a6841e828f93b95195a50f8e3dfe3b"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_goal_profile.py",
+      "robot_source_sha256": "87924fc8c0df27099b251fd0d0661e624cda146632b3d60aab3001f7f24d778b"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_goal_stop.py",
+      "robot_source_sha256": "217b2661ba53e62e06833edaf1b4d146c5ada892d7ba9e9943ec0652e68baadb"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_latency_protocol.py",
+      "robot_source_sha256": "6b11dd99aab3636cff91bdbbd68707da9b1dfb06b3feb7d5c1daf01a5eef6f88"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_live_nav.py",
+      "robot_source_sha256": "f9e3829608f14539f10bc578ded10d70095b791f2e7218c9286206f0c6f9a168"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_live_nav_fast.py",
+      "robot_source_sha256": "b49c550d90497d67a5e7fdf114ef9a226bf3af08fcf24434972ce04d8f2cd657"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_ltwm_fixed_pool_shadow.py",
+      "robot_source_sha256": "85d68350d95b02778c703b0aa1e90ea50159cbc3f112724f3a04f3e6836b05bf"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_ltwm_tridomain_shadow.py",
+      "robot_source_sha256": "21ed16fb8a83b6c547073394d04949515bab12f4b5630171c868b20e5ac774cb"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_ltwm_tridomain_v2_shadow.py",
+      "robot_source_sha256": "e689a4edd241f999f7cee2c28a1dea9a8d937da20ee0b48488ca7ef7b337b96d"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_ltwm_tridomain_v3_shadow.py",
+      "robot_source_sha256": "9234033903bb697fbf9500b23d769a1d640b4cf11536a019ca7274b76e876a51"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_online_feature_shadow.py",
+      "robot_source_sha256": "8ea0d7a05bb608624687bbe91f96830e5ef482b00ec4cc9018c813ba7af7878d"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_persistent_parity_shadow.py",
+      "robot_source_sha256": "d61d1c1db8251f96649732603f59519b98b2d173c214b43ec72b3d23d3a257c9"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_persistent_planner.py",
+      "robot_source_sha256": "85775e7f39aa475523b44820cd6fcea77436e7648efb8dbb0f6f10160bcaaa49"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_persistent_planner_fast.py",
+      "robot_source_sha256": "259d00870e76f1b5897914e1060ba120950c40a1495fbc9368bb01447edc5c56"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_persistent_planner_fast_accel_stage.py",
+      "robot_source_sha256": "1d70e1eae7a4d59127dff241bc9415b3b72fc0903894a3c6d8e0f3bcef728d6a"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_process_utils.py",
+      "robot_source_sha256": "2993414a7e8d3e84f293d4420c3c21778c193326273a296e244f9dcb3aa519de"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_runtime_contract.py",
+      "robot_source_sha256": "9259daa848bd2bc22396c7ee61ae1a2c0fe16ad83c9010e5402bc689bdac7334"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_scan_annotation.py",
+      "robot_source_sha256": "32090f588b85b591d19476c4e065026fb45071439d0447c44befe4b79b81ec24"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_scan_only_artifacts.py",
+      "robot_source_sha256": "2447f1bb116de4a58828f6394fc8821724da48b6df15995fc44fd9faa50d6a53"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_sensor_freshness.py",
+      "robot_source_sha256": "e932643f80e7fe25a66c777c5989c916f9be8f77944c59135d2c9556636fe356"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_sensor_preflight.py",
+      "robot_source_sha256": "08550267dd01df3d8afb60eef928dc064ab337c42ac2dd3bb98eae0c45276c36"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_shutdown_helpers.bash",
+      "robot_source_sha256": "fecae5551e706355228e5fc10fd57402da7394b370d8139431cf58ad936df417"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_sport_lease_preflight.py",
+      "robot_source_sha256": "134d81c548850b061767e8caa63c82808fd3d35b784fae5e6c8683ad2f53ef96"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_stamp_snapshot_metadata.py",
+      "robot_source_sha256": "db4bc48fd9d809b7f8b6ac12f96db042097762fb8a806d7dc4e33c8e8ae48cb8"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_unitree_camera_worker.py",
+      "robot_source_sha256": "e2b88dbc2c8a6d983b97a79113f1db31ea1c3673b231acb9f6e67592b00f96f1"
+    },
+    {
+      "path": "deploy/v70_go2_orin/v70_visual_bearing.py",
+      "robot_source_sha256": "ba3ffe45bb5570a3a93323aa5c3a0dc443d6a8f9aa17489135422aed3dc6e337"
+    },
+    {
+      "path": "deploy/v70_go2_orin/verify_bundle.py",
+      "robot_source_sha256": "3ee4b0567cf2430addad4e1608c8e19cdf45b8d45c63199f5ea691de17e6818c"
+    },
+    {
+      "path": "deploy/v70_go2_orin/verify_tridomain_bundle.py",
+      "robot_source_sha256": "ffceab9682bcca291a457aa2b35838de591ffe12590d7c96f051c0725fc933b3"
+    }
+  ],
+  "public_execution_policy": "fresh accepted H1, once per sequence; no cached-action motion",
+  "core_source_comparison_stage": "before adding portable checkpoint loader",
+  "core_portability_change": "src/planning/nomad_backend.py now uses trusted portable metadata unpickler; no weight or arithmetic changes"
+}

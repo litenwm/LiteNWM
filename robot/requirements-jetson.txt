@@ -1,0 +1,11 @@
+# Python 3.10 / ROS 2 Humble. Keep the board's vendor torch/torchvision unchanged.
+# ROS, Unitree SDK and TensorRT are installed separately; never via this file.
+numpy==1.24.4
+Pillow>=9.5,<13
+PyYAML>=6,<7
+opencv-python==4.10.0.84
+diffusers==0.35.1
+transformers==4.57.0
+safetensors>=0.5,<1
+efficientnet-pytorch==0.7.1
+einops>=0.8,<1

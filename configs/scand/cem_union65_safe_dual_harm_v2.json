@@ -1,0 +1,105 @@
+{
+  "schema": "scand_union65_safe_dual_harm_contract_v2",
+  "status": "frozen_before_strict_nested_route_oof",
+  "scope": "adaptive spent-development prototype; score hypothesis chosen after v1 OOF diagnosis; sealed validation remains unopened",
+  "table": {
+    "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+    "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c",
+    "states": 800,
+    "candidates_per_state": 65,
+    "features": 351,
+    "route_groups": 42
+  },
+  "candidate_set": {
+    "challengers": "frozen physical_support_pool",
+    "fallback": "formal_v70_index",
+    "sealed_validation_opened": false
+  },
+  "model": {
+    "family": "set_context_multitask_gain_and_harm_ensemble",
+    "architecture": {
+      "candidate_encoder": [351, 96, 64],
+      "context": "masked candidate-set mean plus formal-v70 embedding",
+      "head": [192, 96, 32, 4],
+      "outputs": [
+        "objective_gain_vs_formal_v70_m",
+        "ate_gain_vs_formal_v70_m",
+        "harm_vs_formal_v70_logit",
+        "dual_vs_formal_v70_logit"
+      ]
+    },
+    "objective_gain_scale_m": 0.05,
+    "ate_gain_scale_m": 0.04,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0008,
+    "weight_decay": 0.0002,
+    "epochs": 16,
+    "state_batch_size": 32,
+    "ensemble_size": 2,
+    "seed": 20260725,
+    "loss": {
+      "listwise_weight": 1.0,
+      "objective_regression_weight": 0.35,
+      "ate_regression_weight": 0.35,
+      "harm_bce_weight": 0.2,
+      "dual_bce_weight": 0.1,
+      "softmax_temperature_m": 0.008,
+      "harm_penalty_m": 0.025
+    }
+  },
+  "policy_score": {
+    "definition": "dual_probability_mean - harm_probability_mean - beta*(dual_probability_std + harm_probability_std)",
+    "reason": "v1 diagnostic showed positive ATE in all five OOF folds; this is a frozen adaptive-development hypothesis, not confirmatory evidence",
+    "formal_v70_score": 0.0
+  },
+  "policy_grid": {
+    "uncertainty_betas": [0.0, 0.5, 1.0, 1.5],
+    "harm_probability_limits": [0.2, 0.3, 0.4, 0.5],
+    "target_coverages": [0.02, 0.05, 0.075, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5],
+    "candidate_requirements": {
+      "conservative_dual_minus_harm_advantage": 0.0
+    }
+  },
+  "inner_policy_selection": {
+    "minimum_replacements": 16,
+    "minimum_all_state_objective_gain_m": 0.0,
+    "minimum_all_state_ate_gain_m": 0.0,
+    "maximum_empirical_harm_rate": 0.35,
+    "minimum_positive_objective_route_fraction": 0.55,
+    "minimum_positive_ate_route_fraction": 0.55,
+    "require_objective_route_cluster_bootstrap_lcb_positive": true,
+    "require_ate_route_cluster_bootstrap_lcb_positive": true,
+    "bootstrap_draws": 1000,
+    "choice": "maximum all-state ATE gain, then objective gain, then lower harm, then more replacements",
+    "if_none_feasible": "all formal-v70 for that outer fold"
+  },
+  "evaluation": {
+    "outer_route_folds": 5,
+    "inner_route_oof": true,
+    "outer_labels_choose_model_or_policy": false,
+    "top_k": [1, 3, 5, 10],
+    "final_bootstrap_draws": 5000
+  },
+  "prototype_go_gate": {
+    "minimum_replacements": 16,
+    "minimum_all_state_objective_gain_m": 0.0,
+    "minimum_all_state_ate_gain_m": 0.0,
+    "maximum_empirical_harm_rate": 0.35,
+    "minimum_positive_objective_route_fraction": 0.55,
+    "minimum_positive_ate_route_fraction": 0.55,
+    "minimum_ate_oracle_gain_ratio": 0.1,
+    "require_objective_route_cluster_bootstrap_lcb_positive": true,
+    "require_ate_route_cluster_bootstrap_lcb_positive": true,
+    "require_ate_p90_not_worse": true
+  },
+  "frozen_components": [
+    "formal-v70",
+    "three-round CEM",
+    "physical/support pool",
+    "union65",
+    "351-feature runtime table",
+    "set-context multi-task model and seeds",
+    "dual-minus-harm policy score",
+    "sealed validation"
+  ]
+}

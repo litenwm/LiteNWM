@@ -1,0 +1,125 @@
+{
+  "schema": "ltwm_action_aware_adapter_probe_contract_v1",
+  "status": "frozen_before_single_action_aware_adapter_route_oof_probe",
+  "purpose": "Test whether the native 1024-D DINO patch representation contains route-general egomotion information that the frozen 1024-to-384 adapter discarded, while retaining the existing future-visual latent as a semantic residual.",
+  "hypothesis": "A low-rank action-aware residual initialized at zero on top of the frozen adapter can expose fine four-step motion without replacing the existing semantic future latent.",
+  "lineage": {
+    "withdrawn_decoder_hypothesis": {
+      "contract_path": "configs/recon/ltwm_soft_correspondence_motion_probe_v1.json",
+      "contract_sha256": "d6f6e24879405cdcccb32c70434280f01c01d60d4e84399b08761bc710cedf83",
+      "runner_path": "tools/recon/run_ltwm_soft_correspondence_motion_probe_v1.py",
+      "runner_sha256": "78f174a8ac313cea362ee8169539798a0ad0ffffd1b368e250349a8c31464425",
+      "result_path": "outputs/cem_development_v1/ltwm_soft_correspondence_motion_probe_v1/result.json",
+      "result_sha256": "c95d28ac46b8efc80d4e16eac5c83acba57124e8b49ddbd23af3ba7bad67298f",
+      "decision": "no_go_freeze_current_adapted_dino_motion_representation",
+      "held_route_ate_gain_m": -0.006042836125707254,
+      "held_route_objective_gain_m": -0.006475215746322646,
+      "held_route_harm_rate": 0.48627450980392156
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "dinov3_model_dir": "/home/rainbow/models/facebook/dinov3-vitl16-pretrain-lvd1689m",
+    "dinov3_weight_sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179",
+    "frozen_adapter_checkpoint": {
+      "path": "checkpoints/project/dinov3_adapter/adapter_pilot_v1_final.pt",
+      "sha256": "bc0ec2cac457556bfb362b46b20584a02d8f954d8b7c17ed36b4c8646ec4ad5a"
+    },
+    "full_stream_latents": {
+      "root": "outputs/cem_development_v1/scand_full_stream_latents_v2",
+      "metadata_sha256": "0f678ded8c673e78652d74221eb094aac87d5b2b9bba3ab6df07e57b783caa29",
+      "splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+      "trajectories_sha256": "822c3911deca3198f87e7603fab8eab22eb0c7c07e8c2b12c27257e6df71b54a",
+      "ordered_shard_sha256_aggregate": "cc020c932770f1cf352666aa337f13980e4144df8f0516665ba3cba296063bd5",
+      "raw_root": "/home/rainbow/nwm/data/scand"
+    }
+  },
+  "ephemeral_native_encoding": {
+    "definition": "frozen DINOv3 native 14x14x1024 patch tokens, float16 in RAM only",
+    "full_stream_frames": 42401,
+    "target_state_frames": [
+      "t-1",
+      "t",
+      "t+4"
+    ],
+    "target_image_roots": "read from the three already-frozen cohort latent-cache metadata payloads",
+    "target_images_missing": 0,
+    "persistent_new_table": false,
+    "backbone_trainable": false
+  },
+  "action_aware_adapter": {
+    "semantic_base": "frozen existing DinoV3TokenAdapter output",
+    "motion_residual": "LayerNorm 1024, Linear 1024 to 32, GELU, Linear 32 to 384, bicubic 14x14 to 16x16; final Linear initialized to zero",
+    "combined_latent": "frozen semantic base plus motion residual",
+    "inverse_head": "the same 139180-parameter soft-correspondence inverse head, now differentiable into the motion residual",
+    "trainable_components": [
+      "low-rank motion residual",
+      "inverse head"
+    ],
+    "frozen_components": [
+      "DINOv3 backbone",
+      "existing adapter",
+      "formal-v70",
+      "LTWM warm checkpoint"
+    ],
+    "outcome_labels_in_training": false,
+    "ate_or_objective_gradient_into_adapter_or_ltwm": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "fixed_steps_per_fold": 1200,
+    "batch_size": 8,
+    "batch_composition": {
+      "route-excluded full-stream windows": 4,
+      "outer-train frozen-table states": 4
+    },
+    "sampling": "route-uniform then example-uniform independently per domain",
+    "target_standardization": "outer-train frozen-table actions only",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072405,
+    "checkpoint_selection": "fixed final step; outer states and outcomes never select model or duration"
+  },
+  "loss": {
+    "standardized_action_smooth_l1_weight": 1.0,
+    "integrated_xy_path_smooth_l1_weight": 0.25,
+    "semantic_cosine_distance_weight": 0.25,
+    "semantic_relative_mse_weight": 0.05
+  },
+  "held_route_semantic_guard": {
+    "mean_cosine_similarity_min": 0.98,
+    "relative_mse_max": 0.10
+  },
+  "fixed_primary_planner": {
+    "definition": "choose the physical/support union65 candidate nearest to the inverse-decoded real goal path; formal-v70 remains in the set",
+    "true_path_ceiling_ate_gain_m": 0.03213468994246796,
+    "true_path_ceiling_objective_gain_m": 0.04201809135847725
+  },
+  "performance_gate": {
+    "ate_gain_m_min_exclusive": 0.002526717376050023,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "ate_oracle_gain_ratio_min": 0.20
+  },
+  "branch_rule": {
+    "if_performance_and_semantic_guard_pass": "Freeze fold adapters and train exactly one matching LTWM path-cycle model without ATE/objective gradients.",
+    "if_either_fails": "Withdraw the existing-data action-aware adapter hypothesis. Current data then cannot justify replacing the latent/WM; stop without opening sealed validation or tuning another architecture."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

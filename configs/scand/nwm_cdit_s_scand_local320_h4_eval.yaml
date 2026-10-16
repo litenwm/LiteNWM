@@ -1,0 +1,26 @@
+run_name: nwm_cdit_s
+results_dir: logs
+train: true
+batch_size: 16
+num_workers: 0
+model: CDiT-S/2
+lr: 8e-5
+normalize: true
+grad_clip_val: 10.0
+context_size: 4
+distance:
+  min_dist_cat: -64
+  max_dist_cat: 64
+len_traj_pred: 64
+image_size: 224
+datasets:
+  scand:
+    data_folder: /home/rainbow/nwm/data/scand
+    train: /home/rainbow/rrnwm/data_splits/scand/train
+    test: /home/rainbow/rrnwm/data_splits/scand/test
+    goals_per_obs: 4
+eval_datasets:
+  scand:
+    data_folder: /home/rainbow/nwm/data/scand
+    test: /home/rainbow/rrnwm/data_splits/scand/test
+    goals_per_obs: 4

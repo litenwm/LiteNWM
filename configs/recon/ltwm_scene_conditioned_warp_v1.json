@@ -1,0 +1,105 @@
+{
+  "schema": "ltwm_scene_conditioned_token_warp_contract_v1",
+  "status": "frozen_before_training",
+  "purpose": "Replace the incumbent route-fragile global affine action effect with a bounded state-conditioned per-token flow while preserving true future-latent prediction as the only task.",
+  "inputs": {
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    "latent_root": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/latent_train_view_v51c",
+      "metadata_sha256": "395253bbff75c52cea3d49cbc2173a1c523e96f7797434f5e1c884cc89fb8e83",
+      "splits_sha256": "969c95b567e3a65b300361b17f153d83e4dd7a3246efca27a36b5bc81e6ef368",
+      "train_routes": 450,
+      "validation_routes": 25,
+      "validation_windows": 999,
+      "test_routes_exposed": 0
+    },
+    "split_lock": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/split_lock.json",
+      "sha256": "325a562c8fb8a5ae6f76e89899b86b0c93034ac754cc3470d170d7fdfce43f5e"
+    },
+    "warm_parent_split_lock": {
+      "path": "data/split_lock/split_lock.json",
+      "sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+    },
+    "model_module": {
+      "path": "src/recon_latents/models_scene_conditioned_warp_v1.py",
+      "sha256": "0a4842c1e54b2b1a6988034c46b1da6af199271bb68ebd815e389d103e29c0fa"
+    },
+    "loss_module": {
+      "path": "src/recon_latents/losses_scene_conditioned_warp_v1.py",
+      "sha256": "74bab850d3d9de1d877e98a1d5670f78b7bc6385876b7639811e8dc2c0773b85"
+    },
+    "runner": {
+      "path": "tools/recon/train_litetokenformer_wm_scene_warp_v1.py",
+      "sha256": "c025771e59aed631949eac463ba97f1467512f1649b952d99ded698464af7dcb"
+    },
+    "evaluator": {
+      "path": "tools/evaluation/evaluate_ltwm_scene_warp_v1.py",
+      "sha256": "3e51f1b4743533a22ac68524e29fa1d5e48938ed5e1fc0b3ef18456f25b2367f"
+    }
+  },
+  "model": {
+    "architecture": "frozen LiteTokenFormer-WM-v2-4ctx plus state-conditioned per-token spatial flow around the incumbent affine grid",
+    "total_parameters": 8029490,
+    "trainable_parameters": 27530,
+    "train_scope": "scene-conditioned warp only; incumbent LTWM weights frozen",
+    "zero_initialized_equivalence_max_abs_smoke_test": 0.00000286102294921875,
+    "maximum_normalized_token_offset": 0.12,
+    "state_input": "current 16x16 DINO latent tokens",
+    "action_input": "causal 12D H1-H4 action-prefix features",
+    "position_input": "normalized 16x16 token coordinates",
+    "outcome_or_value_head": false
+  },
+  "loss_weights": {
+    "reconstruction": 1.0,
+    "residual_reconstruction": 0.25,
+    "dynamic_token": 0.25,
+    "reference_reconstruction": 0.5,
+    "action_order": 0.1,
+    "cosine": 0.05,
+    "delta_direction": 0.05,
+    "norm": 0.02,
+    "consistency": 0.02,
+    "history": 0.02,
+    "velocity": 0.03,
+    "uncertainty": 0.01,
+    "flow_smoothness": 0.01,
+    "flow_magnitude": 0.001,
+    "quality": 0.0
+  },
+  "training": {
+    "seed": 1701,
+    "epochs": 3,
+    "batches_per_epoch": 2000,
+    "batch_size": 2,
+    "eval_batches_per_epoch": 500,
+    "eval_batch_size": 2,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "amp": "bf16",
+    "contrastive_every": 2,
+    "consistency_every": 8
+  },
+  "checkpoint_selection": {
+    "data": "hard_t route-disjoint future-latent validation only",
+    "score": "mean H1-H4 absolute latent NMSE plus H4 absolute latent NMSE",
+    "outcome_labels_used": false,
+    "outer_test_used": false
+  },
+  "world_model_go_gate": {
+    "validation_mean_absolute_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_absolute_nmse_no_worse_than_warm_checkpoint": true,
+    "validation_mean_residual_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_residual_nmse_better_than_warm_checkpoint": true,
+    "correct_action_residual_win_rate_better_than_warm_checkpoint": true
+  },
+  "if_gate_passes": "generate candidate features only for this checkpoint and rerun the already-frozen ATE selector protocol",
+  "if_gate_fails": "stop this branch; do not tune flow width, loss weights, or validation threshold",
+  "formal_v70_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

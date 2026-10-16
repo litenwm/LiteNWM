@@ -1,0 +1,47 @@
+{
+  "schema": "project_scand_strict_h4_100_identity_audit_v1",
+  "status": "pass_with_historical_evaluation_overlap_disclosed",
+  "benchmark": {
+    "manifest": "manifest.json",
+    "manifest_sha256": "615904ece9d97894965f14076134f749b9234c2d39c18aca45c1c613ea870b1d",
+    "states": 100,
+    "trajectories": 43,
+    "strict_split": "test",
+    "context_frames": 4,
+    "horizon": 4
+  },
+  "v70_training_identity_checks": {
+    "train_fit": {
+      "source_sha256": "bc2fa7b5ca0fbb6bdb3fcb67fc1a91dde65128168ecec3e9c0e7fa1e3c0750c4",
+      "source_records": 7489,
+      "source_trajectories": 138,
+      "source_routes": 29,
+      "exact_state_overlap": 0,
+      "trajectory_overlap": 0,
+      "route_overlap": 0
+    },
+    "scorer_cal": {
+      "source_sha256": "9fe614c2d40c39f6f7a9231d91c15fb5a8f1036056d82edebc06ee8657b83cb0",
+      "source_records": 1213,
+      "source_trajectories": 20,
+      "source_routes": 4,
+      "exact_state_overlap": 0,
+      "trajectory_overlap": 0,
+      "route_overlap": 0
+    }
+  },
+  "historical_external_official100_check": {
+    "manifest_sha256": "87ed5d4e491a339e38ce8e8e2fe887bf439491eb511811daf93008ece6d59742",
+    "exact_state_overlap": 12,
+    "overlap_trajectories_for_exact_states": 10,
+    "any_state_trajectory_overlap": 15,
+    "interpretation": "This does not contaminate v70 training or calibration, but the cohort is not a never-before-evaluated one-time test."
+  },
+  "selection_contract": {
+    "generator": "tools/evaluation/build_scand_strict_h4_100.py",
+    "generator_sha256": "1b343ee4db748fa7669ecd72022443371b73380ba5cbf1be44fd6f20bf25acef",
+    "selection_seed": 17,
+    "uses_model_outputs": false,
+    "uses_outcome_labels": false
+  }
+}

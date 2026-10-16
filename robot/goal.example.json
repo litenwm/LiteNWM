@@ -1,0 +1,15 @@
+{
+  "schema": "v70_image_goal_route_v1",
+  "route_id": "your-image-goal",
+  "goals": [{
+    "name": "your-target",
+    "image": "/absolute/path/to/your/goal.jpg",
+    "arrival_calibrated": false,
+    "required_confirmations": 4,
+    "approach_temporal_distance": 5.0,
+    "temporal_distance_enter": 2.5,
+    "temporal_distance_exit": 3.5,
+    "cosine_distance_enter": 0.2,
+    "cosine_distance_exit": 0.28
+  }]
+}

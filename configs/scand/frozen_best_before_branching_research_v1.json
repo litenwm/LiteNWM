@@ -1,0 +1,111 @@
+{
+  "schema": "scand_frozen_best_before_branching_research_v1",
+  "status": "frozen_by_user_request_before_new_branching_research",
+  "frozen_at_local_date": "2026-07-23",
+  "purpose": "Preserve the incumbent formal-v70 pipeline and the highest held-route OOF performance prototype before any further world-model research.",
+  "incumbent": {
+    "name": "formal-v70",
+    "role": "unchanged fallback and reference policy",
+    "result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "full_ensemble": [
+      {
+        "seed": 20261310,
+        "path": "outputs/cem_development_v1/dualdomain_cem_tail_v69_scand_route_crossfit/training/checkpoints/arm_D_full_seed0.pt",
+        "sha256": "7b93d4e1866fc2ab4fc3bdbe3f55ab61a08b065f56ca254ff8c61e1ff5a65cd0"
+      },
+      {
+        "seed": 20261311,
+        "path": "outputs/cem_development_v1/dualdomain_cem_tail_v69_scand_route_crossfit/training/checkpoints/arm_D_full_seed1.pt",
+        "sha256": "bd9beca5034ac92a7835460d5492e529c80ae420383c4daba499db44ce24e121"
+      },
+      {
+        "seed": 20261312,
+        "path": "outputs/cem_development_v1/dualdomain_cem_tail_v69_scand_route_crossfit/training/checkpoints/arm_D_full_seed2.pt",
+        "sha256": "804bc5a27e2812bf84f119fa283d8495c3c230953179e3ede1889d06e809c0eb"
+      }
+    ],
+    "preregistration": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive_preregistration.json",
+      "sha256": "9ab498aaaa156ed53874ac144b07af815ae510fb4c9770648ae795dfaa5aed81"
+    },
+    "calibration_archive_selection": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/calibration_archive_selection.npz",
+      "sha256": "f307241b3926dc24ac47994baa5f4dbf07f7f2a64aeda13abd699209f3dd74a2"
+    },
+    "calibration_frontier": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/calibration_frontier.json",
+      "sha256": "bc8d7fb6cc91ef6ae43a794a56bc0b5386f7a8fa389372eeee371e881582d608"
+    },
+    "recon_output_bit_exact": true,
+    "reserve_accessed": false,
+    "production_safe_claim_allowed_by_source_result": false
+  },
+  "world_model_ensemble": [
+    {
+      "seed": 1701,
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    {
+      "seed": 1702,
+      "path": "checkpoints/project/ltwm_expansion/seed1702/best.pt",
+      "sha256": "1a0767f0e184719218e3bcd4414fafd378da5c9e30fb0f6048973945af2bd859"
+    },
+    {
+      "seed": 1703,
+      "path": "checkpoints/project/ltwm_expansion/seed1703/best.pt",
+      "sha256": "7ee8641ed7251f39bf8e7741c775a440ab1d505d3af66355f20894f85f6c0434"
+    }
+  ],
+  "best_held_route_performance_prototype": {
+    "name": "scand_union65_listwise_selector_v1_inner_calibrated",
+    "status": "performance_reference_only_no_go_for_safety",
+    "states": 800,
+    "route_groups": 42,
+    "candidate_rows": 52000,
+    "replacements": 594,
+    "coverage": 0.7425,
+    "objective_gain_m": 0.0053311675367876885,
+    "ate_gain_m": 0.0025266789784654975,
+    "dual_rate": 0.5875420875420876,
+    "harm_rate": 0.41245791245791247,
+    "positive_objective_route_fraction": 0.6904761904761905,
+    "objective_oracle_gain_m": 0.044888090511085464,
+    "objective_oracle_gain_ratio": 0.11876574557055651,
+    "route_cluster_bootstrap_objective_gain_lcb95_m": -0.0006658105623463953,
+    "decision": "no_go_current_351_runtime_representation_cannot_reliably_select_oracle_actions",
+    "contract": {
+      "path": "configs/scand/cem_union65_listwise_selector_v1.json",
+      "sha256": "f015b9ff4e44dc468c15317dc591de19997e04d369710e32e67b506d90ef8293"
+    },
+    "runner": {
+      "path": "tools/evaluation/run_scand_union65_listwise_selector_v1.py",
+      "sha256": "9dc8c7e7c8ac6c1c88e2dba7a386f2b95e41681f4451043a595bd579de0537c7"
+    },
+    "result": {
+      "path": "outputs/cem_development_v1/scand_union65_listwise_selector_v1/result.json",
+      "sha256": "e7ebdc58a355b403bff50969b45904849afb9a74f7adad669a466afebd09f004"
+    },
+    "outer_models": {
+      "path": "outputs/cem_development_v1/scand_union65_listwise_selector_v1/frozen_outer_models.npz",
+      "sha256": "e2dc8e633699ec7aa3e8d1baf0b2ac5039917cb19c84a43d30bcdfed5335f46c"
+    },
+    "outer_oof_predictions": {
+      "path": "outputs/cem_development_v1/scand_union65_listwise_selector_v1/outer_route_oof_predictions.npz",
+      "sha256": "27d1254386138b4bfedeefb705996b1ac921668e75e6f9b525a1eba8ff19bac7"
+    },
+    "runtime_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    }
+  },
+  "research_boundary": {
+    "formal_v70_mutable": false,
+    "frozen_selector_artifacts_mutable": false,
+    "sealed_validation_opened": false,
+    "new_research_may_only_create_separate_artifacts": true
+  }
+}

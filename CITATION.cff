@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use LiteNWM in research, please cite the paper below."
+type: software
+title: "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild"
+version: 1.0.0
+license: CC-BY-NC-4.0
+repository-code: "https://github.com/litenwm/LiteNWM"
+url: "https://litenwm.github.io/"
+authors:
+  - family-names: Liu
+    given-names: Linkai
+  - family-names: Zhang
+    given-names: Yuntian
+  - family-names: Bing
+    given-names: Zhenshan
+  - family-names: Chen
+    given-names: Chen
+  - family-names: Lyu
+    given-names: Lingjuan
+  - family-names: Wang
+    given-names: Shangguang
+  - family-names: Xu
+    given-names: Mengwei
+  - family-names: Cai
+    given-names: Dongqi
+preferred-citation:
+  type: article
+  title: "LiteNWM: Efficient Latent World Models for Onboard Visual Navigation in the Wild"
+  authors:
+    - family-names: Liu
+      given-names: Linkai
+    - family-names: Zhang
+      given-names: Yuntian
+    - family-names: Bing
+      given-names: Zhenshan
+    - family-names: Chen
+      given-names: Chen
+    - family-names: Lyu
+      given-names: Lingjuan
+    - family-names: Wang
+      given-names: Shangguang
+    - family-names: Xu
+      given-names: Mengwei
+    - family-names: Cai
+      given-names: Dongqi
+  journal: arXiv
+  year: 2026
+  url: "https://arxiv.org/abs/2610.12368"

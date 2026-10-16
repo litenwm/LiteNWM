@@ -1,0 +1,157 @@
+{
+  "schema": "ltwm_scand_same_state_hard_negative_contract_v1",
+  "status": "frozen_before_baseline_and_single_route_oof_run",
+  "purpose": "Test whether the frozen LTWM action path can be repaired, without outcome gradients, to distinguish the executed SCAND H4 action from same-state plausible union65 actions while still predicting the true future DINOv3 latent.",
+  "inputs": {
+    "frozen_best_manifest": {
+      "path": "configs/scand/frozen_best_before_branching_research_v1.json",
+      "sha256": "aa251ae946d42cd84b26b1edb5f6aea3906d8c0cf2e495f5f0b70065363ab7fd"
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c",
+      "states": 800,
+      "route_groups": 42,
+      "candidates_per_state": 65,
+      "feature_dimensions_unchanged": 351
+    },
+    "cohorts": [
+      {
+        "name": "spent_old_train_sidecar",
+        "states": 540,
+        "feature_path": "outputs/cem_development_v1/scand_existing_train_upperbound_pilot_v1_corrected/base_features/scand_existing_train_upperbound_pilot_v1_corrected_features.npz",
+        "feature_sha256": "e3195ce6b60fed46e69b22443affedeca61770a8f1f8e604f1989b6a35ebcfc7",
+        "latent_path": "outputs/cem_development_v1/scand_existing_train_upperbound_pilot_v1_corrected/base_features/scand_existing_train_upperbound_pilot_v1_corrected_latents.npz",
+        "latent_sha256": "88acb37584a05e3dfc296b6d534dd1e04c96deacdeecad9be08f588f27a2ab9c",
+        "truth_path": "outputs/cem_development_v1/scand_existing_train_upperbound_pilot_v1_corrected/pilot_truth_source.npz",
+        "truth_sha256": "788e8c33dbccff9f8813a97e7d9206d4299ca463b048a4fc677de4137f9f1e5f"
+      },
+      {
+        "name": "spent_fresh_v70_v77",
+        "states": 100,
+        "feature_path": "outputs/scand_domain_adaptation_v1/fresh_outer_v1/features/scand_fresh_outer_h4_100_seed20260720_features.npz",
+        "feature_sha256": "2df512ba0daf6a4a8441d5212d8eba860798e7232980e1d420687965228d0dd4",
+        "latent_path": "outputs/scand_domain_adaptation_v1/fresh_outer_v1/features/scand_fresh_outer_h4_100_seed20260720_latents.npz",
+        "latent_sha256": "e5a8f9bb875d0512ee95b62a062bec07ce07a02ced53c8f2d2e05e95173e836a",
+        "truth_path": "outputs/scand_domain_adaptation_v1/fresh_outer_v1/outcomes/fresh_outer_outcomes.npz",
+        "truth_sha256": "4aad1023b5f86e9b49c6e08e0840f4d7fd2e95886532757bddbd25ff3aaf8c8e"
+      },
+      {
+        "name": "spent_new_mainrgb_development",
+        "states": 160,
+        "feature_path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/base_features/scand_new_routefit10_v4_development_pilot_v2_features.npz",
+        "feature_sha256": "60b46da83c5c73b085b17df0df906c6718bd1463fde16299f50ee02f10dd03b3",
+        "latent_path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/base_features/scand_new_routefit10_v4_development_pilot_v2_latents.npz",
+        "latent_sha256": "812a2f2a252433327379e00107dffcc46efc5af650715db19dd002681c310e6a",
+        "truth_path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/pilot_truth_source.npz",
+        "truth_sha256": "e6913ae4d860ca3ad0fdb3aeca492208226b213fb3f5822ff493e9a9b77e4857"
+      }
+    ]
+  },
+  "data_contract": {
+    "history": "DINOv3 adapted patch latents at [t-3,t-2,t-1,t]",
+    "future_target": "actual DINOv3 adapted patch latent at t+4",
+    "executed_action": "four local SE(2) transitions reconstructed from ground_truth_local_m at t+1..t+4",
+    "candidate_actions": "unchanged frozen union65 candidate waypoints converted from the common 0.25 m feature unit to local SE(2)",
+    "candidate_mask": "frozen physical_support_pool; formal-v70 is always retained for planning evaluation",
+    "same_state_negative_exclusion": "exclude union65 candidates whose path RMS and H4 endpoint distance from the executed trajectory are both below 0.05 m",
+    "minimum_hard_negatives": 4,
+    "hard_negatives_per_train_state": 4,
+    "hard_negative_selection": "four geometrically distinct physical/support candidates with smallest frozen-warm H4 residual NMSE",
+    "outcome_labels_in_training": false,
+    "ate_or_objective_gradient_into_ltwm": false,
+    "route_bag_record_or_candidate_index_as_model_input": false
+  },
+  "model": {
+    "architecture": "unchanged LiteTokenFormer-WM-v2-4ctx from warm checkpoint",
+    "new_parameters": 0,
+    "warm_start": true,
+    "frozen_modules": [
+      "history_encoder",
+      "rollout temporal/spatial/history attention",
+      "rollout MLP",
+      "delta_head",
+      "logvar_head",
+      "action_decode_head"
+    ],
+    "trainable_modules": [
+      "action_encoder",
+      "warp.theta_mlp",
+      "each rollout block action_norm",
+      "each rollout block action_attn",
+      "each rollout block modulation"
+    ],
+    "interpretation": "action-path adaptation of a true-future latent predictor; not an ATE selector and not a claim of counterfactual ground truth for unexecuted actions"
+  },
+  "loss": {
+    "true_h4_absolute_log_nmse_weight": 1.0,
+    "true_h4_residual_log_nmse_weight": 0.5,
+    "same_state_hard_negative_cross_entropy_weight": 0.25,
+    "action_decode_weight": 0.0,
+    "ranking_temperature": 0.1,
+    "negative_outputs_have_no_pseudo_target": true
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "route_fold_assignment": "same deterministic largest-route-first balancing as scand_union65_listwise_selector_v1",
+    "outer_labels_select_model_or_epoch": false,
+    "fixed_epochs": 1,
+    "steps_per_fold": 640,
+    "sampling": "route-uniform then state-uniform with deterministic seed",
+    "batch_states": 1,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "amp": "bf16",
+    "seed": 2026072401,
+    "candidate_inference_chunk": 16,
+    "checkpoint_selection": "fixed final training step; no outer or outcome selection"
+  },
+  "evaluation": {
+    "primary_latent_metrics": [
+      "executed-action H4 absolute NMSE",
+      "executed-action H4 residual NMSE",
+      "executed-action pairwise win rate against all distinct physical/support union65 actions",
+      "executed-action retrieval top1 and mean reciprocal rank",
+      "per-route direction consistency"
+    ],
+    "fixed_planning_rule": "within frozen physical/support union65 plus formal fallback, choose the action with minimum held-route H4 residual NMSE to the real goal latent",
+    "posthoc_outcome_metrics": [
+      "ATE gain versus formal-v70",
+      "objective gain versus formal-v70",
+      "dual rate",
+      "harm rate",
+      "oracle objective-gain ratio",
+      "positive-route fraction",
+      "top-k objective-oracle recall"
+    ],
+    "no_margin_or_threshold_calibration": true,
+    "sealed_validation_opened": false
+  },
+  "oof_go_gate": {
+    "executed_h4_absolute_nmse_relative_degradation_max": 0.01,
+    "executed_h4_residual_nmse_must_improve": true,
+    "pairwise_retrieval_win_rate_absolute_improvement_min": 0.02,
+    "pairwise_retrieval_win_rate_min": 0.55,
+    "retrieval_top1_must_improve": true,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "ate_gain_m_must_be_positive": true,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "oracle_objective_gain_ratio_min": 0.12
+  },
+  "if_oof_passes": "Train the identical fixed-step action-path adaptation once on all 800 spent-development states, freeze checkpoint and hashes, run the existing route-disjoint RECON paired latent guard, then decide whether a one-time sealed validation is warranted.",
+  "if_oof_fails": "Withdraw the hypothesis that same-state hard-negative action-path adaptation on the current behavior-only cache repairs generalization. Do not tune this objective, selector thresholds, feature tables, or CEM iterations.",
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

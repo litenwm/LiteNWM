@@ -1,0 +1,32 @@
+{
+  "schema": "highres_dual_observed_listwise_v1",
+  "inputs": {
+    "latent_root": "data/highres_dual_latents/scand_v1",
+    "base_checkpoint": "outputs/highres_dual_ltwm_v1/frozen/highres_multilayer_dual_ltwm_scand_v1.pt"
+  },
+  "training": {
+    "steps": 3000,
+    "batch_size": 2,
+    "candidates": 8,
+    "action_bank_stride": 4,
+    "learning_rate": 0.00003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "temperature": 0.04,
+    "listwise_weight": 0.2,
+    "amp": "bf16",
+    "seed": 20260725
+  },
+  "evaluation": {
+    "batch_size": 8,
+    "candidates": 12,
+    "maximum_windows": 0
+  },
+  "protection": {
+    "dino_encoder_frozen": true,
+    "history_encoders_frozen": true,
+    "action_decoder_unused": true,
+    "ate_or_objective_loaded": false,
+    "sealed_validation_opened": false
+  }
+}

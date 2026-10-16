@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dinov3-ltwm-scorer"
+version = "1.0.0"
+description = "DINOv3 latent world model and H4 trajectory quality scoring"
+readme = "README.md"
+license = {file = "LICENSE.md"}
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "torch>=2.6,<3", "Pillow>=10", "PyYAML>=6"]
+
+[project.optional-dependencies]
+encoder = ["transformers>=4.56,<6", "safetensors>=0.5", "huggingface-hub>=0.34", "torchvision>=0.21"]
+data = ["rosbags>=0.11,<0.12", "lz4>=4"]
+analysis = ["scipy>=1.10", "matplotlib>=3.8", "pandas>=2"]
+dev = ["pytest>=8,<10", "opencv-python>=4.10,<5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["recon_latents*", "scoring*", "planning*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

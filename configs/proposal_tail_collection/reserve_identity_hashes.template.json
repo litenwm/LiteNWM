@@ -1,0 +1,11 @@
+{
+  "schema": "proposal_tail_forbidden_identity_registry_v1",
+  "status": "template_not_complete_do_not_use_for_future_cohorts",
+  "complete": false,
+  "source": "A reserve custodian must provide only salted/canonical identity hashes without exposing reserve content.",
+  "route_hashes": [],
+  "day_hashes": [],
+  "bag_hashes": [],
+  "trajectory_hashes": [],
+  "window_hashes": []
+}

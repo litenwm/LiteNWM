@@ -1,0 +1,88 @@
+{
+  "arm_d_sources": [
+    {
+      "copied_manifest": "source_manifests/recon_train_fit.windows.jsonl",
+      "dataset": "recon",
+      "input_sha256": "7688a06fcc2bb583f35cf9d0f0b505639b7455e91d03556c55a68308ff96c2e0",
+      "partition": "train-fit",
+      "route_groups": 1764,
+      "source": "recon_train_fit",
+      "trajectories": 3492,
+      "windows": 5292
+    },
+    {
+      "copied_manifest": "source_manifests/recon_scorer_cal.windows.jsonl",
+      "dataset": "recon",
+      "input_sha256": "88e0d40637c8cdbdeab220ef6b3dc468c564277192b9821e6bebae61fe7a4f63",
+      "partition": "scorer-cal",
+      "route_groups": 206,
+      "source": "recon_scorer_cal",
+      "trajectories": 365,
+      "windows": 410
+    },
+    {
+      "copied_manifest": "source_manifests/scand_train_fit.windows.jsonl",
+      "dataset": "scand",
+      "input_sha256": "853d0ef183140681b12104681453a2c9674f664445b0a92d4f627bedda79d313",
+      "partition": "train-fit",
+      "route_groups": 29,
+      "source": "scand_train_fit",
+      "trajectories": 138,
+      "windows": 7489
+    },
+    {
+      "copied_manifest": "source_manifests/scand_scorer_cal.windows.jsonl",
+      "dataset": "scand",
+      "input_sha256": "50e58698f00448fc256f79cbd18524c188b20f65a7276679a0b40986b888746e",
+      "partition": "scorer-cal",
+      "route_groups": 4,
+      "source": "scand_scorer_cal",
+      "trajectories": 20,
+      "windows": 1213
+    }
+  ],
+  "contains_labels": false,
+  "contains_reserve_identities": false,
+  "external_pretraining": {
+    "dinov3": "Upstream LVD-1689M pretraining; exact image identities are not enumerated by this project.",
+    "nomad": "Upstream nomad.pth config enables RECON training and leaves SCAND disabled; use the official NoMaD-unseen RECON split."
+  },
+  "identity_jsonl": "v70_training_identities.jsonl",
+  "identity_jsonl_sha256": "623219f2efb72a7532c2241b7a7834a157d82a7b7f912427eb51253a0180e8bb",
+  "identity_levels": [
+    "record_key",
+    "trajectory_id",
+    "route_group"
+  ],
+  "identity_rows": 14404,
+  "not_training": {
+    "fresh_scand_100": "spent development evaluation only",
+    "recon_A_to_H": "spent development evaluation only",
+    "reserve": "one-time evaluation only; never training/calibration"
+  },
+  "purpose": "Prevent record, trajectory, or route overlap when constructing new v70 evaluation cohorts.",
+  "schema": "v70_training_identity_manifest_v1",
+  "status": "complete_label_free_identity_export",
+  "strict_project_splits": {
+    "recon": {
+      "copied_split": "strict_splits/recon_strict_splits.json",
+      "sha256": "055b2ee4b268615021b8f002907978465153e35fa8615cbfbc04bc56b5ef77d3",
+      "test_trajectories": 3616,
+      "train_trajectories": 5686,
+      "val_trajectories": 2515
+    },
+    "scand": {
+      "copied_split": "strict_splits/scand_strict_splits.json",
+      "sha256": "a62efb0c01df5c24975b1cb2edaf6ed85240062b512ff34bf4f18c1734bfec93",
+      "test_trajectories": 43,
+      "train_trajectories": 212,
+      "val_trajectories": 22
+    }
+  },
+  "strict_rule": "A new project test must come only from the frozen strict test partition and should have zero trajectory/route overlap with v70_training_identities.jsonl.",
+  "unique_record_keys": 14404,
+  "unique_trajectories": {
+    "recon": 3857,
+    "scand": 158
+  }
+}

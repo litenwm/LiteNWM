@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scand_proposal_tail_temporal_pair_v1.schema.json",
+  "title": "SCAND proposal-tail temporal pair audit",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "status",
+    "sidecar_manifest_sha256",
+    "states",
+    "candidates_per_state",
+    "formal_v70_reference_mapping_verified",
+    "candidate_order_and_hash_verified",
+    "raw_ltwm_layout",
+    "labels_opened",
+    "reserve_accessed",
+    "formal_behavior_influence",
+    "output_sha256"
+  ],
+  "properties": {
+    "schema": {"const": "scand_proposal_tail_temporal_pair_v1_audit"},
+    "status": {
+      "enum": [
+        "complete_spent_smoke_infrastructure_only",
+        "complete_prelabel_collection_features"
+      ]
+    },
+    "states": {"type": "integer", "minimum": 1},
+    "candidates_per_state": {"const": 65},
+    "formal_v70_reference_mapping_verified": {"const": true},
+    "candidate_order_and_hash_verified": {"const": true},
+    "labels_opened": {"const": false},
+    "reserve_accessed": {"const": false},
+    "formal_behavior_influence": {"const": false},
+    "raw_ltwm_layout": {
+      "type": "object",
+      "required": [
+        "shape",
+        "axis_order",
+        "true_seed_identity_available",
+        "order_statistics_consistent"
+      ],
+      "properties": {
+        "shape": {"const": [4, 7, 4]},
+        "axis_order": {
+          "const": ["seed_summary", "latent_block", "horizon"]
+        },
+        "true_seed_identity_available": {"const": false},
+        "order_statistics_consistent": {"const": true}
+      }
+    }
+  }
+}

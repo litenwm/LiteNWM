@@ -1,0 +1,96 @@
+{
+  "assignment_sha256": "edc2408bf5744ec00657dee35bfaff3e3323ff000d536f0371848b93c83c8f50",
+  "dataset": "recon",
+  "decision": "STRICT_RECON_H4_FOUR_WAY_MANIFESTS_READY",
+  "exclusion_manifest": "/root/autodl-tmp/dwm_datasets/audits/ltwm_dinov3_scand_expansion_v2_final_20260718/recon_h4_exclusions.json",
+  "exclusion_manifest_sha256": "4299213efe2892b11879321354874946f9b1a9d67c835fed742b341ec10037c9",
+  "exclusions": {
+    "no_minimum_displacement_assignment_sha256": "2644fd2face2db2b7d67d1d5521bf8d9324ed79b1f7f7233038e6d96570e8938",
+    "no_minimum_displacement_trajectories": 1,
+    "short_trajectories": 501
+  },
+  "latent_metadata_sha256": "cb5152f1a71333eae15288750c57182d93decbd74e1209acaf051c402edb9f30",
+  "latent_root": "/root/autodl-tmp/dwm_datasets/processed/recon_dinov3_vitl16_adapted_scand_expansion_v2_final_trainval_60e5c5af",
+  "latent_splits_sha256": "1052c3c15fa2883f625963e34b887affe009644d157ca4c0b7662ce29411e3f5",
+  "leakage_guard": {
+    "labels_used_for_partitioning": false,
+    "model_outputs_used_for_partitioning": false,
+    "outer_train_only": true,
+    "outer_val_examples_materialized": false,
+    "test_data_accessed": false,
+    "test_examples_materialized": false
+  },
+  "manifests": {
+    "cem-cal": {
+      "path": "cem-cal.windows.jsonl",
+      "route_groups": 206,
+      "sha256": "980deb44f20a3790293616b23f2461600b583cf8f9f462094b5ce0ad4800adec",
+      "trajectories": 367,
+      "windows": 410
+    },
+    "internal-holdout": {
+      "path": "internal-holdout.windows.jsonl",
+      "route_groups": 205,
+      "sha256": "c1ffc9f18cd8fb5815e448072dc2fc54406799a20aece68741c53f819172daae",
+      "trajectories": 359,
+      "windows": 408
+    },
+    "scorer-cal": {
+      "path": "scorer-cal.windows.jsonl",
+      "route_groups": 206,
+      "sha256": "88e0d40637c8cdbdeab220ef6b3dc468c564277192b9821e6bebae61fe7a4f63",
+      "trajectories": 365,
+      "windows": 410
+    },
+    "train-fit": {
+      "path": "train-fit.windows.jsonl",
+      "route_groups": 1764,
+      "sha256": "7688a06fcc2bb583f35cf9d0f0b505639b7455e91d03556c55a68308ff96c2e0",
+      "trajectories": 3492,
+      "windows": 5292
+    }
+  },
+  "outer_scope": "train-only",
+  "overlap_audit": {
+    "route_group": {
+      "cem-cal__internal-holdout": 0,
+      "scorer-cal__cem-cal": 0,
+      "scorer-cal__internal-holdout": 0,
+      "train-fit__cem-cal": 0,
+      "train-fit__internal-holdout": 0,
+      "train-fit__scorer-cal": 0
+    },
+    "trajectory": {
+      "cem-cal__internal-holdout": 0,
+      "scorer-cal__cem-cal": 0,
+      "scorer-cal__internal-holdout": 0,
+      "train-fit__cem-cal": 0,
+      "train-fit__internal-holdout": 0,
+      "train-fit__scorer-cal": 0
+    }
+  },
+  "protocol": {
+    "fractions": {
+      "cem-cal": 0.1,
+      "internal-holdout": 0.1,
+      "scorer-cal": 0.1,
+      "train-fit": 0.7
+    },
+    "goal_offset": 4,
+    "history": 4,
+    "horizon": 4,
+    "min_goal_displacement_m": 0.5,
+    "partition_before_window_generation": true,
+    "partition_unit": "repeat-stripped route_id",
+    "quota_per_route": {
+      "cem-cal": 2,
+      "internal-holdout": 2,
+      "scorer-cal": 2,
+      "train-fit": 3
+    },
+    "split_seed": 20260719
+  },
+  "schema": "strict_recon_h4_inner_manifests_v3",
+  "split_lock": "/root/autodl-tmp/dwm_datasets/splits/ltwm_dinov3_scand_expansion_v2_final_20260718/split_lock.json",
+  "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+}

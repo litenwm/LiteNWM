@@ -1,0 +1,659 @@
+{
+  "allocation": {
+    "actual_metrics": {
+      "h4_windows": {
+        "test": 1869,
+        "train": 31636,
+        "val": 3826
+      },
+      "trajectories": {
+        "test": 11,
+        "train": 183,
+        "val": 21
+      }
+    },
+    "algorithm": "descending_h4_greedy_plus_deterministic_move_swap_local_search_v3",
+    "allocation_seed": 20260718,
+    "fractions": {
+      "test": 0.05,
+      "train": 0.85,
+      "val": 0.1
+    },
+    "local_search_steps": 4,
+    "objective": 0.0008567884264613488,
+    "route_counts": {
+      "test": 4,
+      "train": 34,
+      "val": 4
+    },
+    "target_metrics": {
+      "h4_windows": {
+        "test": 1866.5500000000002,
+        "train": 31731.35,
+        "val": 3733.1000000000004
+      },
+      "trajectories": {
+        "test": 10.75,
+        "train": 182.75,
+        "val": 21.5
+      }
+    }
+  },
+  "routes": [
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 100,
+      "h4_windows": 93,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "abandon__rec",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 3004,
+      "h4_windows": 2780,
+      "robots": {
+        "Spot": 32
+      },
+      "route_group": "ahg__ahg",
+      "split": "train",
+      "trajectory_count": 32
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 697,
+      "h4_windows": 655,
+      "robots": {
+        "Spot": 6
+      },
+      "route_group": "ahg__eer",
+      "split": "train",
+      "trajectory_count": 6
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 357,
+      "h4_windows": 350,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "ahg__eerc",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 2,
+      "frame_count": 1360,
+      "h4_windows": 1276,
+      "robots": {
+        "Spot": 12
+      },
+      "route_group": "ahg__gdc",
+      "split": "val",
+      "trajectory_count": 12
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 11,
+      "frame_count": 15536,
+      "h4_windows": 15333,
+      "robots": {
+        "Jackal": 3,
+        "Spot": 26
+      },
+      "route_group": "ahg__library",
+      "split": "test",
+      "trajectory_count": 29
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 54,
+      "h4_windows": 47,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "ahg__nhb",
+      "split": "val",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1282,
+      "h4_windows": 1254,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "ahg__tent",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1120,
+      "h4_windows": 1099,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "ahg__union",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 210,
+      "h4_windows": 196,
+      "robots": {
+        "Spot": 2
+      },
+      "route_group": "ballstructure__uttower",
+      "split": "train",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1919,
+      "h4_windows": 1856,
+      "robots": {
+        "Spot": 9
+      },
+      "route_group": "bass__rec",
+      "split": "train",
+      "trajectory_count": 9
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1011,
+      "h4_windows": 976,
+      "robots": {
+        "Spot": 5
+      },
+      "route_group": "bass__sanjac",
+      "split": "train",
+      "trajectory_count": 5
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1613,
+      "h4_windows": 1585,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "butler__foodtruck",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 428,
+      "h4_windows": 421,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "butler__lbj",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 2687,
+      "h4_windows": 2652,
+      "robots": {
+        "Spot": 5
+      },
+      "route_group": "butler__speedway",
+      "split": "train",
+      "trajectory_count": 5
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 162,
+      "h4_windows": 155,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "butler__thompson",
+      "split": "test",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 225,
+      "h4_windows": 197,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "cola__cola",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 378,
+      "h4_windows": 364,
+      "robots": {
+        "Spot": 2
+      },
+      "route_group": "dobie__fountain",
+      "split": "train",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 2,
+      "frame_count": 1909,
+      "h4_windows": 1867,
+      "robots": {
+        "Spot": 6
+      },
+      "route_group": "dobie__library",
+      "split": "train",
+      "trajectory_count": 6
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1519,
+      "h4_windows": 1470,
+      "robots": {
+        "Spot": 7
+      },
+      "route_group": "dobie__union",
+      "split": "val",
+      "trajectory_count": 7
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1851,
+      "h4_windows": 1830,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "eer__library",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 471,
+      "h4_windows": 457,
+      "robots": {
+        "Spot": 2
+      },
+      "route_group": "eer__oscafe",
+      "split": "train",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 1,
+      "frame_count": 365,
+      "h4_windows": 358,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "footballfield__rec",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 5,
+      "frame_count": 2702,
+      "h4_windows": 2590,
+      "robots": {
+        "Jackal": 3,
+        "Spot": 13
+      },
+      "route_group": "fountain__library",
+      "split": "train",
+      "trajectory_count": 16
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 1,
+      "frame_count": 198,
+      "h4_windows": 191,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "fountain__mccombs",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 1,
+      "frame_count": 38,
+      "h4_windows": 31,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "gdc__gdc",
+      "split": "test",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 2,
+      "frame_count": 1897,
+      "h4_windows": 1827,
+      "robots": {
+        "Jackal": 1,
+        "Spot": 9
+      },
+      "route_group": "gdc__library",
+      "split": "train",
+      "trajectory_count": 10
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 338,
+      "h4_windows": 331,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "georgewashington__mccombs",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 2,
+      "frame_count": 2290,
+      "h4_windows": 2059,
+      "robots": {
+        "Spot": 33
+      },
+      "route_group": "jcl__jcl",
+      "split": "train",
+      "trajectory_count": 33
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 2,
+      "frame_count": 873,
+      "h4_windows": 796,
+      "robots": {
+        "Spot": 11
+      },
+      "route_group": "jester__jester",
+      "split": "train",
+      "trajectory_count": 11
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 331,
+      "h4_windows": 303,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "jester__library",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1039,
+      "h4_windows": 1018,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "lbj__thompson",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 838,
+      "h4_windows": 810,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "library__mccombs",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 428,
+      "h4_windows": 400,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "library__mlk",
+      "split": "test",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 923,
+      "h4_windows": 874,
+      "robots": {
+        "Spot": 7
+      },
+      "route_group": "library__sac",
+      "split": "train",
+      "trajectory_count": 7
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1583,
+      "h4_windows": 1576,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "library__union",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 610,
+      "h4_windows": 561,
+      "robots": {
+        "Spot": 7
+      },
+      "route_group": "library__wagnerhall",
+      "split": "train",
+      "trajectory_count": 7
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 757,
+      "h4_windows": 736,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "nhb__sac",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 496,
+      "h4_windows": 475,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "oscafe__rlm",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 258,
+      "h4_windows": 230,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "parlin__parlin",
+      "split": "train",
+      "trajectory_count": 4
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 779,
+      "h4_windows": 758,
+      "robots": {
+        "Spot": 3
+      },
+      "route_group": "performingartscenter__stadium",
+      "split": "train",
+      "trajectory_count": 3
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 64,
+      "h4_windows": 57,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "rlm__rlm",
+      "split": "test",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 595,
+      "h4_windows": 588,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "sac__sac",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 1,
+      "frame_count": 37,
+      "h4_windows": 30,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "sac__sacindoor",
+      "split": "train",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 177,
+      "h4_windows": 163,
+      "robots": {
+        "Spot": 2
+      },
+      "route_group": "sac__speedway",
+      "split": "train",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1292,
+      "h4_windows": 1257,
+      "robots": {
+        "Spot": 5
+      },
+      "route_group": "sac__union",
+      "split": "test",
+      "trajectory_count": 5
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 2,
+      "frame_count": 786,
+      "h4_windows": 772,
+      "robots": {
+        "Jackal": 2
+      },
+      "route_group": "sanjac__stadium",
+      "split": "test",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "inherited_parent_lock",
+      "bag_count": 1,
+      "frame_count": 326,
+      "h4_windows": 319,
+      "robots": {
+        "Jackal": 1
+      },
+      "route_group": "speedway__speedway",
+      "split": "val",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1040,
+      "h4_windows": 1033,
+      "robots": {
+        "Spot": 1
+      },
+      "route_group": "thompson__thompson",
+      "split": "val",
+      "trajectory_count": 1
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 379,
+      "h4_windows": 365,
+      "robots": {
+        "Spot": 2
+      },
+      "route_group": "union__union",
+      "split": "train",
+      "trajectory_count": 2
+    },
+    {
+      "assignment_origin": "deterministic_novel_allocation",
+      "bag_count": 1,
+      "frame_count": 1389,
+      "h4_windows": 1361,
+      "robots": {
+        "Spot": 4
+      },
+      "route_group": "union__welch",
+      "split": "train",
+      "trajectory_count": 4
+    }
+  ]
+}

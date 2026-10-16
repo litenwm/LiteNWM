@@ -1,0 +1,56 @@
+{
+  "version": "sealed_tridomain_v70_20260729",
+  "artifacts": [
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1701/best.pt",
+      "sha256": "8970c387cd642027913c1cb01d5e2d2a2bfd6b58c94d1432e62880d3a434ac66",
+      "included": false
+    },
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1702/best.pt",
+      "sha256": "6b4674d54b2da00a2825d12e6439e8bd87fb4ed6220bc6568ec3ea9350447338",
+      "included": false
+    },
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1703/best.pt",
+      "sha256": "03bf6ad4dd023ec2828870b2ff1a110bf41936625ecc43c460bbf07c3ba62327",
+      "included": false
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1701/best.pt",
+      "sha256": "e7cef7ce68e97ab74db2a07474b0e0880eff06c3d4f9e2803be3a861461930ef",
+      "included": false
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1702/best.pt",
+      "sha256": "ee8f65aae6c117e76cc3e59ecc9f2b831e28ccc3625ca4db6bcf681ce0328f09",
+      "included": false
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1703/best.pt",
+      "sha256": "49be8e8c5022ffcc9b8fc0a6298320711070f80c77909b27f799744a7ed14754",
+      "included": false
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector_final/checkpoints/proposal_aware_full_seed0.pt",
+      "sha256": "242688fd252fd6ea650f4211afa4dc7bdb4075c6e8e3d10399b3255a67bd9daa",
+      "included": false
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector_final/checkpoints/proposal_aware_full_seed1.pt",
+      "sha256": "7e9c9fb62ff85e97946c3406c458c8b2cbf5155a3f77f3169c08073f45947726",
+      "included": false
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector_final/checkpoints/proposal_aware_full_seed2.pt",
+      "sha256": "47a65c3df352a8f1cbedbce676f51f0d9769fcde1a6e7b4b6238a6a2697c3c43",
+      "included": false
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector_final/support/tridomain_spacing_envelopes.npz",
+      "sha256": "da86c3f8286da60ac96fd0c3a9cd612ecdc3ed4198a82345868fa24592a6bfd9",
+      "included": false
+    }
+  ],
+  "split_lock_sha256": "66294673129bd20355e3aef55757bdf47bd915b54881c8c3ccfb01e057ca5614"
+}

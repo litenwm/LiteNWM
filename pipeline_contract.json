@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "release_id": "dinov3_ltwm_scorer_v2_20260719",
+  "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96",
+  "temporal_contract": {
+    "history_frames": 4,
+    "future_frames": 4,
+    "goal_offset": 4
+  },
+  "representation": {
+    "backbone": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+    "backbone_frozen": true,
+    "native_tokens": [14, 14, 1024],
+    "adapter": "layernorm_linear_bicubic",
+    "adapter_frozen": true,
+    "stored_tokens": [16, 16, 384],
+    "stored_dtype": "float16"
+  },
+  "ltwm": {
+    "architecture": "LiteTokenFormer-WM-v2-4ctx-base",
+    "parameter_count": 8001960,
+    "seeds": [1701, 1702, 1703],
+    "training_scope": "all",
+    "recon_batches_per_scand": 3,
+    "optimizer_state_on_warm_start": "reset"
+  },
+  "scorer": {
+    "architecture": "trajectory_quality_scorer_v2",
+    "artifact_namespace": "trajectory_quality_scorer_v3_expansion_60e5c5af",
+    "parameter_count": 1484162,
+    "seeds": [1701, 1702, 1703],
+    "balanced_domain_batches": true,
+    "candidate_identity_input": false,
+    "cross_candidate_model_operations": false,
+    "training_targets": ["legacy_mean_ate_h1_h4", "rtp_h4"]
+  },
+  "evaluation": {
+    "primary_metrics": ["nwm_h4_ate", "nwm_h4_rte"],
+    "lower_is_better": true,
+    "waypoint_spacing_m": {
+      "recon": 0.25,
+      "scand": 0.38
+    },
+    "alignment": false,
+    "scale_correction": false,
+    "prepend_current_pose": false,
+    "nwm_reference_commit": "3f6cd8e70d6f2d1e2b9684acff510710135f0f41"
+  },
+  "data_access": {
+    "scorer_train_scope": "outer_train_only",
+    "outer_validation_accessed": false,
+    "outer_test_accessed": false,
+    "expansion_internal_holdout_evaluated": false
+  }
+}

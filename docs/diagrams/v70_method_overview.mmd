@@ -1,0 +1,57 @@
+%% v70 paper method overview
+flowchart LR
+  subgraph S1["Stage 1 · Visual representation & frozen world model"]
+    O["4-frame history + goal image"] --> D["Frozen DINOv3 ViT-L/16"]
+    D --> A["Adapter<br/>1024→384 · 14×14→16×16"]
+    A --> W["LiteTokenFormer World Model ×3<br/>action-conditioned H1–H4 latent rollout"]
+    W --> WS["Future latent statistics<br/>mean · std · min · max"]
+  end
+
+  subgraph S2["Stage 2 · Candidate action generation"]
+    I["Incumbent trajectory"] --> K["K=17 candidate trajectories<br/>H=4 · (dx,dy,dψ)"]
+    N["NoMaD ×16"] --> K
+  end
+
+  K -. "condition each candidate" .-> W
+
+  subgraph S3["Stage 3 · Universal Arm-D candidate evaluation"]
+    F["815-D candidate feature<br/>242 trajectory/action + 24 physical/normalized<br/>210 DINOv3 + 112×3 LTWM blocks + 3 support scalars"]
+    U["Universal Arm-D<br/>shared backbone → setwise context → quality + uncertainty"]
+    P["ΔATE · ΔRPE · ΔEndpoint · ΔObjective<br/>μ, σ, p(dual), p(harm), rank"]
+    C["Safety-aware calibration layer<br/>uncertainty calibration · false-safe reduction"]
+    F --> U --> P --> C
+  end
+
+  K --> F
+  WS --> F
+
+  subgraph S4["Stage 4 · Uncertainty-aware safety planning"]
+    G["Safety gate<br/>UCB = μ + z·σ<br/>support + UCB + dual/harm constraints"]
+    E["Safety-aware CEM<br/>3 iterations · 16 challengers · elite=4<br/>mean/covariance update"]
+    G --> E
+  end
+  C --> G
+
+  subgraph S5["Stage 5 · Archive replay"]
+    R["Cross-round safe archive<br/>fixed K17 + CEM rounds 1–3<br/>running best safe candidate"]
+    B{"Archived safe candidate?"}
+    H["Best safe H4 trajectory"]
+    X["Fallback incumbent"]
+    R --> B
+    B -->|yes| H
+    B -.->|no| X
+  end
+  E -->|"safe elites across rounds"| R
+
+  classDef perception fill:#EAF4FA,stroke:#2C78A5,color:#17324A,stroke-width:2px;
+  classDef world fill:#F1EEFA,stroke:#6856A3,color:#17324A,stroke-width:2px;
+  classDef candidate fill:#FFF1E4,stroke:#D97728,color:#17324A,stroke-width:2px;
+  classDef scoring fill:#E7F6F4,stroke:#00878A,color:#17324A,stroke-width:2px;
+  classDef planning fill:#FCEBEC,stroke:#C75458,color:#17324A,stroke-width:2px;
+  classDef archive fill:#E8F4EC,stroke:#3F8F68,color:#17324A,stroke-width:3px;
+  class O,D,A perception;
+  class W,WS world;
+  class I,N,K candidate;
+  class F,U,P,C scoring;
+  class G,E planning;
+  class R,B,H,X archive;

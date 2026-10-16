@@ -1,0 +1,17 @@
+{
+  "schema": "v70_image_goal_route_v1",
+  "route_id": "single-goal-example",
+  "goals": [
+    {
+      "name": "goal",
+      "image": "/home/unitree/goal.jpg",
+      "arrival_calibrated": false,
+      "approach_temporal_distance": 5.0,
+      "temporal_distance_enter": 2.5,
+      "temporal_distance_exit": 3.5,
+      "cosine_distance_enter": 0.2,
+      "cosine_distance_exit": 0.28,
+      "required_confirmations": 4
+    }
+  ]
+}

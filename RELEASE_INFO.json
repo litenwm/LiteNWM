@@ -1,0 +1,22 @@
+{
+  "format": "github_source_only_v1",
+  "weights_included": false,
+  "raw_datasets_included": false,
+  "robot_implementation": "public_go2_fresh_h1_once",
+  "excluded_files_in_selected_trees": 54,
+  "excluded_trees": [
+    "artifacts",
+    "checkpoints",
+    "outputs",
+    "downloads",
+    "server_exports",
+    "tools/remote",
+    "qa",
+    "results"
+  ],
+  "research_scripts": "Preserved as historical references; some require external assets.",
+  "source_version": "current working tree, including uncommitted source changes",
+  "default_model_version": "sealed_tridomain_v70_20260729",
+  "robot_asset_manifest": "robot/assets_manifest.json",
+  "robot_live_validation": "not performed for modified public variant"
+}

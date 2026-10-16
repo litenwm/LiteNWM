@@ -1,0 +1,90 @@
+{
+  "schema": "ltwm_pure_future_latent_action_residual_contract_v1",
+  "status": "frozen_before_training",
+  "purpose": "Improve cross-route action-conditioned future-latent prediction without outcome, utility, objective, ATE, dual, or harm supervision.",
+  "inputs": {
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    "latent_root": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/latent_train_view_v51c",
+      "metadata_sha256": "395253bbff75c52cea3d49cbc2173a1c523e96f7797434f5e1c884cc89fb8e83",
+      "splits_sha256": "969c95b567e3a65b300361b17f153d83e4dd7a3246efca27a36b5bc81e6ef368",
+      "train_routes": 450,
+      "validation_routes": 25,
+      "test_routes_exposed": 0
+    },
+    "split_lock": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/split_lock.json",
+      "sha256": "325a562c8fb8a5ae6f76e89899b86b0c93034ac754cc3470d170d7fdfce43f5e"
+    },
+    "warm_parent_split_lock": {
+      "path": "data/split_lock/split_lock.json",
+      "sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+    },
+    "loss_module": {
+      "path": "src/recon_latents/losses_action_residual_v1.py",
+      "sha256": "3b767b69cc8f769b24618f2f13faec96a4d18611acab1b07758d9ed208db422d"
+    },
+    "runner": {
+      "path": "tools/recon/train_litetokenformer_wm_action_residual_v1.py",
+      "sha256": "1029d44f20be4602ebc7587ea7f1cbaa11f9f6cf8c9ea6a4294c115c5f09c7a9"
+    }
+  },
+  "model": {
+    "architecture": "unchanged LiteTokenFormer-WM-v2-4ctx",
+    "total_parameters": 8001960,
+    "train_scope": "all LTWM parameters",
+    "visual_encoder": "frozen",
+    "adapter": "frozen",
+    "warm_start": true,
+    "new_architecture_parameters": 0
+  },
+  "loss_weights": {
+    "reconstruction": 1.0,
+    "residual_reconstruction": 0.35,
+    "dynamic_token": 0.25,
+    "cosine": 0.05,
+    "delta_direction": 0.1,
+    "norm": 0.05,
+    "action_order": 0.05,
+    "action_residual_order": 0.2,
+    "action_decode": 0.02,
+    "consistency": 0.02,
+    "history": 0.03,
+    "velocity": 0.05,
+    "uncertainty": 0.01,
+    "quality": 0.0
+  },
+  "training": {
+    "seed": 1701,
+    "epochs": 3,
+    "batches_per_epoch": 2000,
+    "batch_size": 2,
+    "eval_batches_per_epoch": 500,
+    "eval_batch_size": 2,
+    "learning_rate": 0.00002,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "amp": "bf16",
+    "contrastive_every": 2,
+    "consistency_every": 8
+  },
+  "checkpoint_selection": {
+    "data": "hard_t route-disjoint validation only",
+    "score": "mean H1-H4 absolute latent NMSE plus H4 absolute latent NMSE",
+    "outcome_labels_used": false,
+    "outer_test_used": false
+  },
+  "world_model_go_gate": {
+    "validation_mean_absolute_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_absolute_nmse_no_worse_than_warm_checkpoint": true,
+    "validation_mean_residual_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_residual_nmse_better_than_warm_checkpoint": true,
+    "correct_action_residual_win_rate_better_than_warm_checkpoint": true
+  },
+  "formal_v70_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

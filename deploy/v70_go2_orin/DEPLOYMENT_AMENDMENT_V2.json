@@ -1,0 +1,57 @@
+{
+  "schema": "v70_tridomain_go2_orin_deployment_amendment_v2",
+  "base_archive": "dinov3_ltwm_v70_tridomain_go2_orin_20260729_v2.tar.gz",
+  "base_archive_sha256": "278600e4ade89e82461e2ca1ad842f4628eb5eb61781af4505d872db4e4593f6",
+  "reason": "Orin uses NumPy 1.24.4 with SciPy 1.8.0, while the immutable latest checkpoints contain NumPy-2 pickle module names. Add a load-time namespace compatibility layer without rewriting any checkpoint.",
+  "files": [
+    {
+      "relative_path": "deploy/v70_go2_orin/orin_env_tridomain_v2.sh",
+      "sha256": "b70c3d03c856531cafd6ffd1edc93197b1e74e9b0f34110e8d99e0d076578a12"
+    },
+    {
+      "relative_path": "deploy/v70_go2_orin/numpy_pickle_compat.py",
+      "sha256": "f7e95851d7f07aebf4bf43f97362f78377d952572c5e5de9a0932eed2d057007"
+    },
+    {
+      "relative_path": "deploy/v70_go2_orin/v70_ltwm_tridomain_shadow.py",
+      "sha256": "21ed16fb8a83b6c547073394d04949515bab12f4b5630171c868b20e5ac774cb"
+    },
+    {
+      "relative_path": "deploy/v70_go2_orin/v70_armd_tridomain_v2_shadow.py",
+      "sha256": "2c4f318355161c98681dce01ed1a7a1832a0af7fa8b6f5ec558a87b389f2fc83"
+    },
+    {
+      "relative_path": "deploy/v70_go2_orin/v70_cem_tridomain_v2_shadow.py",
+      "sha256": "aa693e5cc635358df894f1e1338d69fe8e63a144ca8f4887362a2f02b298706e"
+    },
+    {
+      "relative_path": "deploy/v70_go2_orin/safe_bridge_v4.py",
+      "sha256": "5a4f76ad71597492a7ae59f6810463b7e514bd98a04826277a3d9f3bf8b9984b"
+    },
+    {
+      "relative_path": "tools/planning/run_tridomain_cem_tail_v70_runtime_v2.py",
+      "sha256": "f1e5b400a7a95bcdee1856b511e08b003154b954921ed2757556496251bd7028"
+    }
+  ],
+  "environment": {
+    "python": "3.10.12",
+    "numpy": "1.24.4",
+    "scipy": "1.8.0",
+    "torch": "2.5.0a0+872d972e41.nv24.08",
+    "torchvision": "0.20.0a0+afc54f7",
+    "rmw_implementation": "rmw_cyclonedds_cpp",
+    "venv": "/home/unitree/venvs/v70-tridomain-orin"
+  },
+  "remote_validation": {
+    "base_bundle_all_file_and_import_verification": "PASS",
+    "ltwm_scorer_strict_load_cuda_three_seeds": "PASS",
+    "selector_cuda_forward_recon_scand_sacson": "PASS",
+    "safe_bridge_v4_dry_run_zero_twist": "PASS",
+    "stop_file_present": true,
+    "arm_file_absent": true,
+    "motion_processes_running": false
+  },
+  "weights_rewritten": false,
+  "zero_motion_default": true,
+  "production_safe_claim_allowed": false
+}

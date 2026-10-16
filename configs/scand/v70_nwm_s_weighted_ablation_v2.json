@@ -1,0 +1,124 @@
+{
+  "protocol_id": "v70_nwm_s_weighted_ablation_v2",
+  "created_local_date": "2026-07-25",
+  "status": "frozen_before_new_attribution_run",
+  "purpose": "Use the original NWM-S checkpoint and its completed H4 planner outputs to separate world-model ranking, project scoring, safety gating, CEM search, and cross-round archive contributions.",
+  "claim_scope": {
+    "label_status": "official-100 outcomes are already opened; this is a new exploratory attribution",
+    "confirmatory_claim_allowed": false,
+    "same_state_pairing": true,
+    "same_fixed_pool_comparison": "K17 = trimmed-mean incumbent plus the same NoMaD x16 candidates",
+    "domains": [
+      "recon",
+      "scand"
+    ]
+  },
+  "nwm_s": {
+    "repository": "/home/rainbow/rrnwm",
+    "config": "/home/rainbow/rrnwm/config/nwm_cdit_s.yaml",
+    "checkpoint": "/home/rainbow/rrnwm/logs/nwm_cdit_s/checkpoints/100000.pth.tar",
+    "checkpoint_sha256": "8ed9478d40e49809a1bbe6aec4df8af7f6f48c3bb427307dd8a423efb347ce6e",
+    "checkpoint_state": "EMA",
+    "architecture": "CDiT-S/2",
+    "train_steps": 100000,
+    "diffusion_steps": 250,
+    "score": "decoded final-frame LPIPS-Alex to goal image",
+    "repeat": 1,
+    "nomad_candidates": 16,
+    "nomad_seed": 0,
+    "per_sample_seed_formula": "(base_seed*1000003 + sample_idx*9176) mod (2**32-1)"
+  },
+  "inputs": {
+    "benchmark_root": "outputs/official100_v70_dwm_scorerv2_benchmark_v1",
+    "recon_nwm_output": "/home/rainbow/rrnwm/eval_output/visualnav_baseline/serverfull_nwmunseen_h4_100_nwm_s_nomad_x16_d250_rep1_lpips_seed0_resumable",
+    "scand_nwm_output": "/home/rainbow/rrnwm/eval_output/visualnav_baseline/multidataset_officialtest_h4_100_seed17/scand/nwm_s_nomad_x16_d250_rep1_lpips_seed0_resumable"
+  },
+  "fixed_k17_scorer_axis": [
+    {
+      "name": "incumbent",
+      "definition": "trimmed-mean NoMaD plan"
+    },
+    {
+      "name": "dino_static_only",
+      "definition": "candidate-invariant DINO scene/goal context; score ties retain incumbent"
+    },
+    {
+      "name": "nwm_s_lpips_raw",
+      "definition": "NWM-S CDiT-S/2 250-step rollout plus final-frame LPIPS argmin over NoMaD x16"
+    },
+    {
+      "name": "nwm_s_valid_fallback",
+      "definition": "accept the NWM-S challenger only when the frozen v70 physical/support validity mask accepts it"
+    },
+    {
+      "name": "nwm_s_v70_safe_fallback",
+      "definition": "accept the NWM-S challenger only when the frozen v70 dual/harm/UCB gate marks that exact candidate safe; otherwise retain incumbent"
+    },
+    {
+      "name": "project_scorer_v2_raw_argmin",
+      "definition": "project DWM/scorer-v2 raw K17 energy without the v70 safe selector"
+    },
+    {
+      "name": "v70_fixed_k17",
+      "definition": "project v70 energy plus validity, uncertainty-aware safe gate, and incumbent fallback on the same K17 pool"
+    }
+  ],
+  "search_selector_axis": [
+    {
+      "name": "v70_fixed_k17",
+      "definition": "no CEM"
+    },
+    {
+      "name": "v70_final_round_only",
+      "definition": "three CEM updates but select only from the last-round population"
+    },
+    {
+      "name": "v70_cross_round_archive",
+      "definition": "three CEM rounds plus safe archive across K17 and every round"
+    },
+    {
+      "name": "union65_objective_oracle",
+      "definition": "outcome-only ceiling; never a deployable method"
+    }
+  ],
+  "predeclared_comparisons": [
+    "nwm_s_v70_safe_fallback minus nwm_s_lpips_raw",
+    "v70_fixed_k17 minus nwm_s_v70_safe_fallback",
+    "v70_cross_round_archive minus v70_fixed_k17",
+    "v70_cross_round_archive minus v70_final_round_only",
+    "v70_cross_round_archive minus nwm_s_lpips_raw"
+  ],
+  "metrics": {
+    "horizon": 4,
+    "recon_spacing_m": 0.25,
+    "scand_spacing_m": 0.38,
+    "trajectory_alignment": false,
+    "primary": "ATE metres",
+    "secondary": [
+      "RPE",
+      "endpoint",
+      "0.4*ATE+0.6*endpoint objective",
+      "p90",
+      "coverage",
+      "dual precision",
+      "harm rate"
+    ]
+  },
+  "statistics": {
+    "cluster": "domain::route_group",
+    "bootstrap_draws": 5000,
+    "bootstrap_seed": 20260725,
+    "interval": "percentile 95%",
+    "reporting": [
+      "RECON-100",
+      "SCAND-100",
+      "pooled matched 200"
+    ]
+  },
+  "interpretation_rules": {
+    "nwm_weight_signal": "NWM-S raw must beat the common incumbent on paired ATE; otherwise the original world-model ranker is not the source of the gain on this pool.",
+    "project_ranker_signal": "v70 fixed-K17 must beat NWM-S plus the same v70 safe fallback, isolating ranking under a common pool and safety mechanism.",
+    "selector_signal": "NWM-S plus v70 safe fallback must reduce harm versus raw NWM-S, and v70 archive must beat fixed-K17/final-round-only.",
+    "dependency_boundary": "NWM-S and project v70 use different learned world models; this experiment compares action-selection behavior, not parameter-level interchangeability."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "ltwm_natural_cross_recording_pseudobranch_evaluation_amendment_v1",
+  "status": "frozen_before_training",
+  "purpose": "Compatibility view for the existing paired future-latent evaluator, which accepts only the literal status frozen_before_training.",
+  "source_training_contract": {
+    "path": "configs/recon/ltwm_natural_pseudobranch_v1.json",
+    "sha256": "8573458d3212ae218830b1fabfd4b4faadd321e40d3f09b4d01e1eb1d119608d"
+  },
+  "inputs": {
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    "latent_root": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/latent_train_view_v51c",
+      "metadata_sha256": "395253bbff75c52cea3d49cbc2173a1c523e96f7797434f5e1c884cc89fb8e83",
+      "splits_sha256": "969c95b567e3a65b300361b17f153d83e4dd7a3246efca27a36b5bc81e6ef368",
+      "validation_routes": 25
+    }
+  },
+  "training": {
+    "seed": 1701
+  },
+  "world_model_go_gate": {
+    "validation_mean_absolute_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_absolute_nmse_no_worse_than_warm_checkpoint": true,
+    "validation_mean_residual_nmse_better_than_warm_checkpoint": true,
+    "validation_h4_residual_nmse_better_than_warm_checkpoint": true,
+    "correct_action_residual_win_rate_better_than_warm_checkpoint": true
+  },
+  "model_or_threshold_changed": false,
+  "sealed_validation_opened": false
+}

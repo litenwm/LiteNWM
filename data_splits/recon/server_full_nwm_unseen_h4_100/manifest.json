@@ -1,0 +1,2830 @@
+{
+  "context_frames": 4,
+  "excluded_too_short_trajectory_ids": [
+    "jackal_2019-08-02-17-29-37_53_r01",
+    "jackal_2019-08-08-14-33-24_19_r03",
+    "jackal_2019-08-08-14-45-03_7_r02",
+    "jackal_2019-08-13-14-17-43_2_r02",
+    "jackal_2019-08-18-15-44-02_45_r01",
+    "jackal_2019-08-18-16-54-28_10_r02",
+    "jackal_2019-08-20-18-21-19_38_r01",
+    "jackal_2019-08-29-15-07-38_3_r01",
+    "jackal_2019-08-29-16-31-35_17_r00",
+    "jackal_2019-08-29-17-24-17_6_r01",
+    "jackal_2019-09-12-18-41-38_32_r00",
+    "jackal_2019-09-19-15-37-48_13_r01",
+    "jackal_2019-10-20-17-11-33_10_r02",
+    "jackal_2019-10-24-14-56-49_19_r02",
+    "jackal_2019-10-24-15-16-52_6_r04",
+    "jackal_2019-10-24-15-20-52_10_r02",
+    "jackal_2019-10-24-16-54-23_1_r00",
+    "jackal_2019-10-31-11-02-07_5_r03",
+    "jackal_2019-12-19-12-28-57_4_r00",
+    "jackal_2020-01-03-15-14-43_0_r02",
+    "jackal_2020-01-03-15-28-24_1_r02"
+  ],
+  "horizon": 4,
+  "index_tuple": "(trajectory_id, curr_time, min_goal_distance=4, max_goal_distance=4)",
+  "length_bins": [
+    {
+      "index": 0,
+      "max_num_frames": 20,
+      "min_num_frames": 8,
+      "name": "Q1_shortest",
+      "population_count": 52,
+      "selected_count": 25
+    },
+    {
+      "index": 1,
+      "max_num_frames": 41,
+      "min_num_frames": 21,
+      "name": "Q2",
+      "population_count": 52,
+      "selected_count": 25
+    },
+    {
+      "index": 2,
+      "max_num_frames": 79,
+      "min_num_frames": 41,
+      "name": "Q3",
+      "population_count": 51,
+      "selected_count": 25
+    },
+    {
+      "index": 3,
+      "max_num_frames": 221,
+      "min_num_frames": 82,
+      "name": "Q4_longest",
+      "population_count": 51,
+      "selected_count": 25
+    }
+  ],
+  "length_by_temporal_allocation": [
+    [
+      7,
+      6,
+      6,
+      6
+    ],
+    [
+      6,
+      7,
+      6,
+      6
+    ],
+    [
+      6,
+      6,
+      7,
+      6
+    ],
+    [
+      6,
+      6,
+      6,
+      7
+    ]
+  ],
+  "name": "server_full_nwm_unseen_h4_100",
+  "purpose": "Fixed H4 comparison of DWM, NoMaD, NWM-S-CEM, and NWM-S+NoMaD",
+  "records": [
+    {
+      "context_times": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "curr_time": 36,
+      "eval_index": 0,
+      "goal_time": 40,
+      "gt_times": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 95,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 11,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-29-12-55-51_16_r00"
+    },
+    {
+      "context_times": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "curr_time": 20,
+      "eval_index": 1,
+      "goal_time": 24,
+      "gt_times": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 54,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 11,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-06-14-16-43_23_r01"
+    },
+    {
+      "context_times": [
+        61,
+        62,
+        63,
+        64
+      ],
+      "curr_time": 64,
+      "eval_index": 2,
+      "goal_time": 68,
+      "gt_times": [
+        65,
+        66,
+        67,
+        68
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 105,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 16,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2020-01-05-12-42-48_1_r00"
+    },
+    {
+      "context_times": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "curr_time": 24,
+      "eval_index": 3,
+      "goal_time": 28,
+      "gt_times": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 32,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 23,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-27-15-10-25_19_r03"
+    },
+    {
+      "context_times": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "curr_time": 14,
+      "eval_index": 4,
+      "goal_time": 18,
+      "gt_times": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 26,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 13,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-15-18-16-48_4_r03"
+    },
+    {
+      "context_times": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "curr_time": 10,
+      "eval_index": 5,
+      "goal_time": 14,
+      "gt_times": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 63,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 5,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-20-15-03-46_7_r03"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 6,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 12,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 20,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-20-16-29-47_1_r00"
+    },
+    {
+      "context_times": [
+        54,
+        55,
+        56,
+        57
+      ],
+      "curr_time": 57,
+      "eval_index": 7,
+      "goal_time": 61,
+      "gt_times": [
+        58,
+        59,
+        60,
+        61
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 94,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 13,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-09-19-11-51-51_5_r02"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 8,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 13,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 1,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-12-19-12-37-30_0_r01"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 9,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 41,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 4,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-31-17-13-20_14_r04"
+    },
+    {
+      "context_times": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "curr_time": 25,
+      "eval_index": 10,
+      "goal_time": 29,
+      "gt_times": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 33,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 19,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-13-13-46-10_0_r00"
+    },
+    {
+      "context_times": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "curr_time": 14,
+      "eval_index": 11,
+      "goal_time": 18,
+      "gt_times": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 20,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 23,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-10-31-10-25-35_1_r02"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 12,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 13,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 0,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-12-19-14-09-38_2_r00"
+    },
+    {
+      "context_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "curr_time": 8,
+      "eval_index": 13,
+      "goal_time": 12,
+      "gt_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 49,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 2,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-19-15-11-57_2_r02"
+    },
+    {
+      "context_times": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr_time": 3,
+      "eval_index": 14,
+      "goal_time": 7,
+      "gt_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 8,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 21,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-09-17-15-54-06_0_r02"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 15,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 13,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 19,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-13-13-22-00_0_r00"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 16,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 10,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 9,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-10-20-17-23-13_3_r02"
+    },
+    {
+      "context_times": [
+        58,
+        59,
+        60,
+        61
+      ],
+      "curr_time": 61,
+      "eval_index": 17,
+      "goal_time": 65,
+      "gt_times": [
+        62,
+        63,
+        64,
+        65
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 101,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 15,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-13-16-24-26_12_r01"
+    },
+    {
+      "context_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "curr_time": 13,
+      "eval_index": 18,
+      "goal_time": 17,
+      "gt_times": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 24,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 15,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-27-18-23-23_0_r00"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 19,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 13,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 7,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-10-20-15-53-17_1_r01"
+    },
+    {
+      "context_times": [
+        145,
+        146,
+        147,
+        148
+      ],
+      "curr_time": 148,
+      "eval_index": 20,
+      "goal_time": 152,
+      "gt_times": [
+        149,
+        150,
+        151,
+        152
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 174,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 21,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-10-31-16-44-10_23_r04"
+    },
+    {
+      "context_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "curr_time": 12,
+      "eval_index": 21,
+      "goal_time": 16,
+      "gt_times": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 32,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 9,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-09-17-15-44-52_57_r02"
+    },
+    {
+      "context_times": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr_time": 3,
+      "eval_index": 22,
+      "goal_time": 7,
+      "gt_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 11,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 5,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-31-16-48-10_27_r02"
+    },
+    {
+      "context_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr_time": 9,
+      "eval_index": 23,
+      "goal_time": 13,
+      "gt_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 59,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 0,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-15-16-29-53_6_r02"
+    },
+    {
+      "context_times": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "curr_time": 35,
+      "eval_index": 24,
+      "goal_time": 39,
+      "gt_times": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 44,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 19,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-09-17-14-54-52_7_r02"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 25,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 14,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 6,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-08-18-04-29_3_r00"
+    },
+    {
+      "context_times": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "curr_time": 6,
+      "eval_index": 26,
+      "goal_time": 10,
+      "gt_times": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 12,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 13,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-24-14-52-49_15_r02"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 27,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 27,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 1,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-12-15-42-34_49_r00"
+    },
+    {
+      "context_times": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "curr_time": 32,
+      "eval_index": 28,
+      "goal_time": 36,
+      "gt_times": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 41,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 21,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-20-16-25-44_53_r01"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 29,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 24,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 5,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-24-13-56-01_0_r01"
+    },
+    {
+      "context_times": [
+        83,
+        84,
+        85,
+        86
+      ],
+      "curr_time": 86,
+      "eval_index": 30,
+      "goal_time": 90,
+      "gt_times": [
+        87,
+        88,
+        89,
+        90
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 103,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 18,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-27-15-39-54_0_r01"
+    },
+    {
+      "context_times": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "curr_time": 21,
+      "eval_index": 31,
+      "goal_time": 25,
+      "gt_times": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 56,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 6,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-06-15-53-05_18_r01"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 32,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 19,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 8,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-12-21-14-36-13_2_r01"
+    },
+    {
+      "context_times": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "curr_time": 62,
+      "eval_index": 33,
+      "goal_time": 66,
+      "gt_times": [
+        63,
+        64,
+        65,
+        66
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 75,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 24,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-08-14-41-03_3_r02"
+    },
+    {
+      "context_times": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "curr_time": 30,
+      "eval_index": 34,
+      "goal_time": 34,
+      "gt_times": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 39,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 22,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-12-19-16-11-09_13_r01"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 35,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 9,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 24,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-09-09-17-36-58_0_r05"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 36,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 22,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 4,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-09-16-46-52_52_r05"
+    },
+    {
+      "context_times": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "curr_time": 15,
+      "eval_index": 37,
+      "goal_time": 19,
+      "gt_times": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 39,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 11,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-10-31-17-03-20_4_r08"
+    },
+    {
+      "context_times": [
+        93,
+        94,
+        95,
+        96
+      ],
+      "curr_time": 96,
+      "eval_index": 38,
+      "goal_time": 100,
+      "gt_times": [
+        97,
+        98,
+        99,
+        100
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 114,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 20,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-09-17-14-48-52_1_r02"
+    },
+    {
+      "context_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "curr_time": 8,
+      "eval_index": 39,
+      "goal_time": 12,
+      "gt_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 51,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 1,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-31-16-38-10_17_r00"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 40,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 25,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 3,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-19-12-01-08_2_r01"
+    },
+    {
+      "context_times": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "curr_time": 20,
+      "eval_index": 41,
+      "goal_time": 24,
+      "gt_times": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 147,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 0,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-19-12-43-32_0_r00"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 42,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 15,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 16,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-24-14-37-49_0_r05"
+    },
+    {
+      "context_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr_time": 9,
+      "eval_index": 43,
+      "goal_time": 13,
+      "gt_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 23,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 10,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-20-16-25-44_53_r02"
+    },
+    {
+      "context_times": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "curr_time": 15,
+      "eval_index": 44,
+      "goal_time": 19,
+      "gt_times": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 41,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 8,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-10-24-14-55-49_18_r01"
+    },
+    {
+      "context_times": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr_time": 3,
+      "eval_index": 45,
+      "goal_time": 7,
+      "gt_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 11,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 2,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-19-13-32-19_24_r00"
+    },
+    {
+      "context_times": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "curr_time": 24,
+      "eval_index": 46,
+      "goal_time": 28,
+      "gt_times": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 65,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 10,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-09-09-16-32-52_38_r03"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 47,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 11,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 18,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-31-10-50-02_1_r05"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 48,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 39,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 2,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2020-01-05-13-11-23_1_r02"
+    },
+    {
+      "context_times": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "curr_time": 15,
+      "eval_index": 49,
+      "goal_time": 19,
+      "gt_times": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 103,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 2,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-31-11-15-02_5_r01"
+    },
+    {
+      "context_times": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "curr_time": 47,
+      "eval_index": 50,
+      "goal_time": 51,
+      "gt_times": [
+        48,
+        49,
+        50,
+        51
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 79,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 15,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-13-16-52-26_40_r01"
+    },
+    {
+      "context_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "curr_time": 8,
+      "eval_index": 51,
+      "goal_time": 12,
+      "gt_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 22,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 7,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-15-18-54-39_6_r00"
+    },
+    {
+      "context_times": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "curr_time": 16,
+      "eval_index": 52,
+      "goal_time": 20,
+      "gt_times": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 23,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 20,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-29-16-45-35_31_r00"
+    },
+    {
+      "context_times": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "curr_time": 29,
+      "eval_index": 53,
+      "goal_time": 33,
+      "gt_times": [
+        30,
+        31,
+        32,
+        33
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 49,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 18,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-29-13-04-51_25_r01"
+    },
+    {
+      "context_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr_time": 9,
+      "eval_index": 54,
+      "goal_time": 13,
+      "gt_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 17,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 14,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-09-09-17-34-08_6_r03"
+    },
+    {
+      "context_times": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "curr_time": 24,
+      "eval_index": 55,
+      "goal_time": 28,
+      "gt_times": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 65,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 7,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-29-14-22-12_2_r03"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 56,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 14,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 12,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-10-24-13-19-41_3_r01"
+    },
+    {
+      "context_times": [
+        52,
+        53,
+        54,
+        55
+      ],
+      "curr_time": 55,
+      "eval_index": 57,
+      "goal_time": 59,
+      "gt_times": [
+        56,
+        57,
+        58,
+        59
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 91,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 17,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-12-19-11-08-56_5_r04"
+    },
+    {
+      "context_times": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "curr_time": 25,
+      "eval_index": 58,
+      "goal_time": 29,
+      "gt_times": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 187,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 5,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-09-09-15-06-00_40_r04"
+    },
+    {
+      "context_times": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "curr_time": 42,
+      "eval_index": 59,
+      "goal_time": 46,
+      "gt_times": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 112,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 7,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-27-16-05-20_11_r01"
+    },
+    {
+      "context_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "curr_time": 11,
+      "eval_index": 60,
+      "goal_time": 15,
+      "gt_times": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 21,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 16,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-13-16-00-57_18_r01"
+    },
+    {
+      "context_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "curr_time": 11,
+      "eval_index": 61,
+      "goal_time": 15,
+      "gt_times": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 21,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 17,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-31-16-11-57_10_r01"
+    },
+    {
+      "context_times": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "curr_time": 43,
+      "eval_index": 62,
+      "goal_time": 47,
+      "gt_times": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 72,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 17,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-09-09-15-02-00_36_r01"
+    },
+    {
+      "context_times": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "curr_time": 34,
+      "eval_index": 63,
+      "goal_time": 38,
+      "gt_times": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 58,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 13,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-27-15-54-20_0_r00"
+    },
+    {
+      "context_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "curr_time": 13,
+      "eval_index": 64,
+      "goal_time": 17,
+      "gt_times": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 87,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 1,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-12-21-12-04-10_2_r00"
+    },
+    {
+      "context_times": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "curr_time": 16,
+      "eval_index": 65,
+      "goal_time": 20,
+      "gt_times": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 23,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 24,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-13-16-57-26_45_r03"
+    },
+    {
+      "context_times": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "curr_time": 35,
+      "eval_index": 66,
+      "goal_time": 39,
+      "gt_times": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 44,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 22,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-13-16-02-57_20_r05"
+    },
+    {
+      "context_times": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr_time": 5,
+      "eval_index": 67,
+      "goal_time": 9,
+      "gt_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 10,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 22,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-27-16-13-20_19_r01"
+    },
+    {
+      "context_times": [
+        105,
+        106,
+        107,
+        108
+      ],
+      "curr_time": 108,
+      "eval_index": 68,
+      "goal_time": 112,
+      "gt_times": [
+        109,
+        110,
+        111,
+        112
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 128,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 24,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-20-18-04-19_21_r01"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 69,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 16,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 4,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-24-14-50-49_13_r04"
+    },
+    {
+      "context_times": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "curr_time": 18,
+      "eval_index": 70,
+      "goal_time": 22,
+      "gt_times": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 32,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 18,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-31-14-46-12_5_r00"
+    },
+    {
+      "context_times": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "curr_time": 25,
+      "eval_index": 71,
+      "goal_time": 29,
+      "gt_times": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 43,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 16,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-31-16-55-31_2_r04"
+    },
+    {
+      "context_times": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "curr_time": 38,
+      "eval_index": 72,
+      "goal_time": 42,
+      "gt_times": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 101,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 10,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-08-15-59-01_1_r00"
+    },
+    {
+      "context_times": [
+        105,
+        106,
+        107,
+        108
+      ],
+      "curr_time": 108,
+      "eval_index": 73,
+      "goal_time": 112,
+      "gt_times": [
+        109,
+        110,
+        111,
+        112
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 128,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 23,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-02-16-23-30_0_r01"
+    },
+    {
+      "context_times": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "curr_time": 6,
+      "eval_index": 74,
+      "goal_time": 10,
+      "gt_times": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 35,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 0,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-10-31-11-20-07_3_r06"
+    },
+    {
+      "context_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr_time": 7,
+      "eval_index": 75,
+      "goal_time": 11,
+      "gt_times": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 14,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 15,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-24-17-02-04_6_r05"
+    },
+    {
+      "context_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "curr_time": 8,
+      "eval_index": 76,
+      "goal_time": 12,
+      "gt_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 47,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 3,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-29-16-24-35_10_r00"
+    },
+    {
+      "context_times": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr_time": 4,
+      "eval_index": 77,
+      "goal_time": 8,
+      "gt_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 10,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 11,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-09-09-18-38-15_4_r00"
+    },
+    {
+      "context_times": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr_time": 3,
+      "eval_index": 78,
+      "goal_time": 7,
+      "gt_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 10,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 3,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-20-14-09-33_25_r01"
+    },
+    {
+      "context_times": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "curr_time": 26,
+      "eval_index": 79,
+      "goal_time": 30,
+      "gt_times": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 68,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 8,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-27-15-09-25_18_r00"
+    },
+    {
+      "context_times": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr_time": 3,
+      "eval_index": 80,
+      "goal_time": 7,
+      "gt_times": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 9,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 10,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-06-14-53-55_26_r02"
+    },
+    {
+      "context_times": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "curr_time": 23,
+      "eval_index": 81,
+      "goal_time": 27,
+      "gt_times": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 168,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 3,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-13-14-05-30_3_r01"
+    },
+    {
+      "context_times": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "curr_time": 43,
+      "eval_index": 82,
+      "goal_time": 47,
+      "gt_times": [
+        44,
+        45,
+        46,
+        47
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 72,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 12,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-20-17-44-19_1_r01"
+    },
+    {
+      "context_times": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "curr_time": 56,
+      "eval_index": 83,
+      "goal_time": 60,
+      "gt_times": [
+        57,
+        58,
+        59,
+        60
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 148,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 9,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-20-13-45-33_1_r00"
+    },
+    {
+      "context_times": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "curr_time": 46,
+      "eval_index": 84,
+      "goal_time": 50,
+      "gt_times": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 57,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 21,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-27-17-43-11_7_r00"
+    },
+    {
+      "context_times": [
+        46,
+        47,
+        48,
+        49
+      ],
+      "curr_time": 49,
+      "eval_index": 85,
+      "goal_time": 53,
+      "gt_times": [
+        50,
+        51,
+        52,
+        53
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 61,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 23,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2020-01-03-14-46-53_1_r01"
+    },
+    {
+      "context_times": [
+        95,
+        96,
+        97,
+        98
+      ],
+      "curr_time": 98,
+      "eval_index": 86,
+      "goal_time": 102,
+      "gt_times": [
+        99,
+        100,
+        101,
+        102
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 116,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 19,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-06-15-15-31_1_r02"
+    },
+    {
+      "context_times": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "curr_time": 18,
+      "eval_index": 87,
+      "goal_time": 22,
+      "gt_times": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 49,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 9,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-06-15-55-05_20_r00"
+    },
+    {
+      "context_times": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "curr_time": 31,
+      "eval_index": 88,
+      "goal_time": 35,
+      "gt_times": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 83,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 8,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-20-15-14-11_28_r02"
+    },
+    {
+      "context_times": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "curr_time": 14,
+      "eval_index": 89,
+      "goal_time": 18,
+      "gt_times": [
+        15,
+        16,
+        17,
+        18
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 25,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 14,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-10-20-15-58-42_2_r03"
+    },
+    {
+      "context_times": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "curr_time": 62,
+      "eval_index": 90,
+      "goal_time": 66,
+      "gt_times": [
+        63,
+        64,
+        65,
+        66
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 102,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 12,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-08-29-13-40-39_4_r00"
+    },
+    {
+      "context_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "curr_time": 13,
+      "eval_index": 91,
+      "goal_time": 17,
+      "gt_times": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 91,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 4,
+      "server_split": "test",
+      "temporal_bin": 0,
+      "temporal_bin_name": "early",
+      "temporal_fraction": 0.125,
+      "trajectory_id": "jackal_2019-08-08-17-24-22_6_r00"
+    },
+    {
+      "context_times": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "curr_time": 8,
+      "eval_index": 92,
+      "goal_time": 12,
+      "gt_times": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 22,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 12,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-08-08-13-57-44_16_r02"
+    },
+    {
+      "context_times": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "curr_time": 50,
+      "eval_index": 93,
+      "goal_time": 54,
+      "gt_times": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 132,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 6,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-09-17-14-59-52_12_r00"
+    },
+    {
+      "context_times": [
+        105,
+        106,
+        107,
+        108
+      ],
+      "curr_time": 108,
+      "eval_index": 94,
+      "goal_time": 112,
+      "gt_times": [
+        109,
+        110,
+        111,
+        112
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 128,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 22,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-08-02-17-27-37_51_r00"
+    },
+    {
+      "context_times": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "curr_time": 36,
+      "eval_index": 95,
+      "goal_time": 40,
+      "gt_times": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 60,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 14,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-09-17-15-27-52_40_r03"
+    },
+    {
+      "context_times": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "curr_time": 42,
+      "eval_index": 96,
+      "goal_time": 46,
+      "gt_times": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "length_bin": 2,
+      "length_bin_name": "Q3",
+      "num_frames": 52,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 20,
+      "server_split": "test",
+      "temporal_bin": 3,
+      "temporal_bin_name": "late",
+      "temporal_fraction": 0.875,
+      "trajectory_id": "jackal_2019-09-09-14-34-00_8_r00"
+    },
+    {
+      "context_times": [
+        49,
+        50,
+        51,
+        52
+      ],
+      "curr_time": 52,
+      "eval_index": 97,
+      "goal_time": 56,
+      "gt_times": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "length_bin": 3,
+      "length_bin_name": "Q4_longest",
+      "num_frames": 87,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 14,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2020-01-04-15-30-11_9_r00"
+    },
+    {
+      "context_times": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr_time": 9,
+      "eval_index": 98,
+      "goal_time": 13,
+      "gt_times": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "length_bin": 0,
+      "length_bin_name": "Q1_shortest",
+      "num_frames": 17,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 17,
+      "server_split": "test",
+      "temporal_bin": 2,
+      "temporal_bin_name": "mid_late",
+      "temporal_fraction": 0.625,
+      "trajectory_id": "jackal_2019-09-12-13-46-34_0_r01"
+    },
+    {
+      "context_times": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "curr_time": 10,
+      "eval_index": 99,
+      "goal_time": 14,
+      "gt_times": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "length_bin": 1,
+      "length_bin_name": "Q2",
+      "num_frames": 26,
+      "official_nwm_split": "test",
+      "selection_rank_in_length_bin": 6,
+      "server_split": "test",
+      "temporal_bin": 1,
+      "temporal_bin_name": "mid_early",
+      "temporal_fraction": 0.375,
+      "trajectory_id": "jackal_2019-09-09-15-53-33_40_r03"
+    }
+  ],
+  "schema_version": 1,
+  "selection_key": "SHA256(seed|namespace|trajectory_id)",
+  "selection_seed": 17,
+  "selection_uses_model_outputs": false,
+  "source_counts": {
+    "h4_valid": 206,
+    "intersection": 227,
+    "official_nwm_test": 2367,
+    "selected": 100,
+    "server_test": 1181,
+    "too_short": 21
+  },
+  "source_files": {
+    "metadata": "/home/rainbow/rrnwm/data_splits/recon/server_full/metadata.json",
+    "official_nwm_test": "/home/rainbow/rrnwm/data_splits/recon/test/traj_names.txt",
+    "official_nwm_train": "/home/rainbow/rrnwm/data_splits/recon/train/traj_names.txt",
+    "raw_data": "/home/rainbow/rrnwm/data/recon",
+    "splits": "/home/rainbow/rrnwm/data_splits/recon/server_full/splits.json"
+  },
+  "source_sha256": {
+    "metadata": "106c0c3e1e980835011e2a466c8172b5b539c641a69e235b42c039e5d03192ed",
+    "official_nwm_test": "3fb5b86d2530cb2a8b7110d45bd0fe5fd7ed071399d4df064242baeadb4426eb",
+    "official_nwm_train": "93b769ad0f37be0a73b13eb178520812614dabaa2665cb8670b8e8a8048525a7",
+    "splits": "911832a1fe5dfca6652518bde24e2d33925e6d51a93475e9636fcc306425fa49"
+  },
+  "temporal_bin_names": [
+    "early",
+    "mid_early",
+    "mid_late",
+    "late"
+  ],
+  "temporal_fractions": [
+    0.125,
+    0.375,
+    0.625,
+    0.875
+  ],
+  "valid_curr_time_rule": "3 <= curr_time <= num_frames - 5"
+}

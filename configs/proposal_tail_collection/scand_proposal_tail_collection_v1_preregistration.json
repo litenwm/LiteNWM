@@ -1,0 +1,81 @@
+{
+  "schema": "scand_proposal_tail_collection_preregistration_v1",
+  "status": "frozen_before_implementation_and_smoke",
+  "frozen_at_local_date": "2026-07-22",
+  "purpose": "Build an opt-in, sidecar-only SCAND proposal-tail collection contract for future route-independent data without changing formal v70 behavior.",
+  "evidence_role": "collection_infrastructure_only",
+  "formal_v70_contract": {
+    "checkpoint_unchanged": true,
+    "cem_iterations": 3,
+    "population": 16,
+    "elite_count": 4,
+    "proposal_scale": 0.7,
+    "support_quantile": 0.999,
+    "physical_guard_unchanged": true,
+    "safety_policy_unchanged": true,
+    "scorer_energy_unchanged": true,
+    "archive_and_fallback_unchanged": true,
+    "logger_default": "off",
+    "logger_may_influence_decision": false,
+    "logger_may_call_rng": false
+  },
+  "collection_roles": {
+    "spent_smoke": "Serialization and alignment smoke only; never training or performance evidence.",
+    "development": "Future route-independent proposal-tail development cohort.",
+    "one_time_validation": "Identity-sealed route-independent cohort; never tuning, calibration, or training."
+  },
+  "required_capture": [
+    "state_route_day_bag_trajectory_window_identity_and_hashes",
+    "history_current_goal_frame_indices_and_available_raw_timestamps",
+    "camera_resolution_encoding_jpeg_quality_and_file_metadata_or_null_reason",
+    "all_preclip_and_postclip_rng_draws_before_physical_or_support_filtering",
+    "draw_to_final_candidate_mapping_and_incumbent",
+    "physical_coordinate_submasks_and_margins",
+    "support_score_threshold_margin_and_mask",
+    "old_safety_component_margins_and_first_reject",
+    "available_three_seed_ltwm_values_and_explicit_unavailable_reasons",
+    "ensemble_mean_std_logits_probabilities_ucb",
+    "scorer_energy_components_round_rank_actions_and_structure_features",
+    "final_archive_selection_fallback_and_policy_hashes"
+  ],
+  "identity_rules": {
+    "reserve_path_or_name_token_is_fatal": true,
+    "reserve_content_must_never_be_opened": true,
+    "v70_through_v77_used_route_trajectory_or_window_overlap_is_fatal_for_future_cohorts": true,
+    "development_validation_route_overlap_is_fatal": true,
+    "route_day_bag_split_is_frozen_before_labels": true
+  },
+  "label_contract": {
+    "offline_only": true,
+    "truth_metrics": ["ate", "rpe", "endpoint", "objective"],
+    "objective_formula": "0.4*ATE+0.6*endpoint",
+    "unit": "meter",
+    "online_label_access": false,
+    "record_and_candidate_identity_alignment_required": true
+  },
+  "fail_closed": [
+    "schema_or_hash_mismatch",
+    "identity_overlap_or_reserve_token",
+    "missing_required_future_cohort_metadata",
+    "nonmonotonic_timestamps",
+    "unexpected_candidate_or_seed_shape",
+    "formal_output_or_rng_state_change",
+    "label_alignment_mismatch"
+  ],
+  "smoke_protocol": {
+    "allowed_data": "one explicitly marked spent/non-reserve SCAND window or existing spent cache",
+    "preferred_mode": "cached_serialization_dry_run_unless_full_v70_replay_is_cheap",
+    "historical_predraw_recovery_claim_allowed": false,
+    "performance_statistics_allowed": false,
+    "training_allowed": false,
+    "reserve_access_allowed": false
+  },
+  "acceptance_tests": [
+    "logger_off_matches_prechange_formal_v70",
+    "logger_observer_does_not_change_sample_order_rng_state_selection_energy_or_archive",
+    "sidecar_is_readable_by_fail_closed_validator",
+    "spent_truth_label_builder_shape_and_identity_smoke_only",
+    "all_new_artifacts_are_outside_formal_v70_output_directories"
+  ],
+  "automatic_next_step": "stop_after_collection_pipeline_and_smoke; do_not_collect_or_train"
+}

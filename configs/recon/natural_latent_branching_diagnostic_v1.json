@@ -1,0 +1,51 @@
+{
+  "schema": "natural_cross_recording_latent_branching_diagnostic_contract_v1",
+  "status": "frozen_before_single_natural_branching_diagnostic",
+  "purpose": "Determine whether the existing training trajectories contain enough cross-recording state matches with divergent actions and separable true future latents to support one pseudo-branching world-model pilot.",
+  "input": {
+    "latent_root": {
+      "path": "outputs/cem_development_v1/recon_target_ltwm_adaptation_v51/folds/hard_t/latent_train_view_v51c",
+      "metadata_sha256": "395253bbff75c52cea3d49cbc2173a1c523e96f7797434f5e1c884cc89fb8e83",
+      "splits_sha256": "969c95b567e3a65b300361b17f153d83e4dd7a3246efca27a36b5bc81e6ef368"
+    },
+    "split": "train",
+    "expected_trajectories": 450,
+    "expected_windows": 24487,
+    "outcome_labels_used": false
+  },
+  "representation": {
+    "current_state": "4x4x32 pooled current DINO latent, globally centered and L2 normalized",
+    "history_motion": "current minus first history-frame pooled DINO latent, globally centered and L2 normalized",
+    "signature": "L2-normalized concatenation of current state and 0.25 times history motion",
+    "action": "standardized flattened H1-H4 continuous actions",
+    "future": "H4 pooled true latent minus current pooled latent"
+  },
+  "matching": {
+    "cross_recording_only": true,
+    "recording_identity": "trajectory id with terminal _rNN removed",
+    "mutual_nearest_neighbors_required": true,
+    "top_k": 20,
+    "query_chunk_size": 256,
+    "random_pair_count": 200000,
+    "random_state_similarity_quantile": 0.999,
+    "similar_action_quantile": 0.25,
+    "diverse_action_quantile": 0.75,
+    "seed": 20260727
+  },
+  "go_gate": {
+    "minimum_mutual_state_pairs": 1000,
+    "minimum_diverse_action_pairs": 300,
+    "minimum_diverse_anchor_windows": 300,
+    "minimum_diverse_recordings": 50,
+    "minimum_action_future_rank_correlation": 0.15,
+    "minimum_diverse_vs_similar_future_ratio": 1.1
+  },
+  "runner": {
+    "path": "tools/recon/diagnose_natural_latent_branching_v1.py",
+    "sha256": "09bc29d97a7cbe5ba60790e661c0fb9472c24e0926ff5ec435eacf88171dc2df"
+  },
+  "if_go": "freeze matched-pair construction and train one true-future-latent pseudo-branching pilot with route-disjoint validation",
+  "if_no_go": "do not retrain on pseudo branches; require resettable or simulator branching future-latent data",
+  "new_training_table_created": false,
+  "sealed_validation_opened": false
+}

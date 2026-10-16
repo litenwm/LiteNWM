@@ -1,0 +1,124 @@
+{
+  "schema": "ltwm_action_observable_cycle_probe_contract_v1",
+  "status": "frozen_before_single_route_oof_probe",
+  "purpose": "Separate action observability of real future latents from action-cycle fidelity of frozen LTWM counterfactual predictions, using no ATE/objective training signal.",
+  "lineage": {
+    "withdrawn_hypothesis": "Same-state hard-negative action-path adaptation alone learns useful counterfactual futures.",
+    "withdrawal_evidence": {
+      "contract_path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "contract_sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1",
+      "runner_path": "tools/recon/run_ltwm_scand_same_state_hardneg_v1.py",
+      "runner_sha256": "b5aaf37864c9d022ef788c47caaca217d107f163cbfff588dc1c41ad93b5c0c6",
+      "result_path": "outputs/cem_development_v1/ltwm_scand_same_state_hardneg_v1/result.json",
+      "result_sha256": "cb29168f68b11e411be49550847fe0f9a5b88edcdbb889e46c41019b2b731c21",
+      "decision": "no_go_withdraw_same_state_hard_negative_action_path_hypothesis",
+      "held_route_executed_h4_absolute_nmse_change": -0.005841344594955444,
+      "held_route_executed_h4_residual_nmse_change": -0.025037944316864014,
+      "held_route_pairwise_action_win_change": 0.012922444355870592,
+      "held_route_objective_gain_m": -0.020951376989251,
+      "held_route_harm_rate": 0.6874205844980941
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c",
+      "states": 800,
+      "route_groups": 42,
+      "candidates_per_state": 65
+    }
+  },
+  "inverse_probe": {
+    "inputs": [
+      "previous adapted DINOv3 patch latent at t-1",
+      "current adapted DINOv3 patch latent at t",
+      "actual or predicted adapted DINOv3 patch latent at t+4"
+    ],
+    "target": "executed local SE(2) actions H1-H4, flattened to 12 dimensions",
+    "architecture": {
+      "shared_channel_projection": "384 to 24 with GELU",
+      "fields": [
+        "future minus current",
+        "current minus previous"
+      ],
+      "spatial_backbone": [
+        "3x3 conv 48 to 64",
+        "3x3 stride-2 conv 64 to 48",
+        "3x3 stride-2 conv 48 to 32"
+      ],
+      "head": "flatten 4x4x32, Linear 512 to 128, GELU, Dropout 0.1, Linear 128 to 12",
+      "parameters_approx": 150000
+    },
+    "target_standardization": "mean/std computed only from outer-train routes",
+    "loss": {
+      "standardized_action_smooth_l1_weight": 1.0,
+      "integrated_xy_path_smooth_l1_weight": 0.25
+    },
+    "outcome_labels_in_training": false,
+    "candidate_outcomes_in_training": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "route_fold_assignment": "exact deterministic assignment shared with scand_union65_listwise_selector_v1 and the withdrawn hard-negative experiment",
+    "fixed_steps_per_fold": 1500,
+    "batch_size": 16,
+    "sampling": "route-uniform then state-uniform with replacement",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072402,
+    "checkpoint_selection": "fixed final step; outer routes and outcomes never select epoch or hyperparameters"
+  },
+  "evaluation": {
+    "real_future_observability": [
+      "standardized 12D action RMSE",
+      "integrated four-step path RMSE in meters",
+      "H4 endpoint error in meters",
+      "route direction versus outer-train mean-action baseline"
+    ],
+    "frozen_warm_forward_cycle": [
+      "inverse-decoded candidate action versus input candidate action standardized RMSE",
+      "candidate ranking by distance between inverse(real goal latent) and inverse(predicted candidate future latent)"
+    ],
+    "fixed_direct_inverse_planner": "choose physical/support union65 action nearest to inverse(real goal latent) in outer-train standardized 12D action space; formal-v70 retained",
+    "posthoc_only_outcomes": [
+      "ATE/objective gain",
+      "dual/harm",
+      "oracle gain ratio",
+      "positive-route fraction"
+    ],
+    "outcome_labels_select_model_or_threshold": false,
+    "sealed_validation_opened": false
+  },
+  "observability_gate": {
+    "standardized_action_rmse_relative_to_mean_action_max": 0.80,
+    "integrated_path_rmse_relative_to_mean_action_max": 0.80,
+    "endpoint_error_relative_to_mean_action_max": 0.80,
+    "integrated_path_improved_route_fraction_min": 0.60
+  },
+  "performance_relevance_gate": {
+    "direct_inverse_objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "direct_inverse_ate_gain_positive": true,
+    "direct_inverse_harm_rate_max": 0.35,
+    "direct_inverse_positive_route_fraction_min": 0.60,
+    "direct_inverse_oracle_gain_ratio_min": 0.12
+  },
+  "branch_rule": {
+    "if_observability_and_relevance_pass_but_forward_inverse_fails": "Proceed once to frozen-inverse action-cycle LTWM training. The inverse probe remains frozen and ATE/objective gradients remain forbidden.",
+    "if_forward_inverse_already_passes": "Freeze the action-observable latent metric; no LTWM retraining is needed before the RECON latent guard.",
+    "if_real_future_observability_fails": "Stop current DINOv3 latent/action representation research; behavior-only LTWM tuning cannot recover information absent from the target representation.",
+    "if_observability_passes_but_relevance_fails": "Stop action-observable cycle branch because the physical signal is not aligned with the user's held-route ATE objective."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

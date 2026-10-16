@@ -1,0 +1,48 @@
+{
+  "actual_asset_load_passed": true,
+  "device": "cpu",
+  "models": {
+    "dino_adapter": true,
+    "nomad": true,
+    "ltwm_scorer_members": 3,
+    "selector_members": 3
+  },
+  "ros_imported": false,
+  "motion_api_imported": false,
+  "load_timings_ms": {
+    "dinov3_load_ms": 16249.8085,
+    "nomad_load_ms": 1953.2797,
+    "v70_ensemble_load_ms": 1619.5909
+  },
+  "public_variant_live_test_performed": false,
+  "synthetic_rgb_real_weights_plan_passed": true,
+  "plan_abstained": true,
+  "plan_timings_ms": {
+    "dinov3_encode": 2966.0245,
+    "nomad_candidate_generation": 362.3669,
+    "fixed_pool_planning": 7141.9289,
+    "cem_planning": 7219.7233,
+    "persistent_total": 17733.655
+  },
+  "core_and_execution_tests_passed": 53,
+  "asset_install_and_sha_verified_files": 34,
+  "offline_rgb_cli_passed": true,
+  "synthetic_input_warning": "Real frozen weights on synthetic RGB/poses validate execution, not navigation accuracy",
+  "optional_cuda_tensorrt_validated_on_this_computer": false,
+  "checkpoint_cross_platform_metadata_test_passed": true,
+  "live_boundary_simulation_passed": true,
+  "real_bash_launcher_modes_validated": [
+    "shadow",
+    "live_calibrated_automatic",
+    "live_operator_stop_only"
+  ],
+  "production_node_plan_accept_abstain_duplicate_shutdown_simulated": true,
+  "sdk_transport": "in-memory double; no DDS network or robot",
+  "blocking_issues_fixed": [
+    "ROS source under nounset",
+    "async images missing save flag in automatic live mode",
+    "prefetch enabled for unsupported automatic arrival mode"
+  ],
+  "cached_visual_plan_restoration_removed": true,
+  "hardware_validation_status": "not possible without robot; no physical motion test performed"
+}

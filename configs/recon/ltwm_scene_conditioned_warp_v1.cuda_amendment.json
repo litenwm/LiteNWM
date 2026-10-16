@@ -1,0 +1,46 @@
+{
+  "schema": "ltwm_scene_conditioned_token_warp_cuda_execution_amendment_v1",
+  "status": "frozen_before_retry_and_before_any_validation_result",
+  "base_contract": {
+    "path": "configs/recon/ltwm_scene_conditioned_warp_v1.json",
+    "sha256": "ff4415e9f0b32bfdad66319b366c35efe7d93d65016b196ddd92d583fa51d4e3"
+  },
+  "failed_attempt": {
+    "last_completed_training_batch": 1700,
+    "completed_epochs": 0,
+    "checkpoints_created": 0,
+    "validation_results_created": 0,
+    "error": "cudaErrorIllegalAddress"
+  },
+  "only_change": "flow MLP, affine_grid, and grid_sample execute in float32 outside bf16 autocast",
+  "unchanged": [
+    "architecture hypothesis",
+    "train and validation data",
+    "loss weights",
+    "seed",
+    "optimizer and learning rate",
+    "batch size",
+    "epochs and batches per epoch",
+    "checkpoint selection",
+    "world-model go gate"
+  ],
+  "implementation": {
+    "model": {
+      "path": "src/recon_latents/models_scene_conditioned_warp_cuda_safe_v1.py",
+      "sha256": "e994df1a28d10f2796d16939955afd479253e91a8618c4b588d20c54a565c1fa"
+    },
+    "runner": {
+      "path": "tools/recon/train_litetokenformer_wm_scene_warp_cuda_safe_v1.py",
+      "sha256": "18ba92314f39db59de0f2d33899db24e9213aa8c6bd9f7e49375512edc80285b"
+    },
+    "evaluator": {
+      "path": "tools/evaluation/evaluate_ltwm_scene_warp_cuda_safe_v1.py",
+      "sha256": "05da7df71a07d27685fd16f9673ef1afb7b8f588a3b819df6948458cc3787694"
+    },
+    "note": {
+      "path": "configs/recon/ltwm_scene_conditioned_warp_v1.cuda_amendment.md",
+      "sha256": "238bd831c06e6c8d1eb9b2871d6d2cbbafdd094f8e59af82131d7f1d1e1c336e"
+    }
+  },
+  "sealed_validation_opened": false
+}

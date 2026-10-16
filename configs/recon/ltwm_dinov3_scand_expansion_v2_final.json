@@ -1,0 +1,90 @@
+{
+  "experiment": "ltwm_dinov3_scand_expansion_v2_final",
+  "scientific_namespace": "behavior_trajectory_dino_token_prediction",
+  "split_lock": "data/split_lock/split_lock.json",
+  "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96",
+  "parent_split_lock": "data/parent_split_lock/split_lock.json",
+  "parent_split_lock_sha256": "32763b89772e5e499a0ee5248ae05ff5c9c9509a8fdc3f47af402ce20cbf933b",
+  "data": {
+    "history_frames": 4,
+    "future_frames": 4,
+    "scand": {
+      "train_trajectories": 212,
+      "train_h4_windows": 36632,
+      "val_trajectories": 22,
+      "val_h4_windows": 4145,
+      "test_trajectories": 43,
+      "test_h4_windows": 18005,
+      "novel_test_trajectories": 11,
+      "novel_test_h4_windows": 1869
+    },
+    "recon_split_membership": "unchanged_from_parent"
+  },
+  "representation": {
+    "backbone": "DINOv3-L/16",
+    "backbone_trainable": false,
+    "adapter_trainable": false,
+    "adapter_checkpoint": "checkpoints/project/dinov3_adapter/adapter_pilot_v1_final.pt",
+    "adapter_checkpoint_sha256": "bc0ec2cac457556bfb362b46b20584a02d8f954d8b7c17ed36b4c8646ec4ad5a"
+  },
+  "world_model": {
+    "architecture": "LiteTokenFormer-WM-v2-4ctx-base",
+    "parameter_count": 8001960,
+    "capacity_change": "none",
+    "train_scope": "all",
+    "warm_start": "same_seed_parent_checkpoint",
+    "optimizer_state": "reset"
+  },
+  "training": {
+    "seeds": [
+      1701,
+      1702,
+      1703
+    ],
+    "epochs": 1,
+    "batch_size": 4,
+    "eval_batch_size": 4,
+    "train_drop_last": false,
+    "scand_batches_per_epoch": 9241,
+    "total_batches_per_epoch": 36964,
+    "recon_batches_per_scand": 3,
+    "learning_rate": 0.00005,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "amp": "bf16",
+    "contrastive_every": 4,
+    "consistency_every": 8,
+    "eval_batches_per_epoch": 1046
+  },
+  "validation_gate": {
+    "checkpoint_selection_data": "scand_val_only",
+    "recon_guard_panel_seed": "10000 + training_seed",
+    "recon_guard_rule": "continued_h4_nmse <= 1.05 * same_seed_parent_h4_nmse",
+    "scand_primary_rule": "three_seed_mean_h4_nmse improves over same-seed parent",
+    "scand_seed_rule": "at least two of three seeds improve h4_nmse",
+    "test_access": "forbidden_until_all_three_checkpoints_and_validation_decision_are_frozen"
+  },
+  "test_plan": {
+    "world_model_baselines": [
+      "parent_recon_only",
+      "parent_recon_scand_v1",
+      "continued_recon_scand_v2"
+    ],
+    "scand_cohorts": [
+      "inherited_route_test",
+      "novel_route_test",
+      "combined_test"
+    ],
+    "metrics": [
+      "nmse_h1_h2_h3_h4",
+      "cosine_h1_h2_h3_h4",
+      "norm_ratio_h1_h2_h3_h4",
+      "reverse_action_nmse_gap_h4",
+      "noisy_action_nmse_gap_h4"
+    ],
+    "statistical_unit": "route_or_source_bag_not_overlapping_windows",
+    "uncertainty": "three_seed_mean_and_cluster_bootstrap_95ci",
+    "recon_guard_test": "report_recon_test_h4_change_without_tuning",
+    "planner_followup": "frozen scorer-v2 evaluation on sealed partitions"
+  }
+}

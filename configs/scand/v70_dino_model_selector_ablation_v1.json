@@ -1,0 +1,132 @@
+{
+  "protocol_id": "v70_dino_model_selector_ablation_v1",
+  "created_local_date": "2026-07-25",
+  "status": "frozen_before_ablation_execution",
+  "purpose": "Separate frozen-DINO context, project LTWM/scorer, and v70 selector contributions on the already-spent SCAND union65 replay.",
+  "claim_scope": {
+    "dataset": "800-state SCAND union65 replay",
+    "label_status": "spent_development",
+    "confirmatory_claim_allowed": false,
+    "allowed_interpretation": "exploratory route-disjoint attribution only",
+    "forbidden_interpretation": "fresh-test, deployment, or DINO-independence claim"
+  },
+  "nwm_contract": {
+    "horizon": 4,
+    "scand_waypoint_spacing_m": 0.38,
+    "trajectory_alignment": false,
+    "current_pose_prepended": false,
+    "primary_metric": "unaligned H1-H4 ATE in metres",
+    "secondary_metrics": [
+      "RPE",
+      "endpoint",
+      "objective",
+      "ATE p90",
+      "coverage",
+      "dual rate",
+      "harm rate"
+    ]
+  },
+  "inputs": {
+    "table": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+    "v4_oof": "outputs/cem_development_v1/scand_union65_fixed_dual_harm_safety_v4/outer_route_oof_predictions.npz",
+    "current_oof": "outputs/cem_development_v1/scand_union65_densemeta_residual_ridge_v1/outer_route_oof_predictions.npz",
+    "current_result": "outputs/cem_development_v1/scand_union65_densemeta_residual_ridge_v1/result.json",
+    "all_mode_transfer": "outputs/cem_development_v1/v70_dino_model_selector_ablation_v1/route_disjoint_all_modes.npz"
+  },
+  "representation_modes": {
+    "dino_only": {
+      "inputs": [
+        "DINOv3 static scene/goal features"
+      ],
+      "expected_candidate_property": "candidate-invariant within a state",
+      "selection": "retain formal-v70 on score ties"
+    },
+    "geometry": {
+      "inputs": [
+        "H4 action geometry",
+        "source round"
+      ]
+    },
+    "action": {
+      "inputs": [
+        "frozen action-only GroupFirst outputs"
+      ]
+    },
+    "action_plus_dino": {
+      "inputs": [
+        "frozen action+DINO-static GroupFirst outputs"
+      ],
+      "dense_meta_mode": "static"
+    },
+    "ltwm": {
+      "inputs": [
+        "frozen raw LTWM rollout and within-set relative latent outputs"
+      ]
+    },
+    "full": {
+      "inputs": [
+        "action",
+        "DINOv3 static",
+        "raw LTWM rollout",
+        "relative LTWM"
+      ]
+    }
+  },
+  "common_calibrator": {
+    "type": "outer-route-OOF ridge",
+    "alpha": 10.0,
+    "targets": [
+      "ATE gain versus formal-v70",
+      "objective gain versus formal-v70",
+      "harm probability",
+      "downside"
+    ],
+    "rank_energy": "negative mean predicted ATE/objective regret",
+    "candidate_validity": "physical_support_pool",
+    "fallback": "formal-v70 unless predicted dual gain is positive"
+  },
+  "representation_readouts": [
+    "rank_only",
+    "common_v4_harm_ucb_gate"
+  ],
+  "selector_ablation": {
+    "fixed_ranker": "current densemeta residual ridge outer-route-OOF predictions",
+    "harm_threshold": 0.6,
+    "uncertainty_multiplier": 1.5,
+    "variants": [
+      "no learned safety gate",
+      "mean-harm gate",
+      "harm-UCB gate",
+      "without incumbent fallback",
+      "initial K17 plus incumbent",
+      "cumulative CEM round 1",
+      "cumulative CEM round 2",
+      "final CEM round only plus incumbent",
+      "cross-round union65 safe archive"
+    ]
+  },
+  "predeclared_pairwise_attribution": [
+    "action_plus_dino minus action",
+    "full minus action_plus_dino",
+    "full minus ltwm",
+    "current full selector minus v4 selector",
+    "cross-round archive minus initial K17",
+    "cross-round archive minus final-round-only",
+    "harm-UCB gate minus no learned safety gate",
+    "incumbent fallback minus no fallback"
+  ],
+  "statistics": {
+    "outer_folds": 5,
+    "cluster_unit": "route_group",
+    "bootstrap_draws": 5000,
+    "bootstrap_seed": 20260725,
+    "interval": "percentile 95%",
+    "positive_direction": "positive delta means the first method has larger gain"
+  },
+  "decision_rule": {
+    "project_model_signal_supported_if": "full beats action_plus_dino with a positive route-bootstrap ATE lower bound",
+    "dino_alone_supported_if": "candidate-specific DINO variation exists and DINO-only beats formal-v70",
+    "selector_signal_supported_if": "the current archive+UCB+fallback selector improves ATE over restricted/naive selector controls without increasing replacement harm",
+    "dependency_caveat": "LTWM consumes frozen DINO tokens, so the experiment can establish value beyond DINO but cannot establish independence from DINO"
+  }
+}

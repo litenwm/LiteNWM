@@ -1,0 +1,177 @@
+{
+  "schema": "litenwm_go2_assets_v1",
+  "model_version": "sealed_tridomain_v70_20260729",
+  "weights_in_git": false,
+  "artifacts": [
+    {
+      "destination": "checkpoints/project/dinov3_adapter/adapter_pilot_v1_final.pt",
+      "sha256": "bc0ec2cac457556bfb362b46b20584a02d8f954d8b7c17ed36b4c8646ec4ad5a",
+      "bytes": 1586611
+    },
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1701/best.pt",
+      "sha256": "8970c387cd642027913c1cb01d5e2d2a2bfd6b58c94d1432e62880d3a434ac66",
+      "bytes": 96331997
+    },
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1702/best.pt",
+      "sha256": "6b4674d54b2da00a2825d12e6439e8bd87fb4ed6220bc6568ec3ea9350447338",
+      "bytes": 96331741
+    },
+    {
+      "destination": "checkpoints/latest/ltwm_expansion/seed1703/best.pt",
+      "sha256": "03bf6ad4dd023ec2828870b2ff1a110bf41936625ecc43c460bbf07c3ba62327",
+      "bytes": 96331677
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1701/best.pt",
+      "sha256": "e7cef7ce68e97ab74db2a07474b0e0880eff06c3d4f9e2803be3a861461930ef",
+      "bytes": 5956080
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1702/best.pt",
+      "sha256": "ee8f65aae6c117e76cc3e59ecc9f2b831e28ccc3625ca4db6bcf681ce0328f09",
+      "bytes": 5956080
+    },
+    {
+      "destination": "checkpoints/latest/scorer_v2/seed1703/best.pt",
+      "sha256": "49be8e8c5022ffcc9b8fc0a6298320711070f80c77909b27f799744a7ed14754",
+      "bytes": 5956080
+    },
+    {
+      "destination": "external/diffusion_policy/LICENSE",
+      "sha256": "304e99a48271e10820f71a1b86ef395c06c100d7f68dd1d308790d1064fc4d41",
+      "bytes": 1106
+    },
+    {
+      "destination": "external/diffusion_policy/diffusion_policy/model/diffusion/conditional_unet1d.py",
+      "sha256": "8a95014f8aa52ade086f967c9018a66bf0c68f2133969c8f7a8522da01b472ac",
+      "bytes": 8952
+    },
+    {
+      "destination": "external/diffusion_policy/diffusion_policy/model/diffusion/conv1d_components.py",
+      "sha256": "ea2aa10e297cf253bc1a1919ba47fe6ae32049b5eaaab292ed9cc145d8d2adc0",
+      "bytes": 1223
+    },
+    {
+      "destination": "external/diffusion_policy/diffusion_policy/model/diffusion/positional_embedding.py",
+      "sha256": "2266c75ecc9c9ac8ca126839d39a7bafbdd7af8800d6de903f66815e64cc366c",
+      "bytes": 480
+    },
+    {
+      "destination": "external/dinov3-vitl16-pretrain-lvd1689m/config.json",
+      "sha256": "135ecd23e34a70b6fbed8b083fdecb319b7e3a54e3d849258bbe4ddcf1783bb5",
+      "bytes": 745
+    },
+    {
+      "destination": "external/dinov3-vitl16-pretrain-lvd1689m/configuration.json",
+      "sha256": "2e298ee07ca76e112e8cb5524061000871a464b0088d14becb7d0564215a9380",
+      "bytes": 74
+    },
+    {
+      "destination": "external/dinov3-vitl16-pretrain-lvd1689m/model.safetensors",
+      "sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179",
+      "bytes": 1212559808
+    },
+    {
+      "destination": "external/dinov3-vitl16-pretrain-lvd1689m/preprocessor_config.json",
+      "sha256": "960c41d1f3a7778b936365769a2d90550b318a6c0a53a0296957adacfe5e0dd7",
+      "bytes": 585
+    },
+    {
+      "destination": "external/nomad/nomad.pth",
+      "sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333",
+      "bytes": 76473631
+    },
+    {
+      "destination": "external/nomad/nomad.yaml",
+      "sha256": "eb1aa594abd62a97a8ece0c735a4d2274a703d0fffaa3a97b0f880a950bba463",
+      "bytes": 3563
+    },
+    {
+      "destination": "external/visualnav-transformer/LICENSE",
+      "sha256": "d21d985bbb4cf1621a8276a545860a9109804030bc273e08149b4191f81ac3ba",
+      "bytes": 1158
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/nomad/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/nomad/nomad.py",
+      "sha256": "fd404eb014195a090964ee214d5a976f5b8e8e181c48230b3f8957a04836dd61",
+      "bytes": 1559
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/nomad/nomad_vint.py",
+      "sha256": "87c2440ee1ffe9b6ecbdfc17c9fff2223ac90096bd3abd75ee0b59a0c0a67224",
+      "bytes": 7970
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/vint/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "destination": "external/visualnav-transformer/train/vint_train/models/vint/self_attention.py",
+      "sha256": "e28c8eb0c5017d8690b1328a7ec75c30c7fa30416f232b05b9bb406670ce57a6",
+      "bytes": 2138
+    },
+    {
+      "destination": "runtime/v70_tridomain/action_support/coherent_turn_tail_v1.npz",
+      "sha256": "31dc45e8c588691587afed7c87f8c3c1f0a248c2c3d240f70a18f6aadfacc9cd",
+      "bytes": 23938
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/checkpoints/proposal_aware_full_seed0.pt",
+      "sha256": "242688fd252fd6ea650f4211afa4dc7bdb4075c6e8e3d10399b3255a67bd9daa",
+      "bytes": 3324452
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/checkpoints/proposal_aware_full_seed1.pt",
+      "sha256": "7e9c9fb62ff85e97946c3406c458c8b2cbf5155a3f77f3169c08073f45947726",
+      "bytes": 3324452
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/checkpoints/proposal_aware_full_seed2.pt",
+      "sha256": "47a65c3df352a8f1cbedbce676f51f0d9769fcde1a6e7b4b6238a6a2697c3c43",
+      "bytes": 3324452
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/fair_eval_protocol_preregistration_v1.json",
+      "sha256": "765f718c2214aa1733595a72b28292a981d17d534654bb6109686b47c2215ab5",
+      "bytes": 1696
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/result.json",
+      "sha256": "f07c41b906fcb7eebb17215d1cabd2471a9eaffe6eaa1cbbb69ded3bc9ec60ab",
+      "bytes": 20071
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/seal_record.json",
+      "sha256": "5d7752da153db6bad87b79aaa4836feabff34bf04d9c6b4bc4764b46c483f535",
+      "bytes": 15836
+    },
+    {
+      "destination": "runtime/v70_tridomain/selector/support/tridomain_spacing_envelopes.npz",
+      "sha256": "da86c3f8286da60ac96fd0c3a9cd612ecdc3ed4198a82345868fa24592a6bfd9",
+      "bytes": 7052477
+    },
+    {
+      "destination": "external/visualnav-transformer/deployment/src/.keep",
+      "sha256": "2e09060a903c47c1c6d93176c0e7f747a02adcfc0bd478fb840bde98b47bdecc",
+      "bytes": 304
+    }
+  ]
+}

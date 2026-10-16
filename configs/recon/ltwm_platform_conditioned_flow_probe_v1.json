@@ -1,0 +1,93 @@
+{
+  "schema": "ltwm_platform_conditioned_flow_probe_contract_v1",
+  "status": "frozen_before_single_platform_conditioned_flow_route_oof_probe",
+  "purpose": "Test whether the raw-flow failure is caused by mixing robot/camera metric scales rather than absence of pixel-motion information.",
+  "hypothesis": "Robot-specific action standardization plus an explicit frozen robot/camera condition will convert DIS flow into route-general metric paths.",
+  "lineage": {
+    "unconditioned_flow": {
+      "contract_path": "configs/recon/ltwm_raw_flow_motion_probe_v1.json",
+      "contract_sha256": "578a611d32b54cfda084b2dfca88d09637e2dbc998ebc2ff4401edfe1a0c990c",
+      "runner_path": "tools/recon/run_ltwm_raw_flow_motion_probe_v1.py",
+      "runner_sha256": "8bfaaeb78a034788e7ea15c1111e64ccc0e816c4ba83193a73d562a756cee12f",
+      "result_path": "outputs/cem_development_v1/ltwm_raw_flow_motion_probe_v1/result.json",
+      "result_sha256": "b13c5fba6e4344635fbf0e768d917bbd34e951f4cbf817fcff8032350ded608d",
+      "decision": "no_go_existing_raw_rgb_pose_supervision_insufficient",
+      "spot_ate_gain_m": -0.00637700080871582,
+      "jackal_ate_gain_m": -0.024647119522094727
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "full_stream_latents": {
+      "root": "outputs/cem_development_v1/scand_full_stream_latents_v2",
+      "metadata_sha256": "0f678ded8c673e78652d74221eb094aac87d5b2b9bba3ab6df07e57b783caa29",
+      "splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+      "trajectories_sha256": "822c3911deca3198f87e7603fab8eab22eb0c7c07e8c2b12c27257e6df71b54a",
+      "ordered_shard_sha256_aggregate": "cc020c932770f1cf352666aa337f13980e4144df8f0516665ba3cba296063bd5",
+      "raw_root": "/home/rainbow/nwm/data/scand"
+    }
+  },
+  "flow_latent": {
+    "definition": "identical 16-channel four-pair DIS flow latent from unconditioned experiment",
+    "persistent_new_table": false
+  },
+  "conditioning": {
+    "robot_order": [
+      "Jackal",
+      "Spot"
+    ],
+    "camera_order": [
+      "full_stream_unknown",
+      "legacy_preprocessed_scand_contract",
+      "audited_canonical_main_rgb_320x240"
+    ],
+    "full_stream_camera": "full_stream_unknown",
+    "target_standardization": "mean/std separately for Jackal and Spot using outer-train target states only",
+    "condition_injection": "five one-hot values concatenated after the 512-D spatial backbone"
+  },
+  "probe": {
+    "architecture": "same flow CNN, Linear 517 to 128 to 12",
+    "outcome_labels_in_training": false,
+    "ate_or_objective_gradient": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "fixed_steps_per_fold": 1500,
+    "batch_size": 16,
+    "batch_composition": {
+      "route-excluded full-stream windows": 8,
+      "outer-train frozen-table states": 8
+    },
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072408,
+    "checkpoint_selection": "fixed final step; no outer outcome selects model or duration"
+  },
+  "performance_gate": {
+    "ate_gain_m_min_exclusive": 0.002526717376050023,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "ate_oracle_gain_ratio_min": 0.20
+  },
+  "branch_rule": {
+    "if_performance_passes": "Freeze the conditioned flow latent and train one matching LTWM flow auxiliary head.",
+    "if_performance_fails": "The same calibrated-geometry blocker has been confirmed with all local alternatives exhausted."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

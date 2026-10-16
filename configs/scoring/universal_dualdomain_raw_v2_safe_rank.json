@@ -1,0 +1,31 @@
+{
+  "schema": "universal_dualdomain_raw_v2_safe_rank_protocol",
+  "base_result": "outputs/universal_dualdomain_raw_v2/training_v2/result.json",
+  "base_arm": "D",
+  "seed": 20260721,
+  "fine_tune_epochs": 30,
+  "batch_states": 32,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": 5.0,
+  "loss_weights": {
+    "regression": 0.5,
+    "dual_bce": 1.5,
+    "harm_bce": 3.0,
+    "safe_listwise": 4.0,
+    "incumbent_pairwise": 1.0,
+    "harmful_pair_multiplier": 4.0
+  },
+  "safe_listwise_temperature_m": 0.03,
+  "domain_weighting": "0.50/0.50 per member with inverse route frequency",
+  "calibration": {
+    "minimum_coverage": 0.4,
+    "target_dual_precision": 0.9,
+    "target_wilson_lower_95": 0.8,
+    "maximum_harm_rate": 0.1,
+    "continuous_thresholds": true
+  },
+  "primary_excludes_scorer_v2_predictions": true,
+  "fixed_pool_only": true,
+  "cem": false
+}

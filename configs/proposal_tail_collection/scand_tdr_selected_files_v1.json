@@ -1,0 +1,30 @@
+{
+  "schema": "scand_tdr_selected_files_v1",
+  "status": "official_tdr_metadata_snapshot_for_frozen_18_bag_plan",
+  "dataset_doi": "doi:10.18738/T8/0PRYRH",
+  "dataset_api": "https://dataverse.tdl.org/api/datasets/:persistentId/?persistentId=doi%3A10.18738%2FT8%2F0PRYRH",
+  "dataset_version_id": 6196,
+  "official_metadata_retrieved_at": "2026-07-23T02:22:00+08:00",
+  "retrieval_scope": "public metadata only; no bag content downloaded",
+  "files": [
+    {"label":"A_Jackal_GDC_GDC_Fri_Oct_29_11.bag","file_id":133233,"filesize":88448269,"checksum_type":"MD5","checksum":"9c94d9fac1ecf4dce6dba383ddac61ac","persistent_id":"doi:10.18738/T8/0PRYRH/DCF8QK","directory_label":"Bags"},
+    {"label":"B_Spot_Thompson_Thompson_Sat_Nov_13_100.bag","file_id":138183,"filesize":2839474594,"checksum_type":"MD5","checksum":"9bd36df836040f2582094c948dbe6600","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Jackal_Libraryfront_Librarydoors_Thu_Nov_4_20.bag","file_id":133249,"filesize":336944282,"checksum_type":"MD5","checksum":"c22ed895844a812e0ca3787c1708b754","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_NHB_Ahg_Wed_Nov_10_55.bag","file_id":136682,"filesize":171991737,"checksum_type":"MD5","checksum":"482120377c8283876d46c6f0d922160c","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Thompson_Butler_Sat_Nov_13_103.bag","file_id":138187,"filesize":393195880,"checksum_type":"MD5","checksum":"d948691fad2809a36b42fbdf9b15ab97","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Stadium_Rec_Fri_Nov_26_135.bag","file_id":136017,"filesize":3492971465,"checksum_type":"MD5","checksum":"bf83de9386937bb3f1e71a7102fc8f5e","persistent_id":null,"directory_label":"Bags"},
+    {"label":"B_Spot_RLM_RLM_Wed_Nov_10_44.bag","file_id":136673,"filesize":159860509,"checksum_type":"MD5","checksum":"354c6dac694febe5544ad24aa4f65772","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Union_Library_Tue_Nov_9_37.bag","file_id":136671,"filesize":4836316860,"checksum_type":"MD5","checksum":"7b73378aa7a44254314e370db0bf38a6","persistent_id":null,"directory_label":"Bags"},
+    {"label":"C_Spot_Foodtruck_Bass_Fri_Nov_26_133.bag","file_id":136457,"filesize":1529176805,"checksum_type":"MD5","checksum":"b2e2909009a06c306e1e4bb9cc930e07","persistent_id":null,"directory_label":"Bags"},
+    {"label":"B_Spot_SAC_SAC_Mon_Nov_15_109.bag","file_id":138193,"filesize":1383009032,"checksum_type":"MD5","checksum":"7ada113b23b218fd454e3479541af008","persistent_id":null,"directory_label":"Bags"},
+    {"label":"B_Jackal_Sanjac_Stadium_Sat_Nov_13_89.bag","file_id":138170,"filesize":688529164,"checksum_type":"MD5","checksum":"c91d0605a6298d41aa762cae4e2d4dda","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Fountain_Library_Tue_Nov_16_120.bag","file_id":138263,"filesize":947344256,"checksum_type":"MD5","checksum":"8d9fd07b3d3c44c93fe5c08441b1920a","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_AHG_Library_Tue_Nov_16_118.bag","file_id":138265,"filesize":2202282340,"checksum_type":"MD5","checksum":"27ce45b7b2f6e452ae74cdda1beead8d","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_AHG_Fountain_Mon_Dec_20_137.bag","file_id":133251,"filesize":2360870396,"checksum_type":"MD5","checksum":"0b1d5688f06a0ff429b7a9417f604bbe","persistent_id":null,"directory_label":"Bags"},
+    {"label":"B_Spot_GDC_AHG_Mon_Nov_15_116.bag","file_id":138267,"filesize":1101900741,"checksum_type":"MD5","checksum":"15fff46a5ec61a485a85630f3cab9743","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Bass_Garage_Fri_Nov_26_134.bag","file_id":136455,"filesize":640252794,"checksum_type":"MD5","checksum":"7fbedd46558333dbf46623ede6fc4a0b","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_Fountain_Greg_Mon_Dec_20_138.bag","file_id":133228,"filesize":1859693845,"checksum_type":"MD5","checksum":"d7a299cef21c7d1df401934f4411929d","persistent_id":null,"directory_label":"Bags"},
+    {"label":"A_Spot_EERC_Ahg_Thu_Nov_11_80.bag","file_id":138157,"filesize":1063579875,"checksum_type":"MD5","checksum":"49f0abae78b363ea358f511e0ef29ea3","persistent_id":null,"directory_label":"Bags"}
+  ],
+  "reserve_content_accessed": false
+}

@@ -1,0 +1,114 @@
+{
+  "protocol_id": "scand_domain_adaptation_v1",
+  "created_utc": "2026-07-20T12:05:00Z",
+  "status": "frozen_before_scorer_cal_label_access",
+  "objective": "Adapt SCAND support and full/meta-raw without reusing spent strict100 outcomes.",
+  "data_contract": {
+    "spent_strict100": {
+      "manifest": "data/evaluation/scand/strict_test_h4_100_seed17/manifest.jsonl",
+      "sha256": "615904ece9d97894965f14076134f749b9234c2d39c18aca45c1c613ea870b1d",
+      "windows": 100,
+      "trajectories": 43,
+      "uses": []
+    },
+    "train_fit": {
+      "manifest": "data/inner_manifests/scand/train-fit.windows.jsonl",
+      "sha256": "853d0ef183140681b12104681453a2c9674f664445b0a92d4f627bedda79d313",
+      "windows": 7489,
+      "trajectories": 138,
+      "route_groups": 29,
+      "uses": ["fit", "family_disjoint_oof"]
+    },
+    "scorer_cal": {
+      "manifest": "outputs/scand_domain_adaptation_v1/manifests/scorer_cal_rgb_available.windows.jsonl",
+      "sha256": "50e58698f00448fc256f79cbd18524c188b20f65a7276679a0b40986b8888746e",
+      "windows": 1213,
+      "excluded_missing_rgb_windows": 2,
+      "trajectories": 20,
+      "route_groups": 4,
+      "uses": ["support_calibration", "promotion_calibration", "meta_oof_calibration"]
+    },
+    "cem_cal": {
+      "manifest": "data/inner_manifests/scand/cem-cal.windows.jsonl",
+      "uses": [],
+      "reserved_for_future_cem": true
+    },
+    "internal_holdout": {
+      "manifest": "data/inner_manifests/scand/internal-holdout.windows.jsonl",
+      "windows": 986,
+      "trajectories": 21,
+      "route_groups": 4,
+      "label_status": "sealed",
+      "pre_freeze_uses": ["rgb_availability_and_identity_audit_only"]
+    },
+    "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96",
+    "required_disjoint_keys": ["trajectory_id", "route_group", "physical_bag"],
+    "family_key": "domain::route_group"
+  },
+  "candidate_pool": {
+    "size": 17,
+    "incumbent": "trimmed_mean75",
+    "proposals": "fixed_nomad_x16",
+    "seed": 17,
+    "horizon": 4,
+    "scand_spacing_m": 0.38,
+    "recon_spacing_m": 0.25,
+    "cem": false
+  },
+  "support": {
+    "type": "domain_aware_spacing_normalized_envelope_v1",
+    "features": ["dx_m/spacing_m", "dy_m/spacing_m", "dyaw_rad"],
+    "fit_candidates": "train_fit_non_incumbent_only",
+    "covariance": "ledoit_wolf",
+    "nonconformity": "max(sqrt(mahalanobis_sq/12), max_abs_robust_z/3)",
+    "acceptance_quantiles": [0.9, 0.95, 0.975, 0.99, 0.995, 0.999],
+    "physical_guard_quantile": 0.999,
+    "candidate_zero_always_supported": true,
+    "calibration_partition": "scorer_cal"
+  },
+  "training": {
+    "domain_regimes": {
+      "scand_only": "all_scand_train_fit",
+      "domain_balanced": "all_recon_dense_train_plus_equal_size_deterministic_route_balanced_scand_sample_seed17038"
+    },
+    "ablations": {
+      "support_only": {"ranker": "frozen_native_scorer_v2", "support": "spacing_normalized"},
+      "raw_only": {"ranker": "scand_adapted_full_meta_raw", "support": "frozen_scorer_v2_majority"},
+      "support_plus_raw": {"ranker": "scand_adapted_full_meta_raw", "support": "spacing_normalized", "role": "primary"}
+    },
+    "raw_inputs": ["action", "dinov3_static", "raw_ltwm_rollout", "raw_ltwm_three_seed_epistemic"],
+    "forbidden_primary_inputs": ["scorer_v2_ate", "scorer_v2_rtp", "scorer_v2_uncertainty"],
+    "v2_stacked_role": "secondary_ablation_only",
+    "folds": 5,
+    "epochs": 100,
+    "batch_size": 4096,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "hidden_dim": 192,
+    "dropout": 0.08,
+    "seed": 17038,
+    "early_stopping": "train_fit_family_oof_only"
+  },
+  "calibration": {
+    "partition": "scorer_cal",
+    "promotion_threshold_quantiles": [0.0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95],
+    "minimum_promotions": 32,
+    "target_dual_precision": 0.85,
+    "target_dual_wilson_lower_95": 0.8,
+    "fallback": "maximize_wilson_then_minimize_objective_regret_then_maximize_promotions",
+    "meta_ridge_alphas": [0.01, 0.1, 1.0, 10.0, 100.0],
+    "meta_thresholds": [0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95]
+  },
+  "pre_holdout_freeze": {
+    "required": ["models", "support", "gates", "candidate_pool", "features", "selected_index", "policy", "sha256_manifest"],
+    "open_labels_only_after_freeze": true
+  },
+  "reporting": {
+    "metrics": ["ate", "rpe", "endpoint", "objective"],
+    "aggregates": ["mean", "p90"],
+    "safety": ["support_acceptance", "no_support_windows", "promotions", "dual_precision", "wilson_lower", "harm_magnitude"],
+    "clustered_ci": ["trajectory", "route"],
+    "fixed_pool_only": true,
+    "cem": false
+  }
+}

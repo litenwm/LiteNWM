@@ -1,0 +1,48 @@
+{
+  "schema": "scand_union65_fixed_dual_harm_deployment_contract_v1",
+  "status": "frozen_before_full_fit",
+  "source_prototype": {
+    "contract": {
+      "path": "configs/scand/cem_union65_fixed_dual_harm_safety_v4.json",
+      "sha256": "585beb9d1605574fd82bc9533ce1c3cc03621e675e2db98e5c3296dfdf3a31d3"
+    },
+    "runner": {
+      "path": "tools/evaluation/run_scand_union65_fixed_dual_harm_safety_v4.py",
+      "sha256": "78ef3714ce0d015d59e7478af7ffeb21d72ad03fb6b82e4f7ababab7c5b23804"
+    },
+    "result": {
+      "path": "outputs/cem_development_v1/scand_union65_fixed_dual_harm_safety_v4/result.json",
+      "sha256": "86ff874870b5b13068051ebe9722da862ad299ee02cfb22e467d8f19350e7699"
+    },
+    "outer_route_oof_predictions": {
+      "path": "outputs/cem_development_v1/scand_union65_fixed_dual_harm_safety_v4/outer_route_oof_predictions.npz",
+      "sha256": "a0634e19bb467bb6a136c529b8d971f4d42f338b9340e2dc0bf706b48a0ebc83"
+    },
+    "outer_models": {
+      "path": "outputs/cem_development_v1/scand_union65_fixed_dual_harm_safety_v4/frozen_outer_models.npz",
+      "sha256": "849c9baa2272565d540802a2604f8511d787d8920243535b2f9dcaeaa18db9f5"
+    },
+    "required_decision": "go_freeze_exact_v4_selector_for_one_time_sealed_validation"
+  },
+  "training_table": {
+    "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+    "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+  },
+  "full_fit": {
+    "ensemble_seeds": [20260725, 20260726],
+    "states": 800,
+    "epochs": 16,
+    "model_and_loss": "bit-identical implementation and hyperparameters from source v4 contract"
+  },
+  "threshold_calibration": {
+    "source": "source prototype outer-route-OOF head predictions only",
+    "outcome_labels_used": false,
+    "target_coverage": 0.4,
+    "rule": "same fixed v4 eligibility and threshold_for_coverage"
+  },
+  "validation_status": {
+    "independent_validation_completed": false,
+    "known_clean_compatible_holdout_available": false,
+    "deployment_authorized": false
+  }
+}

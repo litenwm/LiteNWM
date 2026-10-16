@@ -1,0 +1,117 @@
+{
+  "schema": "ltwm_soft_correspondence_motion_probe_contract_v1",
+  "status": "frozen_before_single_soft_correspondence_route_oof_probe",
+  "purpose": "Test the last representation-level explanation for the counterfactual selection gap: same-position token subtraction discards spatial correspondence under camera motion.",
+  "hypothesis": "A parameter-free all-pairs soft correspondence field over real adapted-DINO tokens, followed by one small fixed inverse head and route-disjoint target-domain mixing, can recover a held-route four-step path accurately enough to select useful union65 candidates.",
+  "lineage": {
+    "withdrawn_full_stream_probe": {
+      "contract_path": "configs/recon/ltwm_full_stream_action_observability_v1.json",
+      "contract_sha256": "51f12e0f270a619867f5c666960b14e6797b2bb3e88815790b70a2e53fe5e12d",
+      "runner_path": "tools/recon/run_ltwm_full_stream_action_observability_v1.py",
+      "runner_sha256": "e7674fe98cb4a50a427cb565398254cc60a0ca417770453ba49a2bf481cd1d28",
+      "result_path": "outputs/cem_development_v1/ltwm_full_stream_action_observability_v1/result.json",
+      "result_sha256": "c8805a2367933bc21a5ee810209507cd3d01a9cf929d05e90be67f28ec2a2150",
+      "decision": "no_go_withdraw_full_stream_sample_shortage_hypothesis",
+      "integrated_path_relative_to_mean_action": 0.7724347703660182,
+      "held_route_ate_gain_m": -0.008398999358760192,
+      "held_route_objective_gain_m": -0.010517431040061637,
+      "held_route_harm_rate": 0.47745358090185674
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "full_stream_latents": {
+      "root": "outputs/cem_development_v1/scand_full_stream_latents_v2",
+      "metadata_sha256": "0f678ded8c673e78652d74221eb094aac87d5b2b9bba3ab6df07e57b783caa29",
+      "splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+      "trajectories_sha256": "822c3911deca3198f87e7603fab8eab22eb0c7c07e8c2b12c27257e6df71b54a",
+      "ordered_shard_sha256_aggregate": "cc020c932770f1cf352666aa337f13980e4144df8f0516665ba3cba296063bd5"
+    },
+    "warm_checkpoint": {
+      "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+      "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+    }
+  },
+  "representation": {
+    "token_source": "frozen adapted-DINOv3 16x16x384 patch latents",
+    "soft_correspondence": {
+      "pairs": [
+        "previous to current",
+        "current to real future t+4"
+      ],
+      "token_similarity": "L2-normalized all-pairs cosine",
+      "temperature": 0.07,
+      "spatial_gaussian_sigma_patches": 4.0,
+      "per_source_patch_fields": [
+        "expected x displacement divided by 8",
+        "expected y displacement divided by 8",
+        "maximum cosine similarity",
+        "normalized correspondence entropy"
+      ],
+      "trainable_parameters": 0
+    },
+    "residual_projection": "shared Linear 384 to 16 plus GELU for future-current and current-previous token residuals",
+    "fixed_coordinates": "normalized x,y patch coordinates",
+    "spatial_head": [
+      "Conv 42 to 64",
+      "stride-2 Conv 64 to 48",
+      "stride-2 Conv 48 to 32",
+      "Linear 512 to 128 to 12"
+    ],
+    "outcome_labels_in_training": false,
+    "ate_or_objective_gradient": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "route_fold_assignment": "exact deterministic assignment shared with prior probes",
+    "fixed_steps_per_fold": 1500,
+    "batch_size": 16,
+    "batch_composition": {
+      "route-excluded full-stream windows": 8,
+      "outer-train frozen-table states": 8
+    },
+    "sampling": "route-uniform then example-uniform independently within each domain",
+    "target_standardization": "outer-train frozen-table states only, matching deployment-domain units and yaw scale",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072404,
+    "checkpoint_selection": "fixed final step; no outer state or outcome selects training length, representation, or parameters"
+  },
+  "loss": {
+    "standardized_action_smooth_l1_weight": 1.0,
+    "integrated_xy_path_smooth_l1_weight": 0.25
+  },
+  "fixed_primary_planner": {
+    "definition": "choose the physical/support union65 action whose integrated four-step XY path is nearest to the inverse-decoded real goal path; formal-v70 remains in the set",
+    "true_path_ceiling_ate_gain_m": 0.03213468994246796,
+    "true_path_ceiling_objective_gain_m": 0.04201809135847725
+  },
+  "performance_gate": {
+    "ate_gain_m_min_exclusive": 0.002526717376050023,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "ate_oracle_gain_ratio_min": 0.20
+  },
+  "branch_rule": {
+    "if_primary_performance_passes": "Freeze the fold probes and decode frozen warm-LTWM candidate futures once with the identical correspondence representation.",
+    "if_primary_performance_fails": "Withdraw the soft-correspondence hypothesis and freeze a no-go for the current adapted-DINO future-latent representation; do not tune architecture, thresholds, ordinary selectors, or CEM rounds.",
+    "if_warm_forward_fails_after_primary_pass": "Proceed once to frozen-probe path-cycle LTWM training without ATE/objective gradients."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scand_proposal_tail_collection_v1.schema.json",
+  "title": "SCAND proposal-tail sidecar collection manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema",
+    "status",
+    "cohort_role",
+    "evidence_role",
+    "formal_behavior_influence",
+    "raw_draws_observable",
+    "states",
+    "candidate_count",
+    "seed_count",
+    "metric_names",
+    "feature_waypoint_unit_m",
+    "identity",
+    "unavailable_fields",
+    "files"
+  ],
+  "properties": {
+    "schema": {"const": "scand_proposal_tail_sidecar_v1"},
+    "status": {"enum": ["complete", "cached_serialization_dry_run"]},
+    "cohort_role": {
+      "enum": ["spent_smoke", "development", "one_time_validation"]
+    },
+    "evidence_role": {"type": "string"},
+    "formal_behavior_influence": {"const": false},
+    "raw_draws_observable": {"type": "boolean"},
+    "states": {"type": "integer", "minimum": 1},
+    "candidate_count": {"const": 65},
+    "seed_count": {"const": 3},
+    "metric_names": {
+      "const": ["ate", "rpe", "endpoint", "objective"]
+    },
+    "feature_waypoint_unit_m": {"const": 0.25},
+    "identity": {
+      "type": "object",
+      "required": ["manifest_sha256", "record_key_sha256"]
+    },
+    "unavailable_fields": {"type": "object"},
+    "files": {"type": "object", "minProperties": 1}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "litenwm_go2_public_runtime_v1",
+  "model_version": "sealed_tridomain_v70_20260729",
+  "history_frames": 4,
+  "planning_horizon": 4,
+  "pool_size_including_incumbent": 17,
+  "ensemble_seeds": [1701, 1702, 1703],
+  "executed_steps_per_plan": 1,
+  "action_replay": false,
+  "inflight_motion_bridge": false,
+  "abstention_motion_recovery": false,
+  "unavailable_fresh_plan_command": "zero_velocity",
+  "default_cem_iteration_budget": 1,
+  "maximum_supported_cem_iteration_budget": 3,
+  "opentrackvla_required": false,
+  "shadow_before_live": true,
+  "automatic_arming": false,
+  "physical_validation_of_public_variant": "not_performed"
+}

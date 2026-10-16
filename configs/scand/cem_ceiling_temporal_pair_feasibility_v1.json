@@ -1,0 +1,69 @@
+{
+  "schema": "scand_temporal_pair_encoder_feasibility_contract_v1",
+  "status": "frozen_before_outer_route_predictions",
+  "evidence_role": "spent_four_route_representation_feasibility_only",
+  "hypothesis": "Preserving H1-H4 and exchangeable three-seed order statistics improves route-held-out identification of candidates that safely beat frozen formal-v70.",
+  "feature_contract": {
+    "token_dimension": 72,
+    "context_dimension": 87,
+    "horizons": 4,
+    "seed_order_statistics": 3,
+    "latent_metrics": 7
+  },
+  "model": {
+    "family": "shared_horizon_temporal_pair_encoder",
+    "width": 32,
+    "epochs": 40,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 20260723,
+    "gain_scale_m": 0.05,
+    "route_balanced_loss": true,
+    "outer_folds": "leave_one_whole_route_out"
+  },
+  "strict_gate": {
+    "dual_probability_min": 0.85,
+    "harm_probability_max": 0.15,
+    "predicted_objective_gain_positive": true,
+    "predicted_ate_gain_positive": true
+  },
+  "diagnostic": {
+    "fixed_route_coverage": 0.1,
+    "coverage_selected_without_outcome_labels": true,
+    "sealed_validation_may_open": false
+  },
+  "feasibility_gate": {
+    "dual_auroc_min": 0.82,
+    "harm_auroc_min": 0.82,
+    "objective_pearson_min": 0.45,
+    "top5_dual_state_recall_min": 0.85,
+    "fixed_coverage_dual_rate_min": 0.8,
+    "fixed_coverage_harm_rate_max": 0.2,
+    "minimum_positive_routes": 3
+  },
+  "inputs": {
+    "runner": {
+      "path": "tools/evaluation/research_scand_temporal_pair_encoder_v1.py",
+      "sha256": "7a877d14e00f53b7307f42990ea5f2851a6fda24f9939c3c049df61c20e2b945"
+    },
+    "temporal_features": {
+      "path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/temporal_pair_features.npz",
+      "sha256": "7088ce08a0b3bab98615a1a4b62992eaf25bc2ec20924ed0140c53d76801e7e8"
+    },
+    "candidate_table": {
+      "path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/proposal_tail_sidecar/candidate_table.npz",
+      "sha256": "c78cfe9ca58ad1490a77d4bd649df29fb177d98e52947e0b068ed6d7e28217f1"
+    },
+    "formal_snapshot": {
+      "path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/proposal_tail_sidecar/formal_selection_snapshot.npz",
+      "sha256": "1445c3d29e1a578af8ec9ee11a02184fb22a26f589131886234d8cdb948499be"
+    },
+    "labels": {
+      "path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/pilot_candidate_labels.npz",
+      "sha256": "985cb920acee9ff1cb7bae9cdb78ef3d854fa34f5dcc2cd73b10f962851860a1"
+    }
+  },
+  "formal_v70_mutated": false,
+  "sealed_validation_opened": false,
+  "promotion_allowed": false
+}

@@ -1,0 +1,65 @@
+{
+  "eligible_trajectory_count": 277,
+  "insufficient_h4_count": 224,
+  "isolation_audit": {
+    "exact_overlap": {
+      "train__test": 0,
+      "train__val": 0,
+      "val__test": 0
+    },
+    "group_overlap": {
+      "train__test": 0,
+      "train__val": 0,
+      "val__test": 0
+    },
+    "split_counts": {
+      "test": 43,
+      "train": 212,
+      "val": 22
+    }
+  },
+  "parent_split_lock_sha256": "32763b89772e5e499a0ee5248ae05ff5c9c9509a8fdc3f47af402ce20cbf933b",
+  "raw_trajectory_counts": {
+    "new": 492,
+    "old": 12
+  },
+  "same_id_overlap_count": 3,
+  "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96",
+  "split_summary": {
+    "test": {
+      "bags": 18,
+      "frames": 18306,
+      "h4_windows": 18005,
+      "robots": {
+        "Jackal": 6,
+        "Spot": 37
+      },
+      "routes": 7,
+      "trajectories": 43
+    },
+    "train": {
+      "bags": 47,
+      "frames": 38116,
+      "h4_windows": 36632,
+      "robots": {
+        "Jackal": 8,
+        "Spot": 204
+      },
+      "routes": 39,
+      "trajectories": 212
+    },
+    "val": {
+      "bags": 6,
+      "frames": 4299,
+      "h4_windows": 4145,
+      "robots": {
+        "Jackal": 1,
+        "Spot": 21
+      },
+      "routes": 5,
+      "trajectories": 22
+    }
+  },
+  "status": "PASS",
+  "test_accessed": false
+}

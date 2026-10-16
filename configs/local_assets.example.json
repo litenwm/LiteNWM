@@ -1,0 +1,35 @@
+{
+  "schema": "dinov3_ltwm_local_assets_v1",
+  "dinov3": {
+    "model_dir": "../external/dinov3-vitl16-pretrain-lvd1689m",
+    "model_id": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+    "revision": "dd0a398fa8e84f2a37179332f6c561d20276300b",
+    "model_safetensors_sha256": "dcb2e45127cccbf1601e5f42fef165eea275c8e5213197e8dcf3f48822718179"
+  },
+  "adapter": {
+    "checkpoint": "../checkpoints/project/dinov3_adapter/adapter_pilot_v1_final.pt",
+    "sha256": "bc0ec2cac457556bfb362b46b20584a02d8f954d8b7c17ed36b4c8646ec4ad5a"
+  },
+  "nomad": {
+    "visualnav_root": "../external/visualnav-transformer",
+    "diffusion_policy_root": "../external/diffusion_policy",
+    "checkpoint": "../external/nomad/nomad.pth",
+    "checkpoint_sha256": "70f79b8262527e20e56ced64a3e3d7ef91855bc9e7c3fa348d78edcb83c6a333",
+    "config": "../external/nomad/nomad.yaml",
+    "config_sha256": "eb1aa594abd62a97a8ece0c735a4d2274a703d0fffaa3a97b0f880a950bba463"
+  },
+  "datasets": {
+    "recon": {
+      "trajectory_root": "../datasets/recon",
+      "strict_splits": "../data/split_lock/recon_strict_splits.json"
+    },
+    "scand": {
+      "trajectory_root": "../datasets/scand",
+      "strict_splits": "../data/split_lock/scand_strict_splits.json"
+    }
+  },
+  "split_lock": {
+    "path": "../data/split_lock/split_lock.json",
+    "sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+  }
+}

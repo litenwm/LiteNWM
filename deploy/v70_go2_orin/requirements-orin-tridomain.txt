@@ -1,0 +1,7 @@
+# Create the venv with --system-site-packages so the JetPack-provided
+# torch/torchvision and ROS Python packages remain authoritative.
+# Do not install generic PyPI torch or torchvision on Jetson.
+#
+# The board's system scipy 1.8.0 requires numpy <1.25. This venv-local pin
+# shadows numpy 1.26.4 without modifying the system interpreter.
+numpy==1.24.4

@@ -1,0 +1,31 @@
+{
+  "schema": "scand_cem_top10_latent_reranker_binding_amendment_v1",
+  "status": "frozen_binding_correction_before_corrected_rerun",
+  "reason": "The original middle 100-state latent cache did not bind to runtime-table states 540:640; the completed result that used it is invalid.",
+  "scope": "Replace only the misbound middle latent cache. Model, target, folds, shortlist, fallback calibration, gates, and sealed-validation state are unchanged.",
+  "invalidated_result": {
+    "path": "outputs/cem_development_v1/scand_top10_latent_reranker_v1_final/result.json",
+    "sha256": "2cb2de14846cae5f3335b3ebaadd2995d48500259d521b1571744add7142be70"
+  },
+  "replaced_input": {
+    "states": 100,
+    "path": "outputs/cem_development_v1/scand/features/scand_cem_cal_dev100_latents.npz",
+    "sha256": "e254a89b05d7282b76c1499d26c3a69ff47797cb757ca5de34f1c0f8edcab1f0"
+  },
+  "correct_input": {
+    "states": 100,
+    "path": "outputs/scand_domain_adaptation_v1/fresh_outer_v1/features/scand_fresh_outer_h4_100_seed20260720_latents.npz",
+    "sha256": "e5a8f9bb875d0512ee95b62a062bec07ce07a02ced53c8f2d2e05e95173e836a"
+  },
+  "binding_evidence": {
+    "path": "outputs/scand_domain_adaptation_v1/fresh_outer_v1/features/scand_fresh_outer_h4_100_seed20260720_features.npz",
+    "sha256": "2df512ba0daf6a4a8441d5212d8eba860798e7232980e1d420687965228d0dd4",
+    "runtime_table_slice": [
+      540,
+      640
+    ],
+    "exact_record_key_matches": 100,
+    "states": 100
+  },
+  "sealed_validation_opened": false
+}

@@ -1,0 +1,102 @@
+{
+  "schema": "ltwm_four_context_motion_probe_contract_v1",
+  "status": "frozen_before_single_four_context_route_oof_probe",
+  "purpose": "Test whether full four-frame history, which the real LTWM receives but all prior inverse probes discarded, resolves route-general monocular scale, speed, and yaw calibration.",
+  "hypothesis": "Three observed past token-motion fields plus the current-to-goal field can decode a held-route H1-H4 path accurately enough to select useful union65 actions.",
+  "lineage": {
+    "withdrawn_adapter_hypothesis": {
+      "contract_path": "configs/recon/ltwm_action_aware_adapter_probe_v1.json",
+      "contract_sha256": "6252e8708afb5c082b9c0195df4b6c7feb86a657538152e6c6352fa1e9aaabc1",
+      "runner_path": "tools/recon/run_ltwm_action_aware_adapter_probe_v1.py",
+      "runner_sha256": "85f37a584b0fdd9d1b4ec80cbd3c2c6d2faafc9ba5bbf7945b6ed59d4206b795",
+      "result_path": "outputs/cem_development_v1/ltwm_action_aware_adapter_probe_v1/result.json",
+      "result_sha256": "6c635836fcdea76186149298497e19e9308b067fa64f331c41b0486b68d4e809",
+      "decision": "no_go_withdraw_existing_data_action_aware_adapter_hypothesis",
+      "semantic_cosine": 0.997870922088623,
+      "held_route_ate_gain_m": -0.010324575676349923,
+      "held_route_harm_rate": 0.5097529258777633
+    }
+  },
+  "inputs": {
+    "data_contract": {
+      "path": "configs/recon/ltwm_scand_same_state_hardneg_v1.json",
+      "sha256": "86ef80b56d120411eec5cc949738b87072573ff31a71a5e725ad08fbffc966b1"
+    },
+    "frozen_common_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    },
+    "formal_v70_result": {
+      "path": "outputs/cem_development_v1/dualdomain_cem_tail_v70_broad_hashfold_archive/result.json",
+      "sha256": "52542c994e2a356bd5b0839db210823c43887c35402ccdf823b00f8bb3b506f4"
+    },
+    "full_stream_latents": {
+      "root": "outputs/cem_development_v1/scand_full_stream_latents_v2",
+      "metadata_sha256": "0f678ded8c673e78652d74221eb094aac87d5b2b9bba3ab6df07e57b783caa29",
+      "splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+      "trajectories_sha256": "822c3911deca3198f87e7603fab8eab22eb0c7c07e8c2b12c27257e6df71b54a",
+      "ordered_shard_sha256_aggregate": "cc020c932770f1cf352666aa337f13980e4144df8f0516665ba3cba296063bd5"
+    }
+  },
+  "representation": {
+    "input_pairs": [
+      "history t-3 to t-2",
+      "history t-2 to t-1",
+      "history t-1 to t",
+      "current t to real goal t+4"
+    ],
+    "per_pair_fields": [
+      "shared Linear 384 to 8 token residual",
+      "parameter-free all-pairs expected x/y displacement",
+      "maximum cosine match",
+      "normalized match entropy"
+    ],
+    "fixed_coordinates": "normalized x,y patch grid",
+    "spatial_input_channels": 50,
+    "head": "Conv 50 to 64, stride-2 Conv 64 to 48, stride-2 Conv 48 to 32, Linear 512 to 128 to 12",
+    "frozen_latent": true,
+    "outcome_labels_in_training": false,
+    "ate_or_objective_gradient": false
+  },
+  "training": {
+    "outer_route_folds": 5,
+    "fixed_steps_per_fold": 1500,
+    "batch_size": 16,
+    "batch_composition": {
+      "route-excluded full-stream windows": 8,
+      "outer-train frozen-table states": 8
+    },
+    "full_stream_valid_current_t": "3 through T-5 inclusive",
+    "sampling": "route-uniform then example-uniform independently per domain",
+    "target_standardization": "outer-train frozen-table actions only",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 2026072406,
+    "checkpoint_selection": "fixed final step; no outer state or outcome selects model or duration"
+  },
+  "loss": {
+    "standardized_action_smooth_l1_weight": 1.0,
+    "integrated_xy_path_smooth_l1_weight": 0.25
+  },
+  "fixed_primary_planner": {
+    "definition": "choose the physical/support union65 candidate nearest to the decoded real-goal XY path; formal-v70 remains in the set",
+    "true_path_ceiling_ate_gain_m": 0.03213468994246796,
+    "true_path_ceiling_objective_gain_m": 0.04201809135847725
+  },
+  "performance_gate": {
+    "ate_gain_m_min_exclusive": 0.002526717376050023,
+    "objective_gain_m_min_exclusive": 0.0053311675367876885,
+    "harm_rate_max": 0.35,
+    "positive_route_fraction_min": 0.60,
+    "ate_oracle_gain_ratio_min": 0.20
+  },
+  "branch_rule": {
+    "if_performance_passes": "Freeze the four-context probes and evaluate/train exactly one matching LTWM cycle branch.",
+    "if_performance_fails": "Freeze no-go for all existing-data adapted-DINO visual-motion routes. Further progress requires new supervision or sensing, not another selector, decoder, threshold, or CEM setting."
+  },
+  "formal_v70_mutated": false,
+  "frozen_common_table_mutated": false,
+  "cem_mutated": false,
+  "sealed_validation_opened": false
+}

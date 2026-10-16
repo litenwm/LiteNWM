@@ -1,0 +1,2 @@
+# Core runtime. Optional encoder/data/analysis dependencies: see README.md.
+-e .

@@ -1,0 +1,105 @@
+{
+  "schema": "scand_union65_route_disjoint_path_fusion_contract_v1",
+  "status": "frozen_before_strict_nested_route_oof",
+  "scope": "spent-development diagnostic of ordinary-log path signal fused into the fixed v4 selector",
+  "table": {
+    "path": "outputs/cem_development_v1/scand_union65_route_disjoint_path_augmented_v1/table.npz",
+    "sha256": "9f91efc1ef944f194952f4aef9ffd94d6312c016e38f2346e889c40ec4c60a1b",
+    "states": 800,
+    "candidates_per_state": 65,
+    "features": 351,
+    "route_groups": 42
+  },
+  "candidate_set": {
+    "challengers": "frozen physical_support_pool",
+    "fallback": "formal_v70_index",
+    "sealed_validation_opened": false
+  },
+  "model": {
+    "family": "set_context_multitask_gain_and_harm_ensemble",
+    "architecture": {
+      "candidate_encoder": [351, 96, 64],
+      "context": "masked candidate-set mean plus formal-v70 embedding",
+      "head": [192, 96, 32, 4],
+      "outputs": [
+        "objective_gain_vs_formal_v70_m",
+        "ate_gain_vs_formal_v70_m",
+        "harm_vs_formal_v70_logit",
+        "dual_vs_formal_v70_logit"
+      ]
+    },
+    "objective_gain_scale_m": 0.05,
+    "ate_gain_scale_m": 0.04,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0008,
+    "weight_decay": 0.0002,
+    "epochs": 16,
+    "state_batch_size": 32,
+    "ensemble_size": 2,
+    "seed": 20260725,
+    "loss": {
+      "listwise_weight": 1.0,
+      "objective_regression_weight": 0.35,
+      "ate_regression_weight": 0.35,
+      "harm_bce_weight": 0.2,
+      "dual_bce_weight": 0.1,
+      "softmax_temperature_m": 0.008,
+      "harm_penalty_m": 0.025
+    }
+  },
+  "fixed_policy": {
+    "score": "dual_probability_mean - harm_probability_mean - 1.5*(dual_probability_std + harm_probability_std)",
+    "uncertainty_beta": 1.5,
+    "harm_probability_limit": 0.45,
+    "target_inner_oof_coverage": 0.4,
+    "advantage_threshold": "40% coverage threshold calibrated from outer-train inner route-OOF score distribution without outcome labels",
+    "candidate_requirements": {
+      "conservative_dual_minus_harm_advantage": 0.0
+    },
+    "per_state_if_ineligible": "formal-v70",
+    "per_fold_outcome_based_policy_search": false
+  },
+  "evaluation": {
+    "outer_route_folds": 5,
+    "inner_route_oof_for_score_quantile_only": true,
+    "outer_route_fold_labels_choose_model_or_policy": false,
+    "inner_outcome_labels_choose_policy": false,
+    "top_k": [1, 3, 5, 10],
+    "final_bootstrap_draws": 5000
+  },
+  "prototype_go_gate": {
+    "minimum_replacements": 16,
+    "minimum_all_state_objective_gain_m": 0.0,
+    "minimum_all_state_ate_gain_m": 0.0,
+    "maximum_empirical_harm_rate": 0.3,
+    "minimum_positive_objective_route_fraction": 0.5,
+    "minimum_positive_ate_route_fraction": 0.5,
+    "minimum_ate_oracle_gain_ratio": 0.1,
+    "require_objective_route_cluster_bootstrap_lcb_positive": true,
+    "require_ate_route_cluster_bootstrap_lcb_positive": true,
+    "require_ate_p90_not_worse": true
+  },
+  "reliability_interpretation": {
+    "strict_positive_route_fraction": "zero-gain routes with only formal-v70 fallback are neutral but count as not positive",
+    "minimum_positive_fraction": 0.5,
+    "additional_required_evidence": "positive route-cluster bootstrap lower bound and non-worse ATE p90"
+  },
+  "diagnostic_provenance": {
+    "counterfactual_action_outcomes_used": false,
+    "path_target": "ordinary logged future odometry",
+    "path_model_training": "all dense rows whose route occurs in union65 were excluded",
+    "replaced_feature_columns": ["source_0", "source_1", "source_2", "source_3"],
+    "confirmatory_claim_allowed": false
+  },
+  "frozen_components": [
+    "formal-v70",
+    "three-round CEM",
+    "physical/support pool",
+    "union65",
+    "347 original runtime features plus four route-disjoint path-ranking features",
+    "set-context multi-task model and seeds",
+    "fixed beta 1.5",
+    "fixed harm probability limit 0.45",
+    "fixed 40% inner-score-distribution coverage"
+  ]
+}

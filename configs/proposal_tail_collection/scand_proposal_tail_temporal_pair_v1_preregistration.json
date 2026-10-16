@@ -1,0 +1,42 @@
+{
+  "schema": "scand_proposal_tail_temporal_pair_preregistration_v1",
+  "status": "frozen_before_independent_route_collection",
+  "scope": "label-free feature contract only; no model training or performance claim",
+  "inputs": {
+    "candidate_pool": "fixed K17 plus three CEM rounds, 65 candidates per state",
+    "reference": "formal frozen v70 archive selection for the same state",
+    "deployment_available_only": true,
+    "labels_or_truth_forbidden": true,
+    "route_record_or_bag_identity_as_model_feature": false
+  },
+  "required_components": [
+    "H1-H4 action sequence and candidate-minus-formal-v70 delta",
+    "H1-H4 LTWM latent summary and candidate-minus-formal-v70 delta",
+    "three-seed ATE/RTP/support values and candidate-minus-formal-v70 delta",
+    "proposal source round and within-round candidate index",
+    "formal-v70 candidate mapping and candidate hashes"
+  ],
+  "raw_ltwm_contract": {
+    "layout": [4, 7, 4],
+    "axes": ["mean/std/min/max over seeds", "seven latent blocks", "H1-H4"],
+    "seed_identity_lost_in_frozen_feature_artifact": true,
+    "allowed_reconstruction": "per-feature min/middle/max order statistics only",
+    "forbidden_claim": "order statistics are not a consistent seed trajectory"
+  },
+  "isolation": {
+    "sidecar_default_off": true,
+    "planner_or_model_rerun_by_builder": false,
+    "formal_v70_behavior_influence": false,
+    "reserve_access": false,
+    "spent_smoke_training_allowed": false,
+    "independent_route_training_before_readiness": false
+  },
+  "fail_closed": [
+    "sidecar manifest or file hash mismatch",
+    "candidate order/hash mismatch",
+    "formal archive source cannot be mapped uniquely",
+    "candidate count differs from 65",
+    "required temporal/action/seed fields missing",
+    "labels opened or reserve access reported"
+  ]
+}

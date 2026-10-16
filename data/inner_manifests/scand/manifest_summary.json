@@ -1,0 +1,98 @@
+{
+  "assignment_sha256": "f4b3f7b16a2c05d36580ba04acaee65b8db01c91901de1a3bb8e52d55399507a",
+  "dataset": "scand",
+  "decision": "STRICT_SCAND_H4_FOUR_WAY_MANIFESTS_READY",
+  "latent_metadata_sha256": "7e5498dc29a0671ad8a91742412b82b3bf29d26eaebc4018e1cae2ae3c99b6bf",
+  "latent_root": "/root/autodl-tmp/dwm_datasets/processed/scand_dinov3_vitl16_adapted_expansion_v2_final_trainval_60e5c5af",
+  "latent_splits_sha256": "fd3890cdd07c289aab4b8bcd149fdaf6dbc038f10d854ee65e0c7e110a712c47",
+  "leakage_guard": {
+    "labels_used_for_partitioning": false,
+    "model_outputs_used_for_partitioning": false,
+    "outer_train_only": true,
+    "outer_val_examples_materialized": false,
+    "outer_val_metadata_verified": true,
+    "test_data_accessed": false,
+    "test_examples_materialized": false,
+    "test_metadata_verified_from_split_lock": true
+  },
+  "manifests": {
+    "cem-cal": {
+      "bags": 6,
+      "path": "cem-cal.windows.jsonl",
+      "route_groups": 2,
+      "sha256": "e721e27e697148aa9181d049b91dbd36e5c6810c8ea89c7945b5b7070ebea5d0",
+      "trajectories": 20,
+      "windows": 1536
+    },
+    "internal-holdout": {
+      "bags": 5,
+      "path": "internal-holdout.windows.jsonl",
+      "route_groups": 4,
+      "sha256": "d1e9bbe8b2d46437e69764c2be67b4a7daacf33f2800736e503ba13cfb4d549b",
+      "trajectories": 21,
+      "windows": 986
+    },
+    "scorer-cal": {
+      "bags": 5,
+      "path": "scorer-cal.windows.jsonl",
+      "route_groups": 4,
+      "sha256": "ca0cbb7c7ce868b933a334332ecb730259f442d4eca7fb6c9c579cca50de0c3d",
+      "trajectories": 20,
+      "windows": 1215
+    },
+    "train-fit": {
+      "bags": 31,
+      "path": "train-fit.windows.jsonl",
+      "route_groups": 29,
+      "sha256": "853d0ef183140681b12104681453a2c9674f664445b0a92d4f627bedda79d313",
+      "trajectories": 138,
+      "windows": 7489
+    }
+  },
+  "outer_scope": "train-only",
+  "overlap_audit": {
+    "physical_bag": {
+      "cem-cal__internal-holdout": 0,
+      "scorer-cal__cem-cal": 0,
+      "scorer-cal__internal-holdout": 0,
+      "train-fit__cem-cal": 0,
+      "train-fit__internal-holdout": 0,
+      "train-fit__scorer-cal": 0
+    },
+    "route_group": {
+      "cem-cal__internal-holdout": 0,
+      "scorer-cal__cem-cal": 0,
+      "scorer-cal__internal-holdout": 0,
+      "train-fit__cem-cal": 0,
+      "train-fit__internal-holdout": 0,
+      "train-fit__scorer-cal": 0
+    },
+    "trajectory": {
+      "cem-cal__internal-holdout": 0,
+      "scorer-cal__cem-cal": 0,
+      "scorer-cal__internal-holdout": 0,
+      "train-fit__cem-cal": 0,
+      "train-fit__internal-holdout": 0,
+      "train-fit__scorer-cal": 0
+    }
+  },
+  "protocol": {
+    "fractions": {
+      "cem-cal": 0.1,
+      "internal-holdout": 0.1,
+      "scorer-cal": 0.1,
+      "train-fit": 0.7
+    },
+    "goal_offset": 4,
+    "history": 4,
+    "horizon": 4,
+    "max_windows_per_physical_bag": 256,
+    "min_goal_displacement_m": 0.5,
+    "partition_before_window_generation": true,
+    "partition_unit": "undirected_route_group",
+    "split_seed": 20260719
+  },
+  "schema": "strict_scand_h4_inner_manifests_v3",
+  "split_lock": "/root/autodl-tmp/dwm_datasets/splits/ltwm_dinov3_scand_expansion_v2_final_20260718/split_lock.json",
+  "split_lock_sha256": "60e5c5af433b52046987b59aa7779c60c82a811a6bf6898c6d618cf7e1539b96"
+}

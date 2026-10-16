@@ -1,0 +1,111 @@
+{
+  "schema": "scand_cem_top10_latent_reranker_contract_v1",
+  "status": "frozen_before_feature_export_and_nested_route_oof",
+  "scope": "one adaptive spent-development performance prototype",
+  "inputs": {
+    "runtime_table": {
+      "path": "outputs/cem_development_v1/incremental_outcome_student_v1/spent_runtime_pair_table.npz",
+      "sha256": "cab014acadbd72e85fa737074ece707c0bdc18128ea83df66cee9c8fa1dd763c"
+    },
+    "coarse_contract": {
+      "path": "configs/scand/cem_union65_listwise_selector_v1.json",
+      "sha256": "f015b9ff4e44dc468c15317dc591de19997e04d369710e32e67b506d90ef8293"
+    },
+    "latent_caches": [
+      {
+        "states": 540,
+        "path": "outputs/cem_development_v1/scand_existing_train_upperbound_pilot_v1_corrected/base_features/scand_existing_train_upperbound_pilot_v1_corrected_latents.npz",
+        "sha256": "88acb37584a05e3dfc296b6d534dd1e04c96deacdeecad9be08f588f27a2ab9c"
+      },
+      {
+        "states": 100,
+        "path": "outputs/cem_development_v1/scand/features/scand_cem_cal_dev100_latents.npz",
+        "sha256": "e254a89b05d7282b76c1499d26c3a69ff47797cb757ca5de34f1c0f8edcab1f0"
+      },
+      {
+        "states": 160,
+        "path": "outputs/cem_development_v1/scand_new_routefit10_v4_development_pilot_v2_strict_identity/base_features/scand_new_routefit10_v4_development_pilot_v2_latents.npz",
+        "sha256": "812a2f2a252433327379e00107dffcc46efc5af650715db19dd002681c310e6a"
+      }
+    ],
+    "ltwm_checkpoints": [
+      {
+        "seed": 1701,
+        "path": "checkpoints/project/ltwm_expansion/seed1701/best.pt",
+        "sha256": "889fbecc54575e8d2e356c3fae8a04ce56c05bf47e8737949154143b94558661"
+      },
+      {
+        "seed": 1702,
+        "path": "checkpoints/project/ltwm_expansion/seed1702/best.pt",
+        "sha256": "1a0767f0e184719218e3bcd4414fafd378da5c9e30fb0f6048973945af2bd859"
+      },
+      {
+        "seed": 1703,
+        "path": "checkpoints/project/ltwm_expansion/seed1703/best.pt",
+        "sha256": "7ee8641ed7251f39bf8e7741c775a440ab1d505d3af66355f20894f85f6c0434"
+      }
+    ]
+  },
+  "feature": {
+    "states": 800,
+    "candidates": 65,
+    "seeds": 3,
+    "horizons": 4,
+    "spatial_grid": [4, 4],
+    "channel_groups": 32,
+    "rollout_grid_dimensions_per_horizon": 512,
+    "other_per_horizon": [
+      "seven latent trajectory scalars",
+      "4x4 predicted log-variance",
+      "decoded action",
+      "executed candidate action"
+    ],
+    "precision": "float16 cache, float32 training",
+    "labels_in_feature_cache": false
+  },
+  "pipeline": {
+    "coarse_selector": "same frozen 351-dimensional listwise utility model refit inside every outer/inner training split",
+    "shortlist": "top 10 physical+support challengers plus formal-v70",
+    "reranker": "shared seed-horizon token encoder, seed mean/std aggregation, H1-H4 GRU, one utility score",
+    "formal_fallback": "challenger must beat formal utility by inner-calibrated margin"
+  },
+  "target": {
+    "objective_gain_weight": 0.7,
+    "ate_gain_weight": 0.3,
+    "harm_penalty_m": 0.05,
+    "softmax_temperature_m": 0.008
+  },
+  "model": {
+    "token_width": 32,
+    "horizon_width": 32,
+    "epochs": 15,
+    "state_batch_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 20260725
+  },
+  "evaluation": {
+    "outer_route_folds": 5,
+    "inner_route_oof": true,
+    "outer_labels_choose_margin": false,
+    "coverage_curve": [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5],
+    "top_k": [1, 3, 5, 10]
+  },
+  "inner_margin_selection": {
+    "minimum_replacements": 16,
+    "maximum_empirical_harm_rate": 0.25,
+    "minimum_all_state_objective_gain_m": 0.0,
+    "minimum_all_state_ate_gain_m": 0.0,
+    "minimum_positive_route_fraction": 0.5,
+    "if_none_feasible": "zero margin"
+  },
+  "prototype_go_gate": {
+    "minimum_overall_objective_gain_m": 0.008,
+    "minimum_new_mainrgb_objective_gain_m": 0.008,
+    "minimum_overall_ate_gain_m": 0.0,
+    "maximum_empirical_harm_rate": 0.25,
+    "minimum_new_mainrgb_oracle_gain_ratio": 0.15,
+    "route_bootstrap_lcb_min_m": 0.0
+  },
+  "sealed_validation_opened": false
+}
